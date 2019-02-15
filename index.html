@@ -220,6 +220,26 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
+            <a href="#rest-api" class="toc-h1 toc-link" data-title="Rest API">Rest API</a>
+          </li>
+          <li>
+            <a href="#endpoints" class="toc-h1 toc-link" data-title="Endpoints">Endpoints</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#markets" class="toc-h2 toc-link" data-title="Markets">Markets</a>
+                  </li>
+                  <li>
+                    <a href="#products" class="toc-h2 toc-link" data-title="Products">Products</a>
+                  </li>
+                  <li>
+                    <a href="#essential-product-model-attribute" class="toc-h2 toc-link" data-title="Essential product model attribute">Essential product model attribute</a>
+                  </li>
+                  <li>
+                    <a href="#category-names" class="toc-h2 toc-link" data-title="Category names">Category names</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#tipser-script-sdk" class="toc-h1 toc-link" data-title="Tipser Script SDK">Tipser Script SDK</a>
               <ul class="toc-list-h2">
                   <li>
@@ -239,9 +259,6 @@
                   </li>
               </ul>
           </li>
-          <li>
-            <a href="#rest-api" class="toc-h1 toc-link" data-title="Rest API">Rest API</a>
-          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='tipser.com'>Visit Tipser page</a></li>
@@ -251,7 +268,254 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='tipser-script-sdk'>Tipser Script SDK</h1>
+        <h1 id='rest-api'>Rest API</h1>
+<p>Tipser provides a RESTful API that you can use to fully integrate your platform with Tipser.</p>
+<h1 id='endpoints'>Endpoints</h1><h2 id='markets'>Markets</h2>
+<p>Available markets for the product endpoint </p>
+
+<p><code>/v4/markets</code></p>
+
+<blockquote>
+<p>Get available markets</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET https://t3-prod-api.tipser.com/v4/markets
+</code></pre>
+<blockquote>
+<p>Market model:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"59dde7e3b8f3f67f24d6f6c9"</span><span class="p">,</span><span class="w">
+  </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"CH_FR"</span><span class="p">,</span><span class="w">
+  </span><span class="err">currencyName</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHF"</span><span class="p">,</span><span class="w">
+  </span><span class="err">currencySymbol</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHF"</span><span class="p">,</span><span class="w">
+  </span><span class="err">country</span><span class="p">:</span><span class="w"> </span><span class="s2">"CH"</span><span class="p">,</span><span class="w">
+  </span><span class="err">locale</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr-CH"</span><span class="p">,</span><span class="w">
+  </span><span class="err">defaultVat</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+    </span><span class="err">formatted</span><span class="p">:</span><span class="w"> </span><span class="s2">"8%"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">availablePsp</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"stripe"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>These parameters control the market in the API and are used for some of the methods.</p>
+
+<p>Market controls the currency, and ship-to country. </p>
+
+<p>Available markets are: </p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Country</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>de</td>
+<td>Germany</td>
+</tr>
+<tr>
+<td>de-CH</td>
+<td>Switzerland - German language</td>
+</tr>
+<tr>
+<td>fr-CH</td>
+<td>Switzerland - French language</td>
+</tr>
+<tr>
+<td>se</td>
+<td>Sweden (default)</td>
+</tr>
+</tbody></table>
+
+<p>These parameters control the market in the API and are used for some of the methods.</p>
+<h2 id='products'>Products</h2>
+<p>All product related methods</p>
+
+<p><code>/v4/products</code></p>
+<h3 id='fetching-products-using-search'>Fetching products using search</h3>
+<p>Search over Tipser public product repository, with support for filtering by text, brands, prices with sorting and pagination.</p>
+
+<p><code>GET https://t3-prod-api.tipser.com/v4/products</code></p>
+
+<p>Query string parameters</p>
+
+<table><thead>
+<tr>
+<th>query</th>
+<th>string</th>
+<th>Search query</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>brands</td>
+<td>string</td>
+<td>Brand name</td>
+</tr>
+<tr>
+<td>merchants</td>
+<td>string</td>
+<td>Merchant name</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>integer</td>
+<td>Number of items to show</td>
+</tr>
+<tr>
+<td>skip</td>
+<td>integer</td>
+<td>Number or items to skip</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>name/-name/price/-price</td>
+<td></td>
+</tr>
+<tr>
+<td>priceFrom</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>priceTo</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>market</td>
+<td>string</td>
+<td>See above</td>
+</tr>
+</tbody></table>
+
+<p>Example requests (try me):</p>
+
+<p><a href="https://t3-prod-api.tipser.com/v4/products?query=vita+skor&amp;brands=Birkenstock">https://t3-prod-api.tipser.com/v4/products?query=vita+skor&amp;brands=Birkenstock</a></p>
+
+<p><a href="https://t3-prod-api.tipser.com/v4/products?limit=3">https://t3-prod-api.tipser.com/v4/products?limit=3</a></p>
+
+<p><a href="https://t3-prod-api.tipser.com/v4/products?limit=3&amp;skip=3">https://t3-prod-api.tipser.com/v4/products?limit=3&amp;skip=3</a></p>
+<h3 id='fetch-product-by-id'>Fetch product by id</h3>
+<p><code>GET https://t3-prod-api.tipser.com/v4/products/:productId(?pos=:posId)</code></p>
+
+<blockquote>
+<p>PRODUCT MODEL</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+    </span><span class="err">title</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+    </span><span class="err">description</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+    </span><span class="err">priceIncVat</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="p">,</span><span class="w">
+        </span><span class="err">currency</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+        </span><span class="err">formatted</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">vat</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="p">,</span><span class="w">
+        </span><span class="err">formatted</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">currency</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+    </span><span class="err">deliveryTime</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+    </span><span class="err">deliveryCost</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="p">,</span><span class="w">
+        </span><span class="err">currency</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+        </span><span class="err">formatted</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">brand</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+    </span><span class="err">categories</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="err">department</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+        </span><span class="err">section</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="err">categoriesValue</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+    </span><span class="err">market</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+    </span><span class="err">merchant</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+    </span><span class="err">merchantName</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+    </span><span class="err">accessRights</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+    </span><span class="err">isInStock</span><span class="p">:</span><span class="w"> </span><span class="err">boolean</span><span class="p">,</span><span class="w">
+    </span><span class="err">images</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="mi">250</span><span class="w"> </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
+            </span><span class="mi">450</span><span class="w"> </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
+            </span><span class="mi">960</span><span class="w"> </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
+            </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+            </span><span class="err">original</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
+            </span><span class="mi">50</span><span class="w"> </span><span class="err">x</span><span class="mi">50</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="err">variants</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+            </span><span class="err">productId</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+            </span><span class="err">title</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+            </span><span class="err">description</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+            </span><span class="err">stockCount</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="p">,</span><span class="w">
+            </span><span class="err">stockCountUnlimited</span><span class="p">:</span><span class="w"> </span><span class="err">boolean</span><span class="p">,</span><span class="w">
+            </span><span class="err">attributes</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="err">key</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">attributesValue</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+            </span><span class="err">priceIncVat</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="p">,</span><span class="w">
+                </span><span class="err">currency</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+                </span><span class="err">formatted</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">vat</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="p">,</span><span class="w">
+                </span><span class="err">formatted</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">currency</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+            </span><span class="err">images</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="mi">250</span><span class="w"> </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
+                </span><span class="mi">450</span><span class="w"> </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
+                </span><span class="mi">960</span><span class="w"> </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
+                </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+                </span><span class="err">original</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
+                </span><span class="mi">50</span><span class="w"> </span><span class="err">x</span><span class="mi">50</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="err">sku</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
+            </span><span class="err">isInStock</span><span class="p">:</span><span class="w"> </span><span class="err">boolean</span><span class="p">,</span><span class="w">
+            </span><span class="err">gtin</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="err">type</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unknown"</span><span class="p">,</span><span class="w">
+                </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"874034007676"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">mpn</span><span class="p">:</span><span class="w"> </span><span class="s2">"80950086000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="err">lastUpdateDate</span><span class="p">:</span><span class="w"> </span><span class="err">date</span><span class="p">,</span><span class="w">
+    </span><span class="err">freeReturn</span><span class="p">:</span><span class="w"> </span><span class="err">boolean</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Query string parameters
+<strong>productId:</strong> string
+<strong>pos:</strong> string (optional) - posId needed to ie. show pos-specific discounts etc.</p>
+
+<p><a href="https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663">https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663</a></p>
+
+<p><a href="https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663?pos=54fdfcf378415516b41e88c8">https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663?pos=54fdfcf378415516b41e88c8</a></p>
+<h2 id='essential-product-model-attribute'>Essential product model attribute</h2>
+<p><strong>id:</strong> used to reference for the product when adding to cart or getting to know more about it (ie. list of variants, similar products)</p>
+
+<p><strong>images:</strong> a list of image objects, keyed by the resolution (250,450,960) but also with an option to get the original size. Also, note underlined URI fragment (h_50,w_50), that you may modify to get the desired image size.</p>
+
+<p><strong>price:</strong> original price of an item</p>
+
+<p><strong>salesPrice:</strong> the price that we currently sell the item for. If it is equal to the price, it means that there&#39;s no any sale. If the price is lower, then it means the product is on a sale</p>
+
+<p><strong>available:</strong> if true, you should be able to add it to cart. else no</p>
+
+<p><strong>variants:</strong> all SKUs nested into the master product</p>
+
+<p><strong>attributes:</strong> what concrete product variant is that (color, size, sex etc)</p>
+<h2 id='category-names'>Category names</h2>
+<p>Get translated category names for a product
+To get the translated category names, used in the product model, you can use the API endpoint:</p>
+
+<p><code>GET https://t3-dev-api.tipser.com/v4/categories?market=se</code></p>
+<h1 id='tipser-script-sdk'>Tipser Script SDK</h1>
 <p>The Tipser SDK is a modular version of the Tipser script that provides only the core functionality necessary for integration with Tipser, specifically built for customers who have their own development resources and plan to build their shopping experience on their own.</p>
 <h2 id='instalation'>Instalation</h2><h3 id='using-npm-or-yarn'>Using npm or yarn</h3>
 <p>You can add the Tipser SDK to your project by adding it through npm or yarn.</p>
@@ -360,64 +624,6 @@ Congratulations! Now Tipser is part of your website
 <li><p>set <strong>useCustomCss</strong> parameter to true</p></li>
 <li><p>Send the custom css stylesheet to Tipser administrator in order to be uploaded to your account.</p></li>
 </ol>
-<h1 id='rest-api'>Rest API</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
 
       </div>
       <div class="dark-box">
