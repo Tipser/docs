@@ -259,6 +259,20 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#tipser-widget" class="toc-h1 toc-link" data-title="Tipser Widget">Tipser Widget</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#basic-usage" class="toc-h2 toc-link" data-title="Basic usage">Basic usage</a>
+                  </li>
+                  <li>
+                    <a href="#configuration-options" class="toc-h2 toc-link" data-title="Configuration options">Configuration options</a>
+                  </li>
+                  <li>
+                    <a href="#replacing-elements-on-page" class="toc-h2 toc-link" data-title="Replacing elements on page">Replacing elements on page</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='tipser.com'>Visit Tipser page</a></li>
@@ -624,6 +638,80 @@ Congratulations! Now Tipser is part of your website
 <li><p>set <strong>useCustomCss</strong> parameter to true</p></li>
 <li><p>Send the custom css stylesheet to Tipser administrator in order to be uploaded to your account.</p></li>
 </ol>
+<h1 id='tipser-widget'>Tipser Widget</h1>
+<p>Tipser Widget is a script to embed Tipser products and shops on other pages.</p>
+<h2 id='basic-usage'>Basic usage</h2>
+<blockquote>
+<p>To use Tipser Widget, add this snipper to your page:</p>
+</blockquote>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;script&gt;</span>
+    <span class="kd">var</span> <span class="nx">scriptTag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
+    <span class="nx">scriptTag</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">"https://cdn.tipser.com/tipser-script/latest.js"</span><span class="p">;</span>
+    <span class="nx">scriptTag</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">scriptTag</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">TIPSER</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+            <span class="na">posId</span><span class="p">:</span> <span class="s1">'myPosId'</span><span class="p">,</span>
+            <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
+            <span class="na">domReplacementMode</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">scriptTag</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>myPosId</code> with your Tipser account id.</p>
+</blockquote>
+
+<p>The recommended place to add this script is the end of the <code>&lt;body&gt;</code> tag of your page.</p>
+
+<p><code>lang</code> parameter specifies the language to be used. Supported languages are currently: <code>en</code>, <code>de</code> and <code>sv</code>.</p>
+
+<aside class="notice">
+Make sure to replace <code>myPosId</code> with your Tipser account id. If you are not sure what to put here, please contact Tipser staff.
+</aside>
+<h2 id='configuration-options'>Configuration options</h2>
+<p>All the configuration options described in Tipser Elements configuration options [link missing] are allowed here. In addition, options below are available specifically for Tipser Widget script.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>domReplacementMode</td>
+<td>false</td>
+<td>should the script replace elements of the original page? See the section <a href="#replacing-elements-on-page">Replacing elements on page</a> for details.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>domElementSelectorWhereToMount</td>
+<td>none</td>
+<td>only used when <code>domReplacementMode: false</code>. A <a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS selector</a> to the container where the shop element should be mounted.</td>
+<td>domElementSelectorWhereToMount: &#39;#tipser_shop&#39;</td>
+</tr>
+<tr>
+<td>tipserElementIdToBeMount</td>
+<td>none</td>
+<td>only used when <code>domReplacementMode: false</code> and <code>domElementSelectorWhereToMount</code> is defined. A Contentful id of the element to be mounted at the element specified by <code>domElementSelectorWhereToMount</code>.</td>
+<td></td>
+</tr>
+<tr>
+<td>domElementSelectorWhereToMountCart</td>
+<td>none</td>
+<td>only used when <code>domReplacementMode: true</code>. A <a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS selector</a> for the container where Tipser cart tab should be mounted. If not specified, the Tipser shopping cart won&#39;t be displayed on the page.</td>
+<td>domElementSelectorWhereToMountCart: &quot;#cart&quot;</td>
+</tr>
+</tbody></table>
+<h2 id='replacing-elements-on-page'>Replacing elements on page</h2>
+<p>When <code>domReplacementMode</code> is <code>true</code> and Tipser Widget is added to a page, it will replace some elements in the original page with Tipser components, using the following rules: </p>
+<h3 id='tipser-products'>Tipser products</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">data-tipser-pid=</span><span class="s">"5ba2334a781baa0001ccdf61"</span> <span class="nt">/&gt;</span>
+</code></pre>
+<p>Elements with attribute <code>data-tipser-pid</code> will be replaced with Tipser product component, using the product with Tipser id passed in the attribute.</p>
+<h3 id='tipser-collections'>Tipser collections</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;p</span> <span class="na">name=</span><span class="s">"My collection"</span> <span class="na">data-tipser-cid=</span><span class="s">"5b2788909d25801adcb23f4f"</span>
+</code></pre>
+<p>Elements with attribute <code>data-tipser-cid</code> will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute.</p>
 
       </div>
       <div class="dark-box">
