@@ -676,12 +676,21 @@ Make sure to replace <code>myPosId</code> with your Tipser account id. If you ar
 </aside>
 
 <p>Tipser Widget can be used in one of two modes described below which are intended to satisfy different clients and use cases. Find out which one suits the best for you!</p>
-<h2 id='usage-mode-1-replacing-elements-on-your-page'>Usage mode 1: Replacing elements on your page</h2>
+<h2 id='usage-mode-1-replacing-elements-on-your-page'>Usage mode 1: Replacing elements on your page</h2><pre class="highlight javascript"><code><span class="nx">TIPSER</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+    <span class="na">posId</span><span class="p">:</span> <span class="s1">'myPosId'</span><span class="p">,</span>
+    <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
+    <span class="na">domReplacementMode</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace the values for <code>posId</code></p>
+</blockquote>
+
 <p>This is the simplest way to use Tipser Widget and a good place to start when in doubt. You need to mark HTML elements on your page with special attributes. Tipser Widget will find them and replace with shoppable content.</p>
 
 <p>To activate this mode, set <code>domReplacementMode</code> to <code>true</code> in Tipser Widget configuration.</p>
 
-<p>Prerequisites: find Tipser ids of products that you want to sell or to create your own customized collections of products on www.tipser.com page.  </p>
+<p>Prerequisites: find Tipser ids of products that you want to sell or to create your own customized collections of products on www.tipser.com page.</p>
 <h3 id='embedding-single-tipser-products-on-page'>Embedding single Tipser products on page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">data-tipser-pid=</span><span class="s">"5ba2334a781baa0001ccdf61"</span> <span class="nt">/&gt;</span>
 </code></pre>
 <p>Elements with attribute <code>data-tipser-pid</code> will be replaced with Tipser product component, using the product with Tipser id passed in the attribute.</p>
