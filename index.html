@@ -645,11 +645,9 @@ Congratulations! Now Tipser is part of your website
 <li><p>Send the custom css stylesheet to Tipser administrator in order to be uploaded to your account.</p></li>
 </ol>
 <h1 id='tipser-widget'>Tipser Widget</h1>
-<p>Tipser Widget is a small and handy script that you can use to embed, and start selling, Tipser products and shops on your page.</p>
+<p>Tipser Widget is a small and handy script that you can use to embed Tipser products and shops on your page and start selling with Tipser.</p>
 <h2 id='basic-usage'>Basic usage</h2>
-<blockquote>
-<p>To use Tipser Widget, add this snippet to your page:</p>
-</blockquote>
+<p>To use Tipser Widget, add the following snippet to your page.</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;script&gt;</span>
     <span class="kd">var</span> <span class="nx">scriptTag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
     <span class="nx">scriptTag</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">"https://cdn.tipser.com/tipser-script/latest.js"</span><span class="p">;</span>
@@ -667,7 +665,12 @@ Congratulations! Now Tipser is part of your website
 <p>Make sure to replace <code>myPosId</code> with your Tipser account id.</p>
 </blockquote>
 
-<p>The recommended place to add this script is the end of the <code>&lt;body&gt;</code> tag of your page.</p>
+<aside class="notice">
+The recommended place to add the script is the end of the <code>body</code> tag of your page.
+</aside>
+
+<p>The only part of the script that may be interesting for you is between the curly brackets (<code>{</code> and <code>}</code>). It is a list of configuration parameters, like <code>posId</code> and <code>lang</code>, and your are free to modify it to satisfy your needs. (All the following code examples will only include this relevant fragment).
+A complete index of all the supported options can be found in <a href="#all-configuration-options">All configuration options</a> section.</p>
 
 <p><code>lang</code> parameter specifies the language to be used. Supported languages are currently: <code>en</code>, <code>de</code> and <code>sv</code>.</p>
 
@@ -675,7 +678,7 @@ Congratulations! Now Tipser is part of your website
 Make sure to replace <code>myPosId</code> with your Tipser account id. If you are not sure what to put here, please contact Tipser staff.
 </aside>
 
-<p>Tipser Widget can be used in one of two modes described below which are intended to satisfy different clients and use cases. Find out which one suits the best for you!</p>
+<p>Tipser Widget can be used in one of two modes described below, controlled by <code>domReplacementMode</code> parameter. They are are intended to satisfy different clients and use cases. Find out which one suits the best for you!</p>
 <h2 id='usage-mode-1-replacing-elements-on-your-page'>Usage mode 1: Replacing elements on your page</h2><pre class="highlight javascript"><code><span class="nx">TIPSER</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
     <span class="na">posId</span><span class="p">:</span> <span class="s1">'myPosId'</span><span class="p">,</span>
     <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
@@ -697,13 +700,7 @@ Make sure to replace <code>myPosId</code> with your Tipser account id. If you ar
 <h3 id='embedding-tipser-collectons-on-page'>Embedding Tipser collectons on page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;p</span> <span class="na">name=</span><span class="s">"My collection"</span> <span class="na">data-tipser-cid=</span><span class="s">"5b2788909d25801adcb23f4f"</span>
 </code></pre>
 <p>Elements with attribute <code>data-tipser-cid</code> will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute.</p>
-<h2 id='usage-mode-2-mounting-the-shop-on-page'>Usage mode 2: Mounting the shop on page</h2>
-<p>In this mode, Tipser Widget renders on your page a shop widget defined in Tipser&#39;s CMS (Contentful). </p>
-
-<p>The prerequisite is to have a Contentful Shop created and configured (which is typically done by Tipser staff) and dedicate part of your page for Tipser Shop.</p>
-
-<p><code>domElementSelectorWhereToMount</code> parameter is required in this mode. It is a <a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS selector</a> pointing to the element on your page where Tipser Shop will be injected.</p>
-<pre class="highlight javascript"><code><span class="nx">TIPSER</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+<h2 id='usage-mode-2-mounting-the-shop-on-page'>Usage mode 2: Mounting the shop on page</h2><pre class="highlight javascript"><code><span class="nx">TIPSER</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
     <span class="na">posId</span><span class="p">:</span> <span class="s1">'myPosId'</span><span class="p">,</span>
     <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
     <span class="na">domReplacementMode</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -714,16 +711,24 @@ Make sure to replace <code>myPosId</code> with your Tipser account id. If you ar
 <blockquote>
 <p>Make sure to replace the values for <code>posId</code>, <code>domElementSelectorWhereToMount</code> and <code>tipserElementIdToBeMount</code>.</p>
 </blockquote>
-<h2 id='displaying-cart-icon'>Displaying cart icon</h2>
-<p>To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.</p>
 
-<p>To make it possible you need to dedicate a part of your page to host a shopping cart and define a CSS selector to it in <code>domElementSelectorWhereToMountCart</code> option.</p>
-<pre class="highlight javascript"><code><span class="nx">TIPSER</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+<p>In this mode, Tipser Widget renders on your page a shop widget defined in Tipser&#39;s CMS (Contentful).</p>
+
+<p>To activate this mode, set domReplacementMode to <code>false</code> in Tipser Widget configuration or just skip this option..</p>
+
+<p>The prerequisite is to have a Contentful Shop created and configured (which is typically done by Tipser staff) and dedicate part of your page for Tipser Shop.</p>
+
+<p><code>domElementSelectorWhereToMount</code> parameter is required in this mode. It is a <a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS selector</a> pointing to the element on your page where Tipser Shop will be injected.</p>
+<h2 id='displaying-cart-icon'>Displaying cart icon</h2><pre class="highlight javascript"><code><span class="nx">TIPSER</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
   <span class="c1">//...</span>
   <span class="na">domElementSelectorWhereToMountCart</span><span class="p">:</span> <span class="s2">".shopping-zone .shoping-cart-container"</span><span class="p">,</span>
   <span class="c1">//...</span>
 <span class="p">});</span>
-</code></pre><h2 id='all-configuration-options'>All configuration options</h2>
+</code></pre>
+<p>To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.</p>
+
+<p>To make it possible you need to dedicate a part of your page to host a shopping cart and define a CSS selector to it in <code>domElementSelectorWhereToMountCart</code> option.</p>
+<h2 id='all-configuration-options'>All configuration options</h2>
 <p>Tipser Widget supports following configuration options.</p>
 
 <table><thead>
@@ -737,7 +742,7 @@ Make sure to replace <code>myPosId</code> with your Tipser account id. If you ar
 <tr>
 <td>domReplacementMode</td>
 <td>false</td>
-<td>should the script replace elements of the original page? See the section <a href="#replacing-elements-on-page">Replacing elements on page</a> for details.</td>
+<td>should the script replace elements of the original page? See the section <a href="#usage-mode-1-replacing-elements-on-your-page">Replacing elements on your page</a> for details.</td>
 <td>true</td>
 </tr>
 <tr>
