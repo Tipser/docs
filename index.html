@@ -669,6 +669,8 @@ Congratulations! Now Tipser is part of your website
 The recommended place to add the script is the end of the <code>body</code> tag of your page.
 </aside>
 
+<p>If you are hosting your page on a CMS like Wordpress, one common pattern to load this script is to include it in a footer element of your page. If you are hosting your page on a web server, you may need to ask you web developers to include the snippet.</p>
+
 <p>The only part of the script really interesting for you is between the curly brackets (<code>{</code> and <code>}</code>). It is a list of configuration parameters, like <code>posId</code> and <code>lang</code>, and your are free to modify to fine-tune the look and behavior of Tipser widgets on your page. (The remaining code examples will only include that part).
 A complete index of all the supported options can be found in <a href="#all-configuration-options">All configuration options</a> section.</p>
 
@@ -693,7 +695,7 @@ Make sure to replace <code>myPosId</code> with your Tipser account id. If you ar
 
 <p>To activate this mode, set <code>domReplacementMode</code> to <code>true</code> in Tipser Widget configuration.</p>
 
-<p>Prerequisites: find Tipser ids of products that you want to sell or to create your own customized collections of products on www.tipser.com page.</p>
+<p><em>Prerequisites:</em> find Tipser ids of products that you want to sell or to create your own customized collections of products on your account at <a href="www.tipser.com">www.tipser.com</a>.</p>
 <h3 id='embedding-single-tipser-products-on-page'>Embedding single Tipser products on page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">data-tipser-pid=</span><span class="s">"5ba2334a781baa0001ccdf61"</span> <span class="nt">/&gt;</span>
 </code></pre>
 <p>Elements with attribute <code>data-tipser-pid</code> will be replaced with Tipser product component, using the product with Tipser id passed in the attribute.</p>
@@ -716,7 +718,7 @@ Make sure to replace <code>myPosId</code> with your Tipser account id. If you ar
 
 <p>To activate this mode, set domReplacementMode to <code>false</code> in Tipser Widget configuration or just skip this option altogether.</p>
 
-<p>The prerequisite is to have a Contentful Shop created and configured (which is typically done by Tipser staff) and dedicate part of your page for Tipser Shop.</p>
+<p><em>Prerequisites:</em> you need to have a Contentful Shop created and configured (which is typically done by Tipser staff) and dedicate part of your page for Tipser Shop.</p>
 
 <p><code>domElementSelectorWhereToMount</code> parameter is required in this mode. It is a <a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS selector</a> pointing to the element on your page where Tipser Shop will be injected.</p>
 <h2 id='displaying-cart-icon'>Displaying cart icon</h2><pre class="highlight javascript"><code><span class="nx">TIPSER</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
