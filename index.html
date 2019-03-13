@@ -805,13 +805,29 @@ a receiver&#39;s Google Analytics account.</p>
 
 <p>Additionally, all the events contain the following <a href="https://support.google.com/analytics/answer/2709828?hl=en">Custom Dimensions</a>.</p>
 
-<p>Custom Dimension Name | Custom Dimension Index  | Description
----------             | ---------               |
-<code>posId</code>               | 1                       | The user ID on Tipser associated with a page that uses Tipser Elements.
-<code>from</code>                | 2                       | Deprecated. From what type of widget the event comes from. Possible values: <code>product-view</code>, <code>shopping-cart</code> and <code>tipser-sdk</code>.
-<code>article</code>             | 3                       | The URL of the page where the event occured (mostly the same as event&#39;s <code>location</code> field).</p>
-
-<p>Please find the list and descriptions of the events below.</p>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Index</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>posId</code></td>
+<td>1</td>
+<td>The user ID on Tipser associated with a page that uses Tipser Elements.</td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td>2</td>
+<td>Deprecated. From what type of widget the event comes from. Possible values: <code>product-view</code>, <code>shopping-cart</code> and <code>tipser-sdk</code>.</td>
+</tr>
+<tr>
+<td><code>article</code></td>
+<td>3</td>
+<td>The URL of the page where the event occured (mostly the same as event&#39;s <code>location</code> field).</td>
+</tr>
+</tbody></table>
 <h2 id='shop-view'>Shop view</h2>
 <p>This event is emitted every time Shop is rendered on a page.</p>
 
@@ -830,11 +846,13 @@ will be emitted for the shop that was not seen by the user.</p>
 <tr>
 <th>Category</th>
 <th>Action</th>
+<th>With product data?</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>Shops</code></td>
 <td><code>shop-viewed</code></td>
+<td>No</td>
 </tr>
 </tbody></table>
 <h2 id='shop-list-clicked'>Shop list clicked</h2>
@@ -851,11 +869,13 @@ will be emitted for the shop that was not seen by the user.</p>
 <tr>
 <th>Category</th>
 <th>Action</th>
+<th>With product data?</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>Shops</code></td>
 <td><code>list-clicked</code></td>
+<td>No</td>
 </tr>
 </tbody></table>
 <h2 id='product-tile-view'>Product tile view</h2>
@@ -875,11 +895,13 @@ will be emitted for the product tile that was not seen by the user.</p>
 <tr>
 <th>Category</th>
 <th>Action</th>
+<th>With product data?</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>E-commerce</code></td>
 <td><code>impression</code></td>
+<td>Yes (one product)</td>
 </tr>
 </tbody></table>
 <h2 id='product-details-view'>Product details view</h2>
@@ -898,15 +920,18 @@ will be emitted for the product tile that was not seen by the user.</p>
 <tr>
 <th>Category</th>
 <th>Action</th>
+<th>With product data?</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>E-commerce</code></td>
 <td><code>click</code></td>
+<td>Yes (one product)</td>
 </tr>
 <tr>
 <td><code>E-commerce</code></td>
 <td><code>detail</code></td>
+<td>Yes (one product)</td>
 </tr>
 </tbody></table>
 <h2 id='add-to-cart'>Add to cart</h2>
@@ -931,7 +956,7 @@ will be emitted for the product tile that was not seen by the user.</p>
 </tbody></table>
 <h2 id='remove-from-cart'>Remove from cart</h2>
 <p>This event is emitted when product is removed from cart at checkout dialog.</p>
-
+<h3 id='ga-event-format-6'>GA event format</h3>
 <table><thead>
 <tr>
 <th>Category</th>
@@ -955,7 +980,7 @@ will be emitted for the product tile that was not seen by the user.</p>
 <p>Please note that &quot;checkout&quot; is not the same thing as &quot;purchase&quot;. The event is emitted even if the product checkout is never finalized.
 The event is emitted every time checkout dialog is opened. This means that there may be several &quot;Checkout&quot; events emitted for product that was purchased just 
 once or that was never purchased.</p>
-<h3 id='ga-event-format-6'>GA event format</h3>
+<h3 id='ga-event-format-7'>GA event format</h3>
 <table><thead>
 <tr>
 <th>Category</th>
@@ -974,8 +999,8 @@ once or that was never purchased.</p>
 
 <p><a href="images/purchase_event.png"><img src="images/purchase_event.png" alt="Purchase event" /></a></p>
 
-<p>_In the screenshot above the user has finalized the payment and the order confirmation dialog has been displayed. &quot;Purchase&quot; event has been emitted.</p>
-<h3 id='ga-event-format-7'>GA event format</h3>
+<p><em>In the screenshot above the user has finalized the payment and the order confirmation dialog has been displayed. &quot;Purchase&quot; event has been emitted.</em></p>
+<h3 id='ga-event-format-8'>GA event format</h3>
 <table><thead>
 <tr>
 <th>Category</th>
