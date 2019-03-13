@@ -279,6 +279,35 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#tipser-elements-analytics" class="toc-h1 toc-link" data-title="Tipser Elements Analytics">Tipser Elements Analytics</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#shop-view" class="toc-h2 toc-link" data-title="Shop view">Shop view</a>
+                  </li>
+                  <li>
+                    <a href="#shop-list-clicked" class="toc-h2 toc-link" data-title="Shop list clicked">Shop list clicked</a>
+                  </li>
+                  <li>
+                    <a href="#product-tile-view" class="toc-h2 toc-link" data-title="Product tile view">Product tile view</a>
+                  </li>
+                  <li>
+                    <a href="#product-details-view" class="toc-h2 toc-link" data-title="Product details view">Product details view</a>
+                  </li>
+                  <li>
+                    <a href="#add-to-cart" class="toc-h2 toc-link" data-title="Add to cart">Add to cart</a>
+                  </li>
+                  <li>
+                    <a href="#remove-from-cart" class="toc-h2 toc-link" data-title="Remove from cart">Remove from cart</a>
+                  </li>
+                  <li>
+                    <a href="#checkout" class="toc-h2 toc-link" data-title="Checkout">Checkout</a>
+                  </li>
+                  <li>
+                    <a href="#purchase" class="toc-h2 toc-link" data-title="Purchase">Purchase</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='tipser.com'>Visit Tipser page</a></li>
@@ -695,7 +724,7 @@ Make sure to replace <code>myPosId</code> with your Tipser account id. If you ar
 
 <p>To activate this mode, set <code>domReplacementMode</code> to <code>true</code> in Tipser Widget configuration.</p>
 
-<p><em>Prerequisites:</em> find Tipser ids of products that you want to sell or to create your own customized collections of products on your account at <a href="www.tipser.com">www.tipser.com</a>.</p>
+<p><em>Prerequisites:</em> find Tipser ids of products that you want to sell or create your own customized collections of products on your account at <a href="www.tipser.com">www.tipser.com</a>.</p>
 <h3 id='embedding-single-tipser-products-on-page'>Embedding single Tipser products on page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">data-tipser-pid=</span><span class="s">"5ba2334a781baa0001ccdf61"</span> <span class="nt">/&gt;</span>
 </code></pre>
 <p>Elements with attribute <code>data-tipser-pid</code> will be replaced with Tipser product component, using the product with Tipser id passed in the attribute.</p>
@@ -768,6 +797,198 @@ Make sure to replace <code>myPosId</code> with your Tipser account id. If you ar
 </tbody></table>
 
 <p>In addition to the options described above all the configuration options supported by Tipser Elements library are supported.</p>
+<h1 id='tipser-elements-analytics'>Tipser Elements Analytics</h1>
+<p>Tipser Elements library sends a number of analytics events to Google Analytics as a result of user actions.</p>
+
+<p>Most of analytics events emitted by Tipser Elements assume <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce">Enhanced Ecommerce</a> plugin to be enabled on
+a receiver&#39;s Google Analytics account.</p>
+
+<p>Additionally, all the events contain the following <a href="https://support.google.com/analytics/answer/2709828?hl=en">Custom Dimensions</a>.</p>
+
+<p>Custom Dimension Name | Custom Dimension Index  | Description
+---------             | ---------               |
+<code>posId</code>               | 1                       | The user ID on Tipser associated with a page that uses Tipser Elements.
+<code>from</code>                | 2                       | Deprecated. From what type of widget the event comes from. Possible values: <code>product-view</code>, <code>shopping-cart</code> and <code>tipser-sdk</code>.
+<code>article</code>             | 3                       | The URL of the page where the event occured (mostly the same as event&#39;s <code>location</code> field).</p>
+
+<p>Please find the list and descriptions of the events below.</p>
+<h2 id='shop-view'>Shop view</h2>
+<p>This event is emitted every time Shop is rendered on a page.</p>
+
+<p><a href="images/shop_viewed.png"><img src="images/shop_viewed.png" alt="Shop viewed" /></a></p>
+
+<p><em>In the screenshot above tipser shop was rendered and &quot;Shop view&quot; event has been emitted.</em></p>
+<h3 id='prerequisites'>Prerequisites</h3>
+<p>An element of type <code>Layout - Container</code> needs to be defined in Contentful space. 
+The field <code>IsShop</code> on that element needs to be set to <code>true</code>. </p>
+<h3 id='additonal-notes'>Additonal notes</h3>
+<p>The event is emitted no matter if the shop element is actually visible on the screen.
+It is possible that if the shop element is positioned below the fold of the browser window, the event
+will be emitted for the shop that was not seen by the user.</p>
+<h3 id='ga-event-format'>GA event format</h3>
+<table><thead>
+<tr>
+<th>Category</th>
+<th>Action</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Shops</code></td>
+<td><code>shop-viewed</code></td>
+</tr>
+</tbody></table>
+<h2 id='shop-list-clicked'>Shop list clicked</h2>
+<p>This event is emitted every time a list on a shop is clicked.</p>
+
+<p><a href="images/shop_viewed.png"><img src="images/shop_list_clicked.png" alt="Shop list clicked" /></a></p>
+
+<p><em>In the screenshot above one of the shop lists was clicked (marked with a red rectangle) and &quot;Shop list clicked&quot; event has been emitted.</em></p>
+<h3 id='prerequisites-2'>Prerequisites</h3>
+<p>Shop categories need to be defined as <code>Slottable Link</code> components (typically as a part of horizontal menu component) in Contentful space. In component hierarchy they need
+ to be located anywhere under <code>Layout - Container</code> component whose field <code>IsShop</code> is set to <code>true</code> (otherwise they won&#39;t be recognized as a part of the shop).</p>
+<h3 id='ga-event-format-2'>GA event format</h3>
+<table><thead>
+<tr>
+<th>Category</th>
+<th>Action</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Shops</code></td>
+<td><code>list-clicked</code></td>
+</tr>
+</tbody></table>
+<h2 id='product-tile-view'>Product tile view</h2>
+<p>This event is emitted every time product tile is rendered on a page. One event is fired per every tile on the page.</p>
+
+<p><a href="images/inline_product_viewed.png"><img src="images/inline_product_viewed.png" alt="Inline product viewed" /></a></p>
+
+<p><em>In the screenshot above some product tiles were rendered on a page and &quot;Shop list clicked&quot; event has been emitted for each of them.</em></p>
+<h3 id='prerequisites-3'>Prerequisites</h3>
+<p>Products need to be defined as <code>Product</code> components in Contentful space.</p>
+<h3 id='additonal-notes-2'>Additonal notes</h3>
+<p>The event is emitted no matter if the product tile element is actually visible on the screen.
+It is possible that if the product tile element is positioned below the fold of the browser window, the event
+will be emitted for the product tile that was not seen by the user.</p>
+<h3 id='ga-event-format-3'>GA event format</h3>
+<table><thead>
+<tr>
+<th>Category</th>
+<th>Action</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>E-commerce</code></td>
+<td><code>impression</code></td>
+</tr>
+</tbody></table>
+<h2 id='product-details-view'>Product details view</h2>
+<p>This event is emitted every time product tile is clicked and product dialog is displayed.</p>
+
+<p><a href="images/product_details_viewed.png"><img src="images/product_details_viewed.png" alt="Product details viewed" /></a></p>
+
+<p>_In the screenshot above user has clicked on one of the product tiles and product dialog has been displayed as a result. &quot;Product details view&quot; event has been emitted.</p>
+<h3 id='prerequisites-4'>Prerequisites</h3>
+<p>Products need to be defined as <code>Product</code> components in Contentful space.</p>
+<h3 id='additonal-notes-3'>Additonal notes</h3>
+<p>Please note below that opening a product dialog fires a pair of GA events (one with action <code>click</code> and the other with action <code>detail</code>) to reflect the flow of user actions
+(first clicking on a product title and then seeing the details).</p>
+<h3 id='ga-event-format-4'>GA event format</h3>
+<table><thead>
+<tr>
+<th>Category</th>
+<th>Action</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>E-commerce</code></td>
+<td><code>click</code></td>
+</tr>
+<tr>
+<td><code>E-commerce</code></td>
+<td><code>detail</code></td>
+</tr>
+</tbody></table>
+<h2 id='add-to-cart'>Add to cart</h2>
+<p>This event is emitted when product is added to cart on a product dialog or checkout dialog.</p>
+
+<p><a href="images/add_to_cart_event.png"><img src="images/add_to_cart_event.png" alt="Add to cart event" /></a></p>
+
+<p><em>In the screenshot above the user has clicked &quot;add to cart&quot; button which resulted in emitting &quot;Add to cart&quot; event.</em></p>
+<h3 id='ga-event-format-5'>GA event format</h3>
+<table><thead>
+<tr>
+<th>Category</th>
+<th>Action</th>
+<th>With product data?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>E-commerce</code></td>
+<td><code>add</code></td>
+<td>Yes (one product)</td>
+</tr>
+</tbody></table>
+<h2 id='remove-from-cart'>Remove from cart</h2>
+<p>This event is emitted when product is removed from cart at checkout dialog.</p>
+
+<table><thead>
+<tr>
+<th>Category</th>
+<th>Action</th>
+<th>With product data?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>E-commerce</code></td>
+<td><code>remove</code></td>
+<td>Yes (one product)</td>
+</tr>
+</tbody></table>
+<h2 id='checkout'>Checkout</h2>
+<p>This event is emitted when checkout dialog is opened with a product (or several products).</p>
+
+<p><a href="images/product_checkout.png"><img src="images/product_checkout.png" alt="Product checkout" /></a></p>
+
+<p><em>In the screenshot above checkout dialog has been displayed and &quot;Checkout&quot; event has been emitted for a product &quot;Retexturising SERUM&quot;</em></p>
+<h3 id='additonal-notes-4'>Additonal notes</h3>
+<p>Please note that &quot;checkout&quot; is not the same thing as &quot;purchase&quot;. The event is emitted even if the product checkout is never finalized.
+The event is emitted every time checkout dialog is opened. This means that there may be several &quot;Checkout&quot; events emitted for product that was purchased just 
+once or that was never purchased.</p>
+<h3 id='ga-event-format-6'>GA event format</h3>
+<table><thead>
+<tr>
+<th>Category</th>
+<th>Action</th>
+<th>With product data?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>E-commerce</code></td>
+<td><code>checkout</code></td>
+<td>Yes (one or many products)</td>
+</tr>
+</tbody></table>
+<h2 id='purchase'>Purchase</h2>
+<p>This event is emitted when a product (or several products) is purchased.</p>
+
+<p><a href="images/purchase_event.png"><img src="images/purchase_event.png" alt="Purchase event" /></a></p>
+
+<p>_In the screenshot above the user has finalized the payment and the order confirmation dialog has been displayed. &quot;Purchase&quot; event has been emitted.</p>
+<h3 id='ga-event-format-7'>GA event format</h3>
+<table><thead>
+<tr>
+<th>Category</th>
+<th>Action</th>
+<th>With product data?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>E-commerce</code></td>
+<td><code>checkout</code></td>
+<td>Yes (one or many products)</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
