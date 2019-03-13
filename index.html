@@ -283,6 +283,15 @@
             <a href="#tipser-elements-analytics" class="toc-h1 toc-link" data-title="Tipser Elements Analytics">Tipser Elements Analytics</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#ga-account-configuration" class="toc-h2 toc-link" data-title="GA account configuration">GA account configuration</a>
+                  </li>
+                  <li>
+                    <a href="#custom-dimensions" class="toc-h2 toc-link" data-title="Custom dimensions">Custom dimensions</a>
+                  </li>
+                  <li>
+                    <a href="#advanced-e-commerce-events" class="toc-h2 toc-link" data-title="Advanced E-commerce events">Advanced E-commerce events</a>
+                  </li>
+                  <li>
                     <a href="#shop-view" class="toc-h2 toc-link" data-title="Shop view">Shop view</a>
                   </li>
                   <li>
@@ -799,11 +808,18 @@ Make sure to replace <code>myPosId</code> with your Tipser account id. If you ar
 <p>In addition to the options described above all the configuration options supported by Tipser Elements library are supported.</p>
 <h1 id='tipser-elements-analytics'>Tipser Elements Analytics</h1>
 <p>Tipser Elements library sends a number of analytics events to Google Analytics as a result of user actions.</p>
-
+<h3 id='ga-account-configuration'>GA account configuration</h3>
 <p>Most of analytics events emitted by Tipser Elements assume <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce">Enhanced Ecommerce</a> plugin to be enabled on
-a receiver&#39;s Google Analytics account.</p>
+a receiver&#39;s Google Analytics account. So if you want to get most of Tipser Analytics, it is strongly recommended to enable Enhanced Ecommerce in your GA settings, as shown in a screenshots below.</p>
 
-<p>Additionally, all the events contain the following <a href="https://support.google.com/analytics/answer/2709828?hl=en">Custom Dimensions</a>.</p>
+<p><a href="images/enhanced_analytics_settings.png"><img src="images/enhanced_analytics_settings.png" alt="Enhanced analytics settings" /></a> </p>
+
+<p><a href="images/enable_ecommerce.png"><img src="images/enable_ecommerce.png" alt="Enable ecommerce" /></a></p>
+
+<p>The settings for &quot;Enable Enhanced Ecommerce Reporting&quot; and &quot;Checkout Labeling&quot; sections are up to you and are not required for integration with Tipser Elements analytics.</p>
+<h3 id='custom-dimensions'>Custom dimensions</h3>
+<p>Additionally, all the events documented here contain the following <a href="https://support.google.com/analytics/answer/2709828?hl=en">Custom Dimensions</a>. If you would like to analyze those dimensions, please
+make sure to configure the same Custom Dimensions, as described <a href="google.com/analytics/answer/2709829?hl=en">here</a>.</p>
 
 <table><thead>
 <tr>
@@ -828,6 +844,14 @@ a receiver&#39;s Google Analytics account.</p>
 <td>The URL of the page where the event occured (mostly the same as event&#39;s <code>location</code> field).</td>
 </tr>
 </tbody></table>
+
+<p>Warning: if you use the same Custom Dimension indexes for your own
+purposes, you may be receiving unexpected values for those Custom Dimensions.</p>
+<h3 id='advanced-e-commerce-events'>Advanced E-commerce events</h3>
+<p>Some of the events emitted by Tipser Elements are standard Enhanced Ecommerce events which come with product data attached (as documented at &quot;GA event format&quot; section for each event).</p>
+
+<p>Please refer to <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#ecommerce-data">Enhanced Ecommerce Data Types and Actions</a> and 
+ <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities">Measuring Ecommerce Activities</a> sections in the official GA docs.</p>
 <h2 id='shop-view'>Shop view</h2>
 <p>This event is emitted every time Shop is rendered on a page.</p>
 
@@ -846,7 +870,7 @@ will be emitted for the shop that was not seen by the user.</p>
 <tr>
 <th>Category</th>
 <th>Action</th>
-<th>With product data?</th>
+<th>Standard Enhanced Ecommerce event?</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -869,7 +893,7 @@ will be emitted for the shop that was not seen by the user.</p>
 <tr>
 <th>Category</th>
 <th>Action</th>
-<th>With product data?</th>
+<th>Standard Enhanced Ecommerce event?</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -895,13 +919,13 @@ will be emitted for the product tile that was not seen by the user.</p>
 <tr>
 <th>Category</th>
 <th>Action</th>
-<th>With product data?</th>
+<th>Standard Enhanced Ecommerce event?</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>E-commerce</code></td>
 <td><code>impression</code></td>
-<td>Yes (one product)</td>
+<td>Yes (with one product attached)</td>
 </tr>
 </tbody></table>
 <h2 id='product-details-view'>Product details view</h2>
@@ -920,18 +944,18 @@ will be emitted for the product tile that was not seen by the user.</p>
 <tr>
 <th>Category</th>
 <th>Action</th>
-<th>With product data?</th>
+<th>Standard Enhanced Ecommerce event?</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>E-commerce</code></td>
 <td><code>click</code></td>
-<td>Yes (one product)</td>
+<td>Yes (with one product attached)</td>
 </tr>
 <tr>
 <td><code>E-commerce</code></td>
 <td><code>detail</code></td>
-<td>Yes (one product)</td>
+<td>Yes (with one product attached)</td>
 </tr>
 </tbody></table>
 <h2 id='add-to-cart'>Add to cart</h2>
@@ -945,13 +969,13 @@ will be emitted for the product tile that was not seen by the user.</p>
 <tr>
 <th>Category</th>
 <th>Action</th>
-<th>With product data?</th>
+<th>Standard Enhanced Ecommerce event?</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>E-commerce</code></td>
 <td><code>add</code></td>
-<td>Yes (one product)</td>
+<td>Yes (with one product attached)</td>
 </tr>
 </tbody></table>
 <h2 id='remove-from-cart'>Remove from cart</h2>
@@ -961,13 +985,13 @@ will be emitted for the product tile that was not seen by the user.</p>
 <tr>
 <th>Category</th>
 <th>Action</th>
-<th>With product data?</th>
+<th>Standard Enhanced Ecommerce event?</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>E-commerce</code></td>
 <td><code>remove</code></td>
-<td>Yes (one product)</td>
+<td>Yes (with one product attached)</td>
 </tr>
 </tbody></table>
 <h2 id='checkout'>Checkout</h2>
@@ -985,13 +1009,13 @@ once or that was never purchased.</p>
 <tr>
 <th>Category</th>
 <th>Action</th>
-<th>With product data?</th>
+<th>Standard Enhanced Ecommerce event?</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>E-commerce</code></td>
 <td><code>checkout</code></td>
-<td>Yes (one or many products)</td>
+<td>Yes (with one or many products attached)</td>
 </tr>
 </tbody></table>
 <h2 id='purchase'>Purchase</h2>
@@ -1005,13 +1029,13 @@ once or that was never purchased.</p>
 <tr>
 <th>Category</th>
 <th>Action</th>
-<th>With product data?</th>
+<th>Standard Enhanced Ecommerce event?</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>E-commerce</code></td>
 <td><code>checkout</code></td>
-<td>Yes (one or many products)</td>
+<td>Yes (with one or many products attached)</td>
 </tr>
 </tbody></table>
 
