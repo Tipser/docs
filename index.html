@@ -266,10 +266,7 @@
                     <a href="#quick-start-with-npm-version" class="toc-h2 toc-link" data-title="Quick Start with NPM version">Quick Start with NPM version</a>
                   </li>
                   <li>
-                    <a href="#quick-react-example-running-as-an-app" class="toc-h2 toc-link" data-title="Quick React example running as an App">Quick React example running as an App</a>
-                  </li>
-                  <li>
-                    <a href="#quick-react-example-inserting-one-element" class="toc-h2 toc-link" data-title="Quick React example inserting one Element">Quick React example inserting one Element</a>
+                    <a href="#quick-react-example" class="toc-h2 toc-link" data-title="Quick React example">Quick React example</a>
                   </li>
                   <li>
                     <a href="#quick-start-with-scripted-injectable-version" class="toc-h2 toc-link" data-title="Quick start with scripted injectable version">Quick start with scripted injectable version</a>
@@ -713,43 +710,60 @@ Congratulations! Now Tipser is part of your website
 </ul>
 
 <p>Follow the instructions in Available Components section to add particular components to your app.</p>
-<h2 id='quick-react-example-running-as-an-app'>Quick React example running as an App</h2>
-<p>Create a React app using e.g. <a href="https://facebook.github.io/create-react-app/">Create React App</a> (e.g. <code>npx create-react-app my-app</code>)
-cd my-app</p>
+<h2 id='quick-react-example'>Quick React example</h2>
+<p>Create a React app using e.g. <a href="https://facebook.github.io/create-react-app/docs/getting-started">Create React App</a> </p>
 
-<p>Install Tipser Elements with yarn: <code>yarn install @tipser/tipser-elements</code></p>
+<p><code>npx create-react-app my-app</code>
+<code>cd my-app</code></p>
 
-<p><code>yarn install</code>
+<p>Install Tipser Elements with yarn: 
+<code>yarn install @tipser/tipser-elements</code></p>
+
+<p>Refresh dependencies
+<code>yarn install</code></p>
+
+<p>Start the application
 <code>yarn start</code></p>
-<pre class="highlight javascript"><code><span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
-<span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">'react-dom'</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">App</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@tipser/tipser-elements'</span><span class="p">;</span>
+<h3 id='example-inserting-elements-in-your-site'>Example inserting elements in your site</h3>
+<p>You can combine Tipser Elements with your own application</p>
+
+<ul>
+<li><code>TipserElement</code> is a generic Element that can render any Contentful content that&#39;s fed as a prop to the element.</li>
+<li><code>TipserProduct</code> is the Element that renders the product given the product ID as the prop.</li>
+<li><code>CartIcon</code> is the Element that displays the number of items in your cart, as well as links to  checkout.</li>
+<li><code>TipserContectProvider</code> takes care of putting the Tipser Elements app in context with the <code>tipserConfig</code> as props.</li>
+</ul>
+<pre class="highlight javascript"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">'react-dom'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">TipserElement</span><span class="p">,</span> <span class="nx">TipserProduct</span><span class="p">,</span> <span class="nx">CartIcon</span><span class="p">,</span> <span class="nx">TipserContextProvider</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@tipser/tipser-elements'</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">tipserConfig</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">posId</span><span class="p">:</span> <span class="s1">'59e86b79b8f3f60a94ecd26a'</span><span class="p">,</span>
+    <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
+    <span class="na">env</span><span class="p">:</span> <span class="s1">'prod'</span><span class="p">,</span>
+    <span class="na">primaryColor</span><span class="p">:</span> <span class="s1">'blue'</span><span class="p">,</span>
+<span class="p">};</span>
 
 <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">App</span> 
-        <span class="nx">options</span> <span class="o">=</span> <span class="p">{{</span>
-            <span class="na">lang</span><span class="p">:</span> <span class="s2">"en"</span>
-        <span class="p">}}</span>
-        <span class="nx">basePath</span><span class="o">=</span><span class="s2">"/"</span>
-        <span class="nx">id</span><span class="o">=</span><span class="s2">"45d4anZqSAmI848SQKmaSI"</span> 
-    <span class="o">/&gt;</span><span class="p">,</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">));</span>
-</code></pre><h2 id='quick-react-example-inserting-one-element'>Quick React example inserting one Element</h2><pre class="highlight javascript"><code><span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
-<span class="kr">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">'react-dom'</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">TipserElement</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@tipser/tipser-elements'</span><span class="p">;</span>
-
-<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">TipserElement</span> 
-        <span class="nx">options</span> <span class="o">=</span> <span class="p">{{</span>
-            <span class="na">lang</span><span class="p">:</span> <span class="s2">"en"</span>
-        <span class="p">}}</span>
-        <span class="nx">basePath</span><span class="o">=</span><span class="s2">"/"</span>
-        <span class="nx">id</span><span class="o">=</span><span class="s2">"1larHZb8TeMQiqmi4W8CIS"</span> 
-    <span class="o">/&gt;</span><span class="p">,</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">));</span>
+    <span class="o">&lt;</span><span class="nx">TipserContextProvider</span> <span class="nx">value</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">tipserConfig</span> <span class="p">}</span><span class="o">&gt;</span>   
+        <span class="o">&lt;</span><span class="nx">header</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">nav</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">Nav</span> <span class="nx">Element</span><span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
+</span>                <span class="o">&lt;</span><span class="nx">CartIcon</span><span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="sr">/nav</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/header</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">main</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">TipserElement</span>  <span class="nx">id</span><span class="o">=</span><span class="s2">"1larHZb8TeMQiqmi4W8CIS"</span> <span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="nx">TipserProduct</span> <span class="nx">productId</span><span class="o">=</span><span class="s2">"5ba2334a781baa0001ccdffc"</span><span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="sr">/main</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">footer</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">footer</span><span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/footer</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/TipserContextProvider&gt;,</span><span class="err"> 
+</span>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">));</span>
 </code></pre>
 <blockquote>
-<p>root is id of your HTML element where to put the Tipser element</p>
+<p>root is the id of the HTML element where the Tipser element goes</p>
 </blockquote>
 <h2 id='quick-start-with-scripted-injectable-version'>Quick start with scripted injectable version</h2>
 <p>They are a ready-to-use out-of-the-box solution to be placed on your website, using React even though your own website doesn’t.</p>
@@ -814,33 +828,18 @@ cd my-app</p>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-</code></pre><h3 id='widget-config-options-explained'>Widget config options explained</h3><h3 id='custom-styling'>Custom styling</h3><h2 id='available-components'>Available components</h2><h3 id='backend-source-of-components'>Backend source of components</h3><h3 id='main-root-components'>Main (root) components</h3>
-<p>Main components are dedicated to render the whole structure or to configure nested components. </p>
-
-<ul>
-<li><strong>App</strong></li>
-<li><strong>Site</strong></li>
-<li><strong>Tipser Element</strong></li>
-</ul>
-<h3 id='content-components'>Content components</h3>
-<p>Content components are the building blocks of Tipser Elements. Components may contain other components as act as hierachy. </p>
+</code></pre><h3 id='custom-styling'>Custom styling</h3><h2 id='available-components'>Available components</h2><h3 id='content-components'>Content components</h3>
+<p>Content components are the building blocks of Tipser Elements. Components may contain other components that act as a hierachy. </p>
 
 <ul>
 <li><strong>Article</strong></li>
 <li><strong>Brand</strong></li>
+<li><strong>CartIcon</strong></li>
 <li><strong>Collection</strong></li>
-<li><strong>Container</strong></li>
 <li><strong>Grid</strong></li>
-<li><strong>Image</strong></li>
-<li><strong>Column Layout</strong></li>
-<li><strong>Horizontal Menu</strong></li>
-<li><strong>Link</strong></li>
 <li><strong>Menu</strong></li>
-<li><strong>Slot</strong></li>
-<li><strong>SlottableLink</strong></li>
 <li><strong>Page</strong></li>
 <li><strong>Product</strong></li>
-<li><strong>Site</strong></li>
 </ul>
 <h1 id='tipser-elements-analytics'>Tipser Elements Analytics</h1>
 <p>Tipser Elements library sends a number of analytics events to Google Analytics as a result of user actions.</p>
