@@ -768,66 +768,36 @@ Congratulations! Now Tipser is part of your website
 <h2 id='quick-start-with-scripted-injectable-version'>Quick start with scripted injectable version</h2>
 <p>They are a ready-to-use out-of-the-box solution to be placed on your website, using React even though your own website doesn’t.</p>
 <h3 id='script-to-be-injected'>Script to be injected</h3>
-<p>The script should be added in the body section of the page. Please see widget config section to get more details on configuration options.</p>
-<pre class="highlight javascript"><code><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-
-    <span class="c1">// --------------------------------------</span>
-    <span class="c1">// TIPSER WIDGET CODE CONFIG STARTS HERE</span>
-    <span class="c1">// --------------------------------------</span>
-    <span class="kd">var</span> <span class="nx">widgetConfig</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">posId</span><span class="p">:</span> <span class="s1">'xxxxxx'</span><span class="p">,</span>
-        <span class="na">lang</span><span class="p">:</span> <span class="s1">'de'</span><span class="p">,</span>
-        <span class="na">env</span><span class="p">:</span> <span class="s1">'prod'</span><span class="p">,</span>
-        <span class="na">openOldDialog</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="na">primaryColor</span><span class="p">:</span> <span class="s1">'black'</span>
-        <span class="c1">// HERE GOES ADDITIONAL WIDGET OPTIONS</span>
+<p>The script should be added in the body section of the page (as a last element preferably) Please see widget config section to get more details on configuration options.</p>
+<pre class="highlight javascript"><code><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="kd">var</span> <span class="nx">scriptTag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
+    <span class="nx">scriptTag</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">"https://cdn.tipser.com/tipser-script/latest.js"</span><span class="p">;</span>
+    <span class="nx">scriptTag</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">scriptTag</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">TIPSER</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+            <span class="na">posId</span><span class="p">:</span> <span class="s1">'your pos id'</span><span class="p">,</span>
+            <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
+            <span class="na">tipserElementIdToBeMount</span><span class="p">:</span> <span class="s2">"id of the Tipser Element to be displayed"</span><span class="p">,</span>
+            <span class="na">domElementSelectorWhereToMount</span><span class="p">:</span> <span class="s2">"the css selector of the element where Tipser Element will be mount"</span><span class="p">,</span>
+            <span class="na">basePath</span><span class="p">:</span> <span class="s1">'the url path to the page where the Tipser is displayed'</span><span class="p">,</span>
+            <span class="na">domReplacementMode</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="p">});</span>
     <span class="p">};</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">scriptTag</span><span class="p">);</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre><h3 id='available-config-options'>Available config options</h3><pre class="highlight javascript"><code>    <span class="kd">var</span> <span class="nx">widgetConfig</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">posId</span><span class="p">:</span> <span class="s1">'your pos id'</span><span class="p">,</span>
+        <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
+        <span class="na">tipserElementIdToBeMount</span><span class="p">:</span> <span class="s2">"id of the Tipser Element to be displayed"</span><span class="p">,</span>
+        <span class="na">domElementSelectorWhereToMount</span><span class="p">:</span> <span class="s2">"the css selector of the element where Tipser Element will be mount"</span><span class="p">,</span>
+        <span class="na">basePath</span><span class="p">:</span> <span class="s1">'the url path to the page where the Tipser is displayed'</span><span class="p">,</span>
+        <span class="na">domReplacementMode</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// shall we change data-tipser-pid and data-tipser-cid html tags to product / collections </span>
+        <span class="na">env</span><span class="p">:</span> <span class="s1">'prod'</span><span class="p">,</span> <span class="c1">// what environment would you like to use</span>
+        <span class="na">openOldDialog</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">primaryColor</span><span class="p">:</span> <span class="s1">'black'</span><span class="p">,</span>
+        <span class="na">domElementSelectorWhereToMountCart</span><span class="p">:</span> <span class="kc">undefined</span> <span class="c1">// if we want the shop, where to mount the shop cart icon</span>
 
-    <span class="kd">var</span> <span class="nx">basePath</span> <span class="o">=</span> <span class="s1">'/shop'</span><span class="p">;</span> <span class="c1">// default /</span>
-    <span class="kd">var</span> <span class="nx">tipserElementIdToBeMount</span> <span class="o">=</span> <span class="s2">"xxxxx"</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">domElementSelectorWhereToMount</span> <span class="o">=</span> <span class="s2">"#tipser_shop"</span><span class="p">;</span>
-
-    <span class="c1">// --------------------------------------</span>
-    <span class="c1">// END OF CONFIG</span>
-    <span class="c1">// --------------------------------------</span>
-
-    <span class="kd">var</span> <span class="nx">head</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">link</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"link"</span><span class="p">);</span>
-
-    <span class="nx">link</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">"text/css"</span><span class="p">;</span>
-    <span class="nx">link</span><span class="p">.</span><span class="nx">rel</span> <span class="o">=</span> <span class="s2">"stylesheet"</span><span class="p">;</span>
-    <span class="nx">link</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">"https://cdn.tipser.com/tipser-publishers/"</span> <span class="o">+</span> <span class="nx">widgetConfig</span><span class="p">.</span><span class="nx">posId</span> <span class="o">+</span> <span class="s2">"-latest.css"</span><span class="p">;</span>
-
-    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">link</span><span class="p">);</span>
-
-    <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">id</span><span class="p">){</span>
-        <span class="kd">var</span> <span class="nx">js</span><span class="p">,</span> <span class="nx">tjs</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="nx">s</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">id</span><span class="p">))</span> <span class="p">{</span><span class="k">return</span><span class="p">;}</span>
-        <span class="nx">js</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span> <span class="nx">js</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="nx">js</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">id</span><span class="p">;</span>
-        <span class="nx">js</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">"https://cdn.tipser.com/tipser-widget2/Core-tipser-elements-latest.js"</span><span class="p">;</span>
-        <span class="nx">js</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">js</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">rs</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span><span class="p">;</span> <span class="k">if</span> <span class="p">(</span><span class="nx">rs</span> <span class="o">&amp;&amp;</span> <span class="nx">rs</span> <span class="o">!=</span> <span class="s2">"complete"</span> <span class="o">&amp;&amp;</span> <span class="nx">rs</span> <span class="o">!=</span> <span class="s2">"loaded"</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-            <span class="kd">var</span> <span class="nx">tipserEl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">tipserWidget</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">TipserElementModule</span><span class="p">(</span><span class="nx">widgetConfig</span><span class="p">);</span>
-                <span class="nx">tipserEl</span><span class="p">.</span><span class="nx">mount</span><span class="p">(</span><span class="nx">tipserElementIdToBeMount</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="nx">domElementSelectorWhereToMount</span><span class="p">),</span> <span class="nx">basePath</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="nx">tjs</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">js</span><span class="p">,</span> <span class="nx">tjs</span><span class="p">);</span>
-    <span class="p">}(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">"script"</span><span class="p">,</span> <span class="s2">"tipser-js-core"</span><span class="p">));</span>
-
-<span class="p">})();</span>
-
-<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">tab</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'twshoptab'</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">tab</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">'no Tipser shopping cart is visible on page.'</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">command</span> <span class="o">&amp;&amp;</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">command</span> <span class="o">===</span> <span class="s1">'tipser.api.cartItemsCountChange'</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span> <span class="o">&amp;&amp;</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">tab</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="o">=</span><span class="s1">'block'</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">tab</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span><span class="o">=</span><span class="s1">'none'</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span>
+        <span class="c1">// HERE GOES ADDITIONAL WIDGET OPTIONS</span>
+    <span class="p">};</span> 
 </code></pre><h3 id='custom-styling'>Custom styling</h3><h2 id='available-components'>Available components</h2><h3 id='content-components'>Content components</h3>
 <p>Content components are the building blocks of Tipser Elements. Components may contain other components that act as a hierachy. </p>
 
