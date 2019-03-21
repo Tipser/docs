@@ -272,6 +272,9 @@
                     <a href="#quick-start-with-scripted-injectable-version" class="toc-h2 toc-link" data-title="Quick start with scripted injectable version">Quick start with scripted injectable version</a>
                   </li>
                   <li>
+                    <a href="#usage-mode-2-mounting-the-shop-on-the-page" class="toc-h2 toc-link" data-title="Usage mode 2 mounting the shop on the page">Usage mode 2 mounting the shop on the page</a>
+                  </li>
+                  <li>
                     <a href="#available-components" class="toc-h2 toc-link" data-title="Available components">Available components</a>
                   </li>
               </ul>
@@ -794,11 +797,35 @@ Congratulations! Now Tipser is part of your website
         <span class="na">env</span><span class="p">:</span> <span class="s1">'prod'</span><span class="p">,</span> <span class="c1">// what environment would you like to use</span>
         <span class="na">openOldDialog</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
         <span class="na">primaryColor</span><span class="p">:</span> <span class="s1">'black'</span><span class="p">,</span>
-        <span class="na">domElementSelectorWhereToMountCart</span><span class="p">:</span> <span class="kc">undefined</span> <span class="c1">// if we want the shop, where to mount the shop cart icon</span>
+        <span class="na">domElementSelectorWhereToMountCart</span><span class="p">:</span> <span class="s2">" if we want the shop, where to mount the shop cart icon"</span>
 
         <span class="c1">// HERE GOES ADDITIONAL WIDGET OPTIONS</span>
     <span class="p">};</span> 
-</code></pre><h3 id='custom-styling'>Custom styling</h3><h2 id='available-components'>Available components</h2><h3 id='content-components'>Content components</h3>
+</code></pre><h3 id='custom-styling'>Custom styling</h3><h2 id='usage-mode-2-mounting-the-shop-on-the-page'>Usage mode 2 mounting the shop on the page</h2>
+<p>If you need basic functionality of the shop you may use Tipser Elements as a library that will change your divs (marked with data-tipser-cid or data-tipser-pid attributes) into a buyable content. You should also add a cart icon to the page as well. We can achieve that in simply way by embedding the script within body tag:</p>
+<pre class="highlight javascript"><code><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="kd">var</span> <span class="nx">scriptTag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
+    <span class="nx">scriptTag</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">"https://cdn.tipser.com/tipser-script/latest.js"</span><span class="p">;</span>
+    <span class="nx">scriptTag</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">scriptTag</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">TIPSER</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+            <span class="na">posId</span><span class="p">:</span> <span class="s1">'your pos id'</span><span class="p">,</span>
+            <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
+            <span class="na">basePath</span><span class="p">:</span> <span class="s1">'the url path to the page where the Tipser is displayed'</span><span class="p">,</span>
+            <span class="na">domReplacementMode</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="na">domElementSelectorWhereToMountCart</span><span class="p">:</span> <span class="s2">" if we want the shop, where to mount the shop cart icon"</span>
+        <span class="p">});</span>
+    <span class="p">};</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">scriptTag</span><span class="p">);</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre>
+<p>then you have to add to your page some divs with data-tipser-pid attribute for products and data-tipser-cid attributes for collections. Like this:</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">data-tipser-pid=</span><span class="s">"5ba2334a781baa0001ccdf61"</span> <span class="nt">/&gt;</span>
+</code></pre>
+<p>Elements with attribute <code>data-tipser-pid</code> will be replaced with Tipser product component, using the product with Tipser id passed in the attribute.</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;p</span> <span class="na">name=</span><span class="s">"My collection"</span> <span class="na">data-tipser-cid=</span><span class="s">"5b2788909d25801adcb23f4f"</span>
+</code></pre>
+<p>Elements with attribute <code>data-tipser-cid</code> will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute.</p>
+<h2 id='available-components'>Available components</h2><h3 id='content-components'>Content components</h3>
 <p>Content components are the building blocks of Tipser Elements. Components may contain other components that act as a hierachy. </p>
 
 <ul>
