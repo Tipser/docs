@@ -324,16 +324,22 @@
                     <a href="#basic-usage" class="toc-h2 toc-link" data-title="Basic usage">Basic usage</a>
                   </li>
                   <li>
-                    <a href="#specifying-a-locale" class="toc-h2 toc-link" data-title="Specifying a locale">Specifying a locale</a>
-                  </li>
-                  <li>
                     <a href="#replacing-elements-on-your-page" class="toc-h2 toc-link" data-title="Replacing elements on your page">Replacing elements on your page</a>
                   </li>
                   <li>
-                    <a href="#mounting-the-shop-on-page" class="toc-h2 toc-link" data-title="Mounting the shop on page">Mounting the shop on page</a>
+                    <a href="#displaying-cms-content-on-page" class="toc-h2 toc-link" data-title="Displaying CMS content on page">Displaying CMS content on page</a>
                   </li>
                   <li>
                     <a href="#displaying-cart-icon" class="toc-h2 toc-link" data-title="Displaying cart icon">Displaying cart icon</a>
+                  </li>
+                  <li>
+                    <a href="#advanced-example-displaying-several-pieces-of-cms-content-and-cart-icon" class="toc-h2 toc-link" data-title="Advanced example: displaying several pieces of CMS content and cart icon">Advanced example: displaying several pieces of CMS content and cart icon</a>
+                  </li>
+                  <li>
+                    <a href="#specifying-a-locale" class="toc-h2 toc-link" data-title="Specifying a locale">Specifying a locale</a>
+                  </li>
+                  <li>
+                    <a href="#specifying-an-environment" class="toc-h2 toc-link" data-title="Specifying an environment">Specifying an environment</a>
                   </li>
                   <li>
                     <a href="#all-configuration-options" class="toc-h2 toc-link" data-title="All configuration options">All configuration options</a>
@@ -1101,13 +1107,6 @@ The recommended place to add the script is the end of the <code>body</code> tag 
 <aside class="notice">
 Make sure to replace <code>myPosId</code> with your Tipser account id. If you are not sure what to put here, please contact Tipser staff.
 </aside>
-<h2 id='specifying-a-locale'>Specifying a locale</h2><pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s2">"myPosId"</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span>
-  <span class="p">})</span>
-</code></pre>
-<p><code>lang</code> parameter specifies the language to be used. Supported languages are currently: <code>en</code>, <code>de</code> and <code>sv</code>.</p>
-
-<p>A complete index of all the supported options can be found in <a href="#all-configuration-options">All configuration options</a> section.</p>
 <h2 id='replacing-elements-on-your-page'>Replacing elements on your page</h2>
 <p>The simplest way to use Tipser Widget is to include the script described in <a href="#basic-usage">Basic usage</a> and mark HTML elements on your page with special attributes <code>data-tipser-pid</code> and/or <code>data-tipser-cid</code>. 
 Tipser Widget will find them and replace with Tipser products and collections.</p>
@@ -1119,11 +1118,11 @@ Tipser Widget will find them and replace with Tipser products and collections.</
 <h3 id='embedding-tipser-collectons-on-page'>Embedding Tipser collectons on page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;p</span> <span class="na">name=</span><span class="s">"My collection"</span> <span class="na">data-tipser-cid=</span><span class="s">"5b2788909d25801adcb23f4f"</span>
 </code></pre>
 <p>Elements with attribute <code>data-tipser-cid</code> will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute.</p>
-<h2 id='mounting-the-shop-on-page'>Mounting the shop on page</h2><pre class="highlight javascript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'myPosId'</span><span class="p">)</span>
+<h2 id='displaying-cms-content-on-page'>Displaying CMS content on page</h2><pre class="highlight javascript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'myPosId'</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">mountContent</span><span class="p">(</span><span class="s2">"3UvCQHKV7gmMdcegDHSr5B"</span><span class="p">,</span> <span class="s2">".shopping-zone .shop-container"</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace the value for <code>posId</code> and parameters of <code>mountContent</code> function.</p>
+<p>Make sure to replace the value for <code>myPosId</code> and parameters of <code>mountContent</code> function.</p>
 </blockquote>
 
 <p>Instead of (or in addition to) replacing elements marked by attribute, you may want to import content from Tipser&#39;s CMS (Contentful) to your page with <code>.mountContent</code> function.</p>
@@ -1141,7 +1140,29 @@ Tipser Widget will find them and replace with Tipser products and collections.</
 </code></pre>
 <p>To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.</p>
 
-<p>To make it possible you need to dedicate a part of your page to host a shopping cart and pass a CSS selector to to <code>mountCart</code> function.</p>
+<p>To activate the cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to <code>mountCart</code> function, as in the example snippet.</p>
+<h2 id='advanced-example-displaying-several-pieces-of-cms-content-and-cart-icon'>Advanced example: displaying several pieces of CMS content and cart icon</h2><pre class="highlight javascript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'myPosId'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">mountContent</span><span class="p">(</span><span class="s2">"3UvCQHKV7gmMdcegDHSr5B"</span><span class="p">,</span> <span class="s2">".shopping-zone .content-container1"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">mountContent</span><span class="p">(</span><span class="s2">"3UvCQHKV7gmMdcegDHSr5C"</span><span class="p">,</span> <span class="s2">".shopping-zone .content-container2"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">mountCart</span><span class="p">(</span><span class="s2">".shopping-zone .cart-container"</span><span class="p">);</span>
+</code></pre>
+<p>It is possible to combine multiple invocations of <code>mountContent()</code> with zero or one invocations of <code>mountCart()</code> as presented in the code snippet. That will lead to multiple pieces of content
+AND a cart icon being displayed on the page.</p>
+<h2 id='specifying-a-locale'>Specifying a locale</h2><pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s2">"myPosId"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span>
+  <span class="p">})</span>
+</code></pre>
+<p>The function <code>tipser.elements</code> accepts a second optional parameter which is an object of configuraton options.</p>
+
+<p><code>lang</code> configuration option specifies the language to be used. Supported languages are currently: <code>en</code>, <code>de</code> and <code>sv</code>.</p>
+
+<p>A complete index of all the supported configuration options can be found in <a href="#all-configuration-options">All configuration options</a> section.</p>
+<h2 id='specifying-an-environment'>Specifying an environment</h2><pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s2">"myPosId"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">env</span><span class="p">:</span> <span class="s1">'stage'</span>
+  <span class="p">})</span>
+</code></pre>
+<p>It is possible to use Tipser Elements in test (staging) environment to be able to do test checkouts. The environment can be activated using the <code>env</code> configuration option, as in the snippet, 
+where supported environments are <code>stage</code> and <code>prod</code>. This configuration option is optional and in case it is missing, <code>prod</code> environment will be used. </p>
 <h2 id='all-configuration-options'>All configuration options</h2>
 <p>Tipser Widget supports following configuration options.</p>
 
