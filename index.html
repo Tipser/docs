@@ -759,7 +759,7 @@ Congratulations! Now Tipser is part of your website
 </ul>
 <pre class="highlight javascript"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
 <span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">'react-dom'</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">TipserElement</span><span class="p">,</span> <span class="nx">TipserProduct</span><span class="p">,</span> <span class="nx">CartIcon</span><span class="p">,</span> <span class="nx">TipserElementsProvider</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@tipser/tipser-elements'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">TipserElement</span><span class="p">,</span> <span class="nx">TipserProduct</span><span class="p">,</span> <span class="nx">CartIcon</span><span class="p">,</span> <span class="nx">TipserElementsProvider</span><span class="p">,</span> <span class="nx">ShopComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@tipser/tipser-elements'</span><span class="p">;</span>
 
 <span class="kr">const</span> <span class="nx">tipserElementsConfig</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
@@ -777,6 +777,7 @@ Congratulations! Now Tipser is part of your website
 </span>        <span class="o">&lt;</span><span class="nx">main</span><span class="o">&gt;</span>
             <span class="o">&lt;</span><span class="nx">TipserElement</span>  <span class="nx">id</span><span class="o">=</span><span class="s2">"1larHZb8TeMQiqmi4W8CIS"</span> <span class="o">/&gt;</span>
             <span class="o">&lt;</span><span class="nx">TipserProduct</span> <span class="nx">productId</span><span class="o">=</span><span class="s2">"5ba2334a781baa0001ccdffc"</span><span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="nx">ShopComponent</span> <span class="o">/&gt;</span>
         <span class="o">&lt;</span><span class="sr">/main</span><span class="err">&gt;
 </span>        <span class="o">&lt;</span><span class="nx">footer</span><span class="o">&gt;</span>
             <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">footer</span><span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
@@ -800,6 +801,18 @@ Congratulations! Now Tipser is part of your website
 <li><strong>Page</strong></li>
 <li><strong>Product</strong></li>
 </ul>
+<h3 id='shop-component'>Shop component</h3>
+<p>Shop component is a HTML widget displaying a list of all Tipser public collections for the POS.   </p>
+
+<p>It can be used with <code>ShopComponent</code> react component.</p>
+<pre class="highlight javascript"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">ShopComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@tipser/tipser-elements'</span><span class="p">;</span>
+ <span class="p">...</span>
+<span class="o">&lt;</span><span class="nx">ShopComponent</span> <span class="o">/&gt;</span>
+</code></pre>
+<p><a href="images/shop_component.png"><img src="images/shop_component.png" alt="Shop component" /></a></p>
+
+<p>Note: the shop component is updating the top-level page URL (when it&#39;s tabs are clicked). For this reason, please double check if it won&#39;t interfere with your web framework. 
+For the same reason, it&#39;s not recommended to include more than one <code>&lt;ShopComponent /&gt;</code> on a single page. </p>
 <h1 id='tipser-elements-analytics'>Tipser Elements Analytics</h1>
 <p>Tipser Elements library sends a number of analytics events to Google Analytics as a result of user actions.</p>
 <h3 id='ga-account-configuration'>GA account configuration</h3>
@@ -1071,12 +1084,24 @@ Make sure to replace <code>myPosId</code> with your Tipser account id. If you ar
 Tipser Widget will find them and replace with Tipser products and collections.</p>
 
 <p><em>Prerequisites:</em> find Tipser ids of products that you want to sell or create your own customized collections of products on your account at <a href="www.tipser.com">www.tipser.com</a>.</p>
-<h3 id='embedding-single-tipser-products-on-page'>Embedding single Tipser products on page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">data-tipser-pid=</span><span class="s">"5ba2334a781baa0001ccdf61"</span> <span class="nt">/&gt;</span>
+<h3 id='embedding-tipser-products-on-the-page'>Embedding Tipser products on the page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">data-tipser-pid=</span><span class="s">"5ba2334a781baa0001ccdf61"</span> <span class="nt">/&gt;</span>
 </code></pre>
 <p>Elements with attribute <code>data-tipser-pid</code> will be replaced with Tipser product component, using the product with Tipser id passed in the attribute.</p>
-<h3 id='embedding-tipser-collectons-on-page'>Embedding Tipser collectons on page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;p</span> <span class="na">name=</span><span class="s">"My collection"</span> <span class="na">data-tipser-cid=</span><span class="s">"5b2788909d25801adcb23f4f"</span>
+<h3 id='embedding-tipser-collectons-on-the-page'>Embedding Tipser collectons on the page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;p</span> <span class="na">name=</span><span class="s">"My collection"</span> <span class="na">data-tipser-cid=</span><span class="s">"5b2788909d25801adcb23f4f"</span>
 </code></pre>
 <p>Elements with attribute <code>data-tipser-cid</code> will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute.</p>
+<h3 id='embedding-a-shop-widget-on-the-page'>Embedding a shop widget on the page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tipser_shop"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre>
+<blockquote>
+<p><a href="https://codepen.io/tipser-tech/pen/YMMKMp">Open this snippet on Code Pen</a></p>
+</blockquote>
+
+<p>Element with id <code>tipser_shop</code> will be replaced with Tipser shop widget for the user whose <code>posId</code> has been passed to <code>tipser.elements()</code> call (see: <a href="#basic-usage">Basic Usage</a> ).</p>
+
+<p><a href="images/shop_component.png"><img src="images/shop_component.png" alt="Shop component" /></a></p>
+
+<p>Note: the shop widget is updating the top-level page URL (when it&#39;s tabs are clicked). For this reason, please double check if it won&#39;t interfere with your web framework. 
+For the same reason, there can&#39;t be more than one shop widget on the page (the DOM replacement logic will replace only the last occurence of a component with <code>tipser_shop</code> id).</p>
 <h2 id='displaying-cms-content-on-page'>Displaying CMS content on page</h2><pre class="highlight javascript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'myPosId'</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">mountContent</span><span class="p">(</span><span class="s2">"3UvCQHKV7gmMdcegDHSr5B"</span><span class="p">,</span> <span class="s2">".shopping-zone .shop-container"</span><span class="p">);</span>
 </code></pre>
