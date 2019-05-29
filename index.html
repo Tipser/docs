@@ -1209,10 +1209,18 @@ Tipser Widget will find them and replace with Tipser products and collections.</
 <p><em>Prerequisites:</em> find Tipser ids of products that you want to sell or create your own customized collections of products on your account at <a href="www.tipser.com">www.tipser.com</a>.</p>
 <h3 id='embedding-tipser-products-on-the-page'>Embedding Tipser products on the page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">data-tipser-pid=</span><span class="s">"5ba2334a781baa0001ccdf61"</span> <span class="nt">/&gt;</span>
 </code></pre>
-<p>Elements with attribute <code>data-tipser-pid</code> will be replaced with Tipser product component, using the product with Tipser id passed in the attribute.</p>
-<h3 id='embedding-tipser-collectons-on-the-page'>Embedding Tipser collectons on the page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;p</span> <span class="na">name=</span><span class="s">"My collection"</span> <span class="na">data-tipser-cid=</span><span class="s">"5b2788909d25801adcb23f4f"</span>
+<p>Elements with attribute <code>data-tipser-pid</code> will be replaced with Tipser product component, using the product with Tipser id passed in the attribute. By default a full inline product component is displayed.</p>
+
+<p><a href="images/full-product.png"><img src="images/full-product.png" alt="Full product" /></a></p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">data-tipser-pid=</span><span class="s">"57233dac89862012f8ec1001"</span> <span class="na">data-tipser-view=</span><span class="s">"compact"</span> <span class="nt">/&gt;</span>
 </code></pre>
-<p>Elements with attribute <code>data-tipser-cid</code> will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute.</p>
+<p>To display a compact product view you need to add <code>data-tipser-view=&quot;compact&quot;</code> attribute in addition to <code>data-tipser-pid</code>.</p>
+
+<p><a href="images/compact-product.png"><img src="images/compact-product.png" alt="Compact product" /></a></p>
+<h3 id='embedding-tipser-collectons-on-the-page'>Embedding Tipser collectons on the page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;p</span> <span class="na">name=</span><span class="s">"My collection"</span> <span class="na">data-tipser-cid=</span><span class="s">"5b2788909d25801adcb23f4f"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">name=</span><span class="s">"My collection"</span> <span class="na">data-tipser-cid=</span><span class="s">"5b2788909d25801adcb23f4f"</span> <span class="na">data-tipser-imgsize=</span><span class="s">"1.2"</span> <span class="nt">/&gt;</span>
+</code></pre>
+<p>Elements with attribute <code>data-tipser-cid</code> will be replaced with Tipser collection component, using the collection with Tipser id passed in the attribute. To make the collection items smaller / larger use the <code>data-tipser-imgsize</code> attribute with values <code>&quot;0.8&quot;</code> for smaller  and <code>&quot;1.2&quot;</code> for lager product tiles. The default value for imgSize parameter is <code>&quot;1&quot;</code>.</p>
 <h3 id='embedding-a-store-widget-on-the-page'>Embedding a store widget on the page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tipser_store"</span><span class="nt">&gt;&lt;/div&gt;</span>
 </code></pre>
 <blockquote>
@@ -1250,6 +1258,17 @@ For the same reason, there can&#39;t be more than one store widget on the page (
 <p>To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.</p>
 
 <p>To activate the cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to <code>mountCart</code> function, as in the example snippet.</p>
+<pre class="highlight css tab-css"><code><span class="nc">.tipser-shopping-cart</span> <span class="p">{</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
+    <span class="nl">right</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">top</span><span class="p">:</span> <span class="m">121px</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">-2px</span> <span class="m">2px</span> <span class="m">7px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.3</span><span class="p">);</span>
+    <span class="nl">z-index</span><span class="p">:</span> <span class="m">10</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+<p>The cart icon can be placed anywhere on your website. However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:</p>
 <h2 id='advanced-example-displaying-several-pieces-of-cms-content-and-cart-icon'>Advanced example: displaying several pieces of CMS content and cart icon</h2><pre class="highlight javascript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'myPosId'</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">mountContent</span><span class="p">(</span><span class="s2">"3UvCQHKV7gmMdcegDHSr5B"</span><span class="p">,</span> <span class="s2">".shopping-zone .content-container1"</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">mountContent</span><span class="p">(</span><span class="s2">"3UvCQHKV7gmMdcegDHSr5C"</span><span class="p">,</span> <span class="s2">".shopping-zone .content-container2"</span><span class="p">)</span>
