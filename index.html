@@ -274,6 +274,9 @@
                   <li>
                     <a href="#quick-react-example" class="toc-h2 toc-link" data-title="Quick React example">Quick React example</a>
                   </li>
+                  <li>
+                    <a href="#customizing-elements-style" class="toc-h2 toc-link" data-title="Customizing Elements Style">Customizing Elements Style</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -346,6 +349,14 @@
                   </li>
                   <li>
                     <a href="#all-configuration-options" class="toc-h2 toc-link" data-title="All configuration options">All configuration options</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#amp-snippet" class="toc-h1 toc-link" data-title="AMP snippet">AMP snippet</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#how-to-use-it" class="toc-h2 toc-link" data-title="How to use it">How to use it</a>
                   </li>
               </ul>
           </li>
@@ -936,6 +947,34 @@ Congratulations! Now Tipser is part of your website
 
 <p>Note: the shop component is updating the top-level page URL (when it&#39;s tabs are clicked). For this reason, please double check if it won&#39;t interfere with your web framework. 
 For the same reason, it&#39;s not recommended to include more than one <code>&lt;ShopComponent /&gt;</code> on a single page. </p>
+<h2 id='customizing-elements-style'>Customizing Elements Style</h2>
+<p>Tipser Elements are the &quot;building blocks&quot; designed to fit your page as much as possible. We created the styling in a way that delivers a nice look &amp; feel from the start, but also allows you to change them easily to fit your unique sense of style. </p>
+<h3 id='product-card'>Product Card</h3><pre class="highlight css tab-css"><code><span class="nc">.te-product-card</span> <span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+<p>The Product Card is an item used for displaying single Collection or Store component, among others. The font-family used in the description section of the Product Card is inherited from your website&#39;s styles, and the font-size is expressed in the relative <code>em</code> units controlled in <code>.te-product-card</code> class. The default value used there is <code>12px</code>, which you can easily change by adding to your CSS following style:</p>
+
+<p>All the description elements (product name, brand and price) will become bigger / smaller according to the value you specify in the <code>px</code> unit. If you wish to change single description element, please use its specific class names: </p>
+
+<p><code>.te-product-card-name</code> <br/>
+<code>.te-product-card-brand</code><br/>
+<code>.te-product-card-price</code><br/>
+and:<br/>
+<code>.te-product-card-sales-price</code><br/>
+<code>.te-product-card-price-regular-price</code><br/>
+for products on sale.</p>
+<h3 id='cart-icon'>Cart Icon</h3><pre class="highlight css tab-css"><code><span class="nc">.cart-icon</span> <span class="p">{</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
+    <span class="nl">right</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">top</span><span class="p">:</span> <span class="m">121px</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">-2px</span> <span class="m">2px</span> <span class="m">7px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.3</span><span class="p">);</span>
+    <span class="nl">z-index</span><span class="p">:</span> <span class="m">10</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+<p>The cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:</p>
 <h1 id='tipser-elements-analytics'>Tipser Elements Analytics</h1>
 <p>Tipser Elements library sends a number of analytics events to Google Analytics as a result of user actions.</p>
 <h3 id='ga-account-configuration'>GA account configuration</h3>
@@ -1258,7 +1297,7 @@ For the same reason, there can&#39;t be more than one store widget on the page (
 <p>To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.</p>
 
 <p>To activate the cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to <code>mountCart</code> function, as in the example snippet.</p>
-<pre class="highlight css tab-css"><code><span class="nc">.tipser-shopping-cart</span> <span class="p">{</span>
+<pre class="highlight css tab-css"><code><span class="nc">.cart-icon</span> <span class="p">{</span>
     <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
     <span class="nl">right</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
     <span class="nl">top</span><span class="p">:</span> <span class="m">121px</span><span class="p">;</span>
@@ -1389,6 +1428,36 @@ where supported environments are <code>stage</code> and <code>prod</code>. This 
 </tbody></table>
 
 <p>In addition to the options described above all the configuration options supported by Tipser Elements library are supported.</p>
+<h1 id='amp-snippet'>AMP snippet</h1>
+<p>AMP snippet is a piece of code that allows to render Tipser collections on an AMP page.</p>
+
+<p>Due to the limitations of AMP format, AMP snippet is limited in functionality compared to Tipser Widget.</p>
+
+<p>Significant limitations:
+- even if you need to display only one product, please create a Tipser collection with just one product
+- there is no support for an interactive shopping cart icon
+- the checkout process is finalized after a redirect to tipser.com page (no way to keep the user in the article)</p>
+
+<p>But despite those limitations, the basic shopping experience is sustained, allowing AMP articles to generate income from E-commerce.  </p>
+<h2 id='how-to-use-it'>How to use it</h2><h3 id='step-1-include-the-necessary-amp-imports'>Step 1: include the necessary AMP imports</h3>
+<p>Add the following AMP imports to the <code>&lt;head&gt;</code> element of your page.</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">async</span> <span class="na">custom-element=</span><span class="s">"amp-list"</span> <span class="na">src=</span><span class="s">"https://cdn.ampproject.org/v0/amp-list-0.1.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">async</span> <span class="na">custom-template=</span><span class="s">"amp-mustache"</span> <span class="na">src=</span><span class="s">"https://cdn.ampproject.org/v0/amp-mustache-0.1.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">async</span> <span class="na">custom-element=</span><span class="s">"amp-iframe"</span> <span class="na">src=</span><span class="s">"https://cdn.ampproject.org/v0/amp-iframe-0.1.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">async</span> <span class="na">custom-element=</span><span class="s">"amp-bind"</span> <span class="na">src=</span><span class="s">"https://cdn.ampproject.org/v0/amp-bind-0.1.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre><h3 id='step-2-add-tipser-inline-styles'>Step 2: add Tipser inline styles</h3>
+<p>Add the following Tipser styles to the <code>&lt;head&gt;</code> element of your page.</p>
+<pre class="highlight plaintext"><code>&lt;style amp-custom&gt;*{box-sizing:border-box}.list{display:flex}.tipser-product-tile{cursor:pointer;float:left;max-width:250px;min-width:160px;position:relative;overflow:hidden;width:25%;padding:10px}.tipser-product-tile:hover .tipser-product-text{opacity:1;transform:translate(0,-3)}.tipser-tile-img-container{display:block;position:relative;background:#fff;height:250px;width:100%}amp-img.tipser-tile-img img{object-fit:contain}amp-img.tipser-tile-img-hover{transition:.7s;opacity:0}.tipser-product-tile:hover .tipser-tile-img-hover{opacity:1}.tipser-product-text{background:rgba(255,255,255,0.9);bottom:0;border-top:1px solid #ececec;color:black;margin-left:auto;margin-right:auto;min-height:140px;left:0;letter-spacing:.3px;opacity:0;position:absolute;right:0;text-align:center;transition:.7s;z-index:2}.tipser-tile-product-text,.tipser-tile-product-text[data-tipser-hide-text="slide"]{font-size:12px;padding:10px;text-align:center;transition:.5s}.tipser-tile-prod-brand{color:#afafaf;line-height:1.8em;text-transform:uppercase;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.tipser-tile-prod-name{line-height:1.8em;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.tipser-buy-button-small{background-color:#e91e63;border-radius:0;color:white;display:inline-block;font-size:12px;font-weight:700;line-height:1.8;margin:5px auto 0;padding:5px 30px;padding:10px 30px;position:relative;text-transform:uppercase;text-align:center;transition:.5s;width:auto}.tipser-tile-price{height:30px;overflow:hidden}.tipser-label-price-new{color:#cd5550;font-size:13.2px;font-weight:bold;white-space:nowrap}.tipser-label-price-new+.tipser-label-price-old{text-decoration:line-through}.tipser-label-price-save{color:#cd5550}.overlay{background:rgba(255,255,255,0.7);bottom:0;left:0;overflow:auto;position:fixed;right:0;top:0;z-index:10}.dialog{background-color:#fff;border:1px solid lightgray;bottom:5px;left:5px;position:fixed;right:5px;top:5px;z-index:1}.tipser-dialog{display:block;transition:opacity 2s ease;opacity:0;overflow:hidden;border:1px red solid;position:fixed;top:4%;left:5%;bottom:5%;right:5%}.tipser-dialog_closed{pointer-events:none;opacity:0;height:1px}.tipser-dialog_open{opacity:1;pointer-events:all}.close_button{cursor:pointer;float:right;padding:10px 15px;z-index:2}.list-overflow[overflow]{position:absolute;bottom:0;left:10px;background:lightgray;color:gray;font-size:12px;padding:6px 35px;width:130px}.tipser-product-text[data-tipser-hide-text="false"]{background-color:transparent;border:0;opacity:1;position:relative;width:100%}@media(max-width:900px){.tipser-product-tile{max-width:300px;width:calc((100% - 20px) / 3)}.tipser-product-text{background-color:transparent;border:0;opacity:1;position:relative;width:100%}.tipser-tile-product-text{padding:10px 0 0 0}.tipser-buy-button-small{width:100%}}@media(max-width:620px){.tipser-product-tile{max-width:250px;width:calc((100% - 20px) / 2)}}@media(max-width:360px){.tipser-product-tile{max-width:unset;width:calc(100% - 20px)}}&lt;/style&gt;
+</code></pre><h3 id='step-3-insert-product-collection-html-code-generated-by-tipser-bookmarklet'>Step 3: insert product collection HTML code generated by Tipser Bookmarklet</h3>
+<p>This step assumes that your are familiar with <a href="https://developers.tipser.com/tipser-tools">Tipser Bookmarklet</a>. Feel free to write to support@tipser.com to get a more personalized introduction.</p>
+
+<ol>
+<li>Log-in to Tipser Bookmarklet</li>
+<li>Click &quot;Insert collections&quot; button</li>
+<li>From the collections list, select the collection that you want to embed</li>
+<li>Click &quot;Insert collection&quot; button and in the dialog that opens tick &quot;Google AMP ready&quot; checkbox</li>
+<li>Copy the code from the dialog and paste it somewhere into the <code>body</code> section of your page</li>
+</ol>
 
       </div>
       <div class="dark-box">
