@@ -274,9 +274,6 @@
                   <li>
                     <a href="#quick-react-example" class="toc-h2 toc-link" data-title="Quick React example">Quick React example</a>
                   </li>
-                  <li>
-                    <a href="#customizing-elements-style" class="toc-h2 toc-link" data-title="Customizing Elements Style">Customizing Elements Style</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -882,25 +879,25 @@ Congratulations! Now Tipser is part of your website
 <tr>
 <td>onError</td>
 <td>Main goal of this handler is to add additional behavior when the error appears.</td>
-<td>object of type EventError (see <a href="#EventError-interface">EventError</a></td>
+<td>object of type EventError (see <a href="#event-error-interface">EventError</a></td>
 </tr>
 <tr>
 <td>onAddToCart</td>
 <td>when product is being added to cart event is triggered</td>
-<td>object of type {cartSize, product} where cartSize is a current size of cart after adding to cart and product is a product object with properties see (see <a href="#TipserProductModel-interface">TipserProductModel</a>)</td>
+<td>object of type {cartSize, product} where cartSize is a current size of cart after adding to cart and product is a product object with properties see (see <a href="#tipser-product-model-interface">TipserProductModel</a>)</td>
 </tr>
 </tbody></table>
-<h5 id='eventerror-interface'>EventError interface</h5><pre class="highlight javascript"><code><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">EventError</span> <span class="p">{</span>
+<h4 id='event-error-interface'>Event Error interface</h4>
+<p>Param of <code>onError</code> handlers</p>
+<pre class="highlight javascript"><code><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">EventError</span> <span class="p">{</span>
     <span class="nx">type</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="nx">id</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="nx">message</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="nx">stack</span><span class="p">?:</span> <span class="nx">string</span><span class="p">;</span>
-<span class="p">}</span><span class="s2">```
-
-##### TipserProductModel interface
-
-```</span><span class="nx">js</span> 
-<span class="kr">export</span> <span class="kr">interface</span> <span class="nx">TipserProductModel</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre><h4 id='tipser-product-model-interface'>Tipser Product Model interface</h4>
+<p>When onAddToCart is being dispatched the handlers are triggered with object with cart size of type string and product of type TipserProductModel.</p>
+<pre class="highlight javascript"><code><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">TipserProductModel</span> <span class="p">{</span>
     <span class="nl">id</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="nl">title</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="nl">description</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
@@ -939,34 +936,6 @@ Congratulations! Now Tipser is part of your website
 
 <p>Note: the shop component is updating the top-level page URL (when it&#39;s tabs are clicked). For this reason, please double check if it won&#39;t interfere with your web framework. 
 For the same reason, it&#39;s not recommended to include more than one <code>&lt;ShopComponent /&gt;</code> on a single page. </p>
-<h2 id='customizing-elements-style'>Customizing Elements Style</h2>
-<p>Tipser Elements are the &quot;building blocks&quot; designed to fit your page as much as possible. We created the styling in a way that delivers a nice look &amp; feel from the start, but also allows you to change them easily to fit your unique sense of style. </p>
-<h3 id='product-card'>Product Card</h3><pre class="highlight css tab-css"><code><span class="nc">.te-product-card</span> <span class="p">{</span>
-    <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-<p>The Product Card is an item used for displaying single Collection or Store component, among others. The font-family used in the description section of the Product Card is inherited from your website&#39;s styles, and the font-size is expressed in the relative <code>em</code> units controlled in <code>.te-product-card</code> class. The default value used there is <code>12px</code>, which you can easily change by adding to your CSS following style:</p>
-
-<p>All the description elements (product name, brand and price) will become bigger / smaller according to the value you specify in the <code>px</code> unit. If you wish to change single description element, please use its specific class names: </p>
-
-<p><code>.te-product-card-name</code> <br/>
-<code>.te-product-card-brand</code><br/>
-<code>.te-product-card-price</code><br/>
-and:<br/>
-<code>.te-product-card-sales-price</code><br/>
-<code>.te-product-card-price-regular-price</code><br/>
-for products on sale.</p>
-<h3 id='cart-icon'>Cart Icon</h3><pre class="highlight css tab-css"><code><span class="nc">.cart-icon</span> <span class="p">{</span>
-    <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
-    <span class="nl">right</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-    <span class="nl">top</span><span class="p">:</span> <span class="m">121px</span><span class="p">;</span>
-    <span class="nl">background</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
-    <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
-    <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">-2px</span> <span class="m">2px</span> <span class="m">7px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.3</span><span class="p">);</span>
-    <span class="nl">z-index</span><span class="p">:</span> <span class="m">10</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-<p>The cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:</p>
 <h1 id='tipser-elements-analytics'>Tipser Elements Analytics</h1>
 <p>Tipser Elements library sends a number of analytics events to Google Analytics as a result of user actions.</p>
 <h3 id='ga-account-configuration'>GA account configuration</h3>
@@ -1289,7 +1258,7 @@ For the same reason, there can&#39;t be more than one store widget on the page (
 <p>To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.</p>
 
 <p>To activate the cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to <code>mountCart</code> function, as in the example snippet.</p>
-<pre class="highlight css tab-css"><code><span class="nc">.cart-icon</span> <span class="p">{</span>
+<pre class="highlight css tab-css"><code><span class="nc">.tipser-shopping-cart</span> <span class="p">{</span>
     <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
     <span class="nl">right</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
     <span class="nl">top</span><span class="p">:</span> <span class="m">121px</span><span class="p">;</span>
@@ -1322,21 +1291,26 @@ AND a cart icon being displayed on the page.</p>
 </code></pre>
 <p>It is possible to use Tipser Elements in test (staging) environment to be able to do test checkouts. The environment can be activated using the <code>env</code> configuration option, as in the snippet, 
 where supported environments are <code>stage</code> and <code>prod</code>. This configuration option is optional and in case it is missing, <code>prod</code> environment will be used. </p>
-<h2 id='adding-event-handlers'>Adding event handlers</h2>
-<p>Event handlers may be passed as a part of configuration. There is a number of events exposed for developer.</p>
+<h2 id='adding-event-handlers'>Adding event handlers</h2><pre class="highlight javascript"><code>
+<span class="c1">// how to use event handlers:</span>
+ <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'5075d7715c3d090a90585e87'</span><span class="p">,</span> <span class="p">{</span> <span class="c1">//pos id (Tipser user id)</span>
+    <span class="c1">//The configuration of tipser widget comes here</span>
+    <span class="na">lang</span><span class="p">:</span> <span class="s2">"en"</span><span class="p">,</span>
+    <span class="na">useDefaultErrorHandler</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// default to true, false if you dont need error message</span>
+    <span class="na">eventsHandlers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">onError</span><span class="p">:</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+      <span class="p">},</span>
+      <span class="na">onAddToCart</span><span class="p">:</span> <span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hurray, you have added item to cart. '</span><span class="p">,</span> <span class="nx">param</span><span class="p">.</span><span class="nx">product</span><span class="p">);</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Your cart size is now. '</span><span class="p">,</span> <span class="nx">param</span><span class="p">.</span><span class="nx">cartSize</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">};</span>
 
-<p>There is <code>eventsHandler</code> config option available. This is the place where you can add your own handlers for events.</p>
-
-<p>Currently we are supporting <code>onError</code> and <code>onAddToCart</code> event handlers.</p>
-
-<p><code>onError</code> is being triggered when some error appear (i.e. when adding product to the cart failed) and <code>onAddToCart</code> event is being triggered when the product has been added to the cart.</p>
-
-<p>The handler for <code>onError</code> gets error argument (see code example). Error argument is object type with properties : <code>type</code>, <code>id</code>, <code>message</code>, <code>stack</code>. Currently all errors have <code>TipserElementError</code> and message contains the information for the user what went wrong. <code>Stack</code> is a typical error stack of js error.</p>
-
-<p>The <code>onError</code> event handler is used with <code>useDefaultErrorHandler</code> config option. When that option is set to false (default to true) the error will not be shown on the screen.</p>
-
-<p><code>onAddToCart</code> event handler gets object of <code>{cartSize, product}</code> argument. <code>cartSize</code> property contains the value of current cartSize after adding it to the cart. <code>product</code> is object as well and representing the product which has been added to cart. That object contains properties:</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
+<span class="c1">// product contains properties:</span>
+<span class="p">{</span>
     <span class="nl">id</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="nl">title</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="nl">description</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
@@ -1350,24 +1324,22 @@ where supported environments are <code>stage</code> and <code>prod</code>. This 
     <span class="nl">discountPriceIncVat</span><span class="p">:</span> <span class="nx">PriceModel</span><span class="p">;</span>
     <span class="nl">freeReturn</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
 <span class="p">}</span>
+
 </code></pre>
-<p>The code example how to use event handlers:</p>
-<pre class="highlight javascript"><code> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'5075d7715c3d090a90585e87'</span><span class="p">,</span> <span class="p">{</span> <span class="c1">//pos id (Tipser user id)</span>
-    <span class="c1">//The configuration of tipser widget comes here</span>
-    <span class="na">lang</span><span class="p">:</span> <span class="s2">"en"</span><span class="p">,</span>
-  <span class="na">useDefaultErrorHandler</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// default to true, false if you dont need error message</span>
-    <span class="na">eventsHandlers</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">onError</span><span class="p">:</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-      <span class="p">},</span>
-      <span class="na">onAddToCart</span><span class="p">:</span> <span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hurray, you have added item to cart. '</span><span class="p">,</span> <span class="nx">param</span><span class="p">.</span><span class="nx">product</span><span class="p">);</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Your cart size is now. '</span><span class="p">,</span> <span class="nx">param</span><span class="p">.</span><span class="nx">cartSize</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
-<span class="p">};</span>
-</code></pre><h2 id='all-configuration-options'>All configuration options</h2>
+<p>Event handlers may be passed as a part of configuration. There is a number of events exposed for developer.</p>
+
+<p>There is <code>eventsHandler</code> config option available. This is the place where you can add your own handlers for events.</p>
+
+<p>Currently we are supporting <code>onError</code> and <code>onAddToCart</code> event handlers.</p>
+
+<p><code>onError</code> is being triggered when an error appears (i.e. when adding product to the cart failed) and <code>onAddToCart</code> event is being triggered when the product has been added to the cart.</p>
+
+<p>The handler for <code>onError</code> gets error argument (see code example). Error argument is object type with properties : <code>type</code>, <code>id</code>, <code>message</code>, <code>stack</code>. Errors are objects with type <code>TipserElementError</code> and message contains the information for the user what went wrong. <code>stack</code> is a typical error stack of js error.</p>
+
+<p>The <code>onError</code> event handler is used with <code>useDefaultErrorHandler</code> config option. When that option is set to false (default to true) the error will not be shown on the screen.</p>
+
+<p><code>onAddToCart</code> event handler gets object of <code>{cartSize, product}</code> argument. <code>cartSize</code> property contains the value of current cartSize after adding it to the cart. <code>product</code> is an object as well and representing the product which has been added to cart. </p>
+<h2 id='all-configuration-options'>All configuration options</h2>
 <p>Tipser Widget supports following configuration options.</p>
 
 <table><thead>
