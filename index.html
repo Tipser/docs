@@ -955,7 +955,27 @@ for products on sale.</p>
     <span class="nl">z-index</span><span class="p">:</span> <span class="m">10</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre>
-<p>The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:</p>
+<p>The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:
+<br><br><br><br><br></p>
+<h3 id='primary-color'>Primary color</h3><pre class="highlight css tab-css"><code><span class="nc">.te-primary-fill</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="m">#5F9F9F</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.te-primary-border</span> <span class="p">{</span>
+    <span class="nl">border-color</span><span class="p">:</span> <span class="m">#5F9F9F</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* if your primary color is bright,
+    you may consider changing also the text color for elements like buttons: */</span>
+<span class="nc">.te-button-text</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+<p>If you&#39;d like to unify our design with your own color-theme, you can use our primary-color theme to change the color of <code>add-to-cart</code> buttons in Product and indicator of items number in Cart. These elements on the page will be altered with one small change in your CSS:
+<a href="images/primary-color.png"><img src="images/primary-color.png" alt="Primary color" /></a>
+If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.</p>
+
+<p>If you&#39;d like to change other elements&#39; color as well, please use our specific classes to override the styles.</p>
 <h1 id='tipser-elements-analytics'>Tipser Elements Analytics</h1>
 <p>Tipser Elements library sends a number of analytics events to Google Analytics as a result of user actions.</p>
 <h3 id='ga-account-configuration'>GA account configuration</h3>
