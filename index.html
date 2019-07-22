@@ -5,16 +5,53 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Client API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .c, .highlight .cd {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .ge {
+  color: #000000;
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
 .highlight .gh {
   color: #999999;
 }
-.highlight .sr {
-  color: #f6aa11;
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
 }
 .highlight .go {
   color: #888888;
@@ -23,181 +60,167 @@
   color: #555555;
 }
 .highlight .gs {
+  font-weight: bold;
 }
 .highlight .gu {
   color: #aaaaaa;
 }
-.highlight .nb {
-  color: #f6aa11;
-}
-.highlight .cm {
-  color: #75715e;
-}
-.highlight .cp {
-  color: #75715e;
-}
-.highlight .c1 {
-  color: #75715e;
-}
-.highlight .cs {
-  color: #75715e;
-}
-.highlight .c, .highlight .cd {
-  color: #75715e;
-}
-.highlight .err {
-  color: #960050;
-}
-.highlight .gr {
-  color: #960050;
-}
 .highlight .gt {
-  color: #960050;
-}
-.highlight .gd {
-  color: #49483e;
-}
-.highlight .gi {
-  color: #49483e;
-}
-.highlight .ge {
-  color: #49483e;
+  color: #aa0000;
 }
 .highlight .kc {
-  color: #66d9ef;
+  color: #000000;
+  font-weight: bold;
 }
 .highlight .kd {
-  color: #66d9ef;
-}
-.highlight .kr {
-  color: #66d9ef;
-}
-.highlight .no {
-  color: #66d9ef;
-}
-.highlight .kt {
-  color: #66d9ef;
-}
-.highlight .mf {
-  color: #ae81ff;
-}
-.highlight .mh {
-  color: #ae81ff;
-}
-.highlight .il {
-  color: #ae81ff;
-}
-.highlight .mi {
-  color: #ae81ff;
-}
-.highlight .mo {
-  color: #ae81ff;
-}
-.highlight .m, .highlight .mb, .highlight .mx {
-  color: #ae81ff;
-}
-.highlight .sc {
-  color: #ae81ff;
-}
-.highlight .se {
-  color: #ae81ff;
-}
-.highlight .ss {
-  color: #ae81ff;
-}
-.highlight .sd {
-  color: #e6db74;
-}
-.highlight .s2 {
-  color: #e6db74;
-}
-.highlight .sb {
-  color: #e6db74;
-}
-.highlight .sh {
-  color: #e6db74;
-}
-.highlight .si {
-  color: #e6db74;
-}
-.highlight .sx {
-  color: #e6db74;
-}
-.highlight .s1 {
-  color: #e6db74;
-}
-.highlight .s {
-  color: #e6db74;
-}
-.highlight .na {
-  color: #a6e22e;
-}
-.highlight .nc {
-  color: #a6e22e;
-}
-.highlight .nd {
-  color: #a6e22e;
-}
-.highlight .ne {
-  color: #a6e22e;
-}
-.highlight .nf {
-  color: #a6e22e;
-}
-.highlight .vc {
-  color: #ffffff;
-}
-.highlight .nn {
-  color: #ffffff;
-}
-.highlight .nl {
-  color: #ffffff;
-}
-.highlight .ni {
-  color: #ffffff;
-}
-.highlight .bp {
-  color: #ffffff;
-}
-.highlight .vg {
-  color: #ffffff;
-}
-.highlight .vi {
-  color: #ffffff;
-}
-.highlight .nv {
-  color: #ffffff;
-}
-.highlight .w {
-  color: #ffffff;
-}
-.highlight {
-  color: #ffffff;
-}
-.highlight .n, .highlight .py, .highlight .nx {
-  color: #ffffff;
-}
-.highlight .ow {
-  color: #f92672;
-}
-.highlight .nt {
-  color: #f92672;
-}
-.highlight .k, .highlight .kv {
-  color: #f92672;
+  color: #000000;
+  font-weight: bold;
 }
 .highlight .kn {
-  color: #f92672;
+  color: #000000;
+  font-weight: bold;
 }
 .highlight .kp {
-  color: #f92672;
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kr {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kv {
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .il {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #009999;
+}
+.highlight .sb {
+  color: #d14;
+}
+.highlight .sc {
+  color: #d14;
+}
+.highlight .sd {
+  color: #d14;
+}
+.highlight .s2 {
+  color: #d14;
+}
+.highlight .se {
+  color: #d14;
+}
+.highlight .sh {
+  color: #d14;
+}
+.highlight .si {
+  color: #d14;
+}
+.highlight .sx {
+  color: #d14;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #d14;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .s {
+  color: #d14;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .nb {
+  color: #0086B3;
+}
+.highlight .nc {
+  color: #445588;
+  font-weight: bold;
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nf {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nl {
+  color: #990000;
+  font-weight: bold;
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .nv {
+  color: #008080;
+}
+.highlight .ow {
+  color: #000000;
+  font-weight: bold;
 }
 .highlight .o {
-  color: #f92672;
+  color: #000000;
+  font-weight: bold;
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight {
+  background-color: #f8f8f8;
 }
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+    <link rel="stylesheet" href="https://www.tipser.com/fonts.css" type="text/css"/>
       <script src="javascripts/all.js"></script>
     <link href="images/favicon.png" rel="icon" type="image/png" />
   </head>
@@ -214,33 +237,67 @@
         <div class="lang-selector">
               <a href="#" data-language-name="javascript">javascript</a>
         </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#rest-api" class="toc-h1 toc-link" data-title="Rest API">Rest API</a>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#tipser-elements" class="toc-h1 toc-link" data-title="Tipser Elements">Tipser Elements</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#endpoints" class="toc-h2 toc-link" data-title="Endpoints">Endpoints</a>
+                    <a href="#quick-start" class="toc-h2 toc-link" data-title="Quick start">Quick start</a>
                   </li>
                   <li>
-                    <a href="#markets" class="toc-h2 toc-link" data-title="Markets">Markets</a>
+                    <a href="#configuration" class="toc-h2 toc-link" data-title="Configuration">Configuration</a>
                   </li>
                   <li>
-                    <a href="#products" class="toc-h2 toc-link" data-title="Products">Products</a>
+                    <a href="#store-element" class="toc-h2 toc-link" data-title="Store Element"><code>Store</code> Element</a>
                   </li>
                   <li>
-                    <a href="#essential-product-model-attribute" class="toc-h2 toc-link" data-title="Essential product model attribute">Essential product model attribute</a>
+                    <a href="#product-element" class="toc-h2 toc-link" data-title="Product Element"><code>Product</code> Element</a>
                   </li>
                   <li>
-                    <a href="#category-names" class="toc-h2 toc-link" data-title="Category names">Category names</a>
+                    <a href="#collection-element" class="toc-h2 toc-link" data-title="Collection Element"><code>Collection</code> Element</a>
+                  </li>
+                  <li>
+                    <a href="#cart-element" class="toc-h2 toc-link" data-title="Cart Element"><code>Cart</code> Element</a>
+                  </li>
+                  <li>
+                    <a href="#api-reference" class="toc-h2 toc-link" data-title="API reference">API reference</a>
+                  </li>
+                  <li>
+                    <a href="#starter-projects" class="toc-h2 toc-link" data-title="Starter projects">Starter projects</a>
+                  </li>
+                  <li>
+                    <a href="#bonus-displaying-cms-content-on-page" class="toc-h2 toc-link" data-title="Bonus: Displaying CMS content on page"><em>Bonus:</em> Displaying CMS content on page</a>
+                  </li>
+                  <li>
+                    <a href="#bonus-displaying-several-pieces-of-cms-content-and-cart-icon" class="toc-h2 toc-link" data-title="Bonus: Displaying several pieces of CMS content and cart icon"><em>Bonus:</em> Displaying several pieces of CMS content and cart icon</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#tipser-script-sdk" class="toc-h1 toc-link" data-title="Tipser Script SDK">Tipser Script SDK</a>
+            <a href="#tipser-react-elements" class="toc-h1 toc-link" data-title="Tipser React Elements">Tipser React Elements</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#see-it-live" class="toc-h2 toc-link" data-title="See it live!">See it live!</a>
+                  </li>
+                  <li>
+                    <a href="#quick-start-with-npm-version" class="toc-h2 toc-link" data-title="Quick Start with NPM version">Quick Start with NPM version</a>
+                  </li>
+                  <li>
+                    <a href="#quick-start-with-scripted-injectable-version" class="toc-h2 toc-link" data-title="Quick start with scripted injectable version">Quick start with scripted injectable version</a>
+                  </li>
+                  <li>
+                    <a href="#quick-react-example" class="toc-h2 toc-link" data-title="Quick React example">Quick React example</a>
+                  </li>
+                  <li>
+                    <a href="#customizing-tipser-elements-styles" class="toc-h2 toc-link" data-title="Customizing Tipser Elements Styles">Customizing Tipser Elements Styles</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#tipser-sdk" class="toc-h1 toc-link" data-title="Tipser SDK">Tipser SDK</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
@@ -257,22 +314,16 @@
               </ul>
           </li>
           <li>
-            <a href="#tipser-elements" class="toc-h1 toc-link" data-title="Tipser Elements">Tipser Elements</a>
+            <a href="#amp" class="toc-h1 toc-link" data-title="AMP">AMP</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#see-it-live" class="toc-h2 toc-link" data-title="See it live!">See it live!</a>
+                    <a href="#limitations" class="toc-h2 toc-link" data-title="Limitations">Limitations</a>
                   </li>
                   <li>
-                    <a href="#quick-start-with-npm-version" class="toc-h2 toc-link" data-title="Quick Start with NPM version">Quick Start with NPM version</a>
+                    <a href="#installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
                   </li>
                   <li>
-                    <a href="#quick-start-with-scripted-injectable-version" class="toc-h2 toc-link" data-title="Quick start with scripted injectable version">Quick start with scripted injectable version</a>
-                  </li>
-                  <li>
-                    <a href="#quick-react-example" class="toc-h2 toc-link" data-title="Quick React example">Quick React example</a>
-                  </li>
-                  <li>
-                    <a href="#customizing-tipser-elements-styles" class="toc-h2 toc-link" data-title="Customizing Tipser Elements Styles">Customizing Tipser Elements Styles</a>
+                    <a href="#insert-collection" class="toc-h2 toc-link" data-title="Insert collection">Insert collection</a>
                   </li>
               </ul>
           </li>
@@ -315,398 +366,315 @@
               </ul>
           </li>
           <li>
-            <a href="#tipser-widget" class="toc-h1 toc-link" data-title="Tipser Widget">Tipser Widget</a>
+            <a href="#rest-api" class="toc-h1 toc-link" data-title="Rest API">Rest API</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#see-it-live" class="toc-h2 toc-link" data-title="See it live!">See it live!</a>
+                    <a href="#endpoints" class="toc-h2 toc-link" data-title="Endpoints">Endpoints</a>
                   </li>
                   <li>
-                    <a href="#basic-usage" class="toc-h2 toc-link" data-title="Basic usage">Basic usage</a>
+                    <a href="#markets" class="toc-h2 toc-link" data-title="Markets">Markets</a>
                   </li>
                   <li>
-                    <a href="#replacing-elements-on-your-page" class="toc-h2 toc-link" data-title="Replacing elements on your page">Replacing elements on your page</a>
+                    <a href="#products" class="toc-h2 toc-link" data-title="Products">Products</a>
                   </li>
                   <li>
-                    <a href="#displaying-cms-content-on-page" class="toc-h2 toc-link" data-title="Displaying CMS content on page">Displaying CMS content on page</a>
+                    <a href="#essential-product-model-attribute" class="toc-h2 toc-link" data-title="Essential product model attribute">Essential product model attribute</a>
                   </li>
                   <li>
-                    <a href="#displaying-cart" class="toc-h2 toc-link" data-title="Displaying Cart">Displaying Cart</a>
-                  </li>
-                  <li>
-                    <a href="#advanced-example-displaying-several-pieces-of-cms-content-and-cart-icon" class="toc-h2 toc-link" data-title="Advanced example: displaying several pieces of CMS content and cart icon">Advanced example: displaying several pieces of CMS content and cart icon</a>
-                  </li>
-                  <li>
-                    <a href="#specifying-a-locale" class="toc-h2 toc-link" data-title="Specifying a locale">Specifying a locale</a>
-                  </li>
-                  <li>
-                    <a href="#specifying-an-environment" class="toc-h2 toc-link" data-title="Specifying an environment">Specifying an environment</a>
-                  </li>
-                  <li>
-                    <a href="#adding-event-handlers" class="toc-h2 toc-link" data-title="Adding event handlers">Adding event handlers</a>
-                  </li>
-                  <li>
-                    <a href="#all-configuration-options" class="toc-h2 toc-link" data-title="All configuration options">All configuration options</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#amp-snippet" class="toc-h1 toc-link" data-title="AMP snippet">AMP snippet</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#how-to-use-it" class="toc-h2 toc-link" data-title="How to use it">How to use it</a>
+                    <a href="#category-names" class="toc-h2 toc-link" data-title="Category names">Category names</a>
                   </li>
               </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='tipser.com'>Visit Tipser page</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href="https://tipser.com">Tipser</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='rest-api'>Rest API</h1>
-<p>Tipser provides a RESTful API you can use to fully integrate your platform with Tipser.</p>
-<h2 id='endpoints'>Endpoints</h2><h2 id='markets'>Markets</h2>
-<blockquote>
-<p>Get available markets</p>
-</blockquote>
-<pre class="highlight plaintext"><code>GET https://t3-prod-api.tipser.com/v4/markets
-</code></pre>
-<blockquote>
-<p>Market model:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"59dde7e3b8f3f67f24d6f6c9"</span><span class="p">,</span><span class="w">
-  </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"CH_FR"</span><span class="p">,</span><span class="w">
-  </span><span class="err">currencyName</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHF"</span><span class="p">,</span><span class="w">
-  </span><span class="err">currencySymbol</span><span class="p">:</span><span class="w"> </span><span class="s2">"CHF"</span><span class="p">,</span><span class="w">
-  </span><span class="err">country</span><span class="p">:</span><span class="w"> </span><span class="s2">"CH"</span><span class="p">,</span><span class="w">
-  </span><span class="err">locale</span><span class="p">:</span><span class="w"> </span><span class="s2">"fr-CH"</span><span class="p">,</span><span class="w">
-  </span><span class="err">defaultVat</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-    </span><span class="err">formatted</span><span class="p">:</span><span class="w"> </span><span class="s2">"8%"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="err">availablePsp</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"stripe"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Available markets for the product endpoint: <code>/v4/markets</code></p>
+      <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search documentation...">
+      </div>
+      <ul class="search-results"></ul>
+    
+        <h1 id='introduction'>Introduction</h1>
+<p>You can integrate Tipser in your website in multiple ways. The fastest way is to use <a href="#tipser-elements">Tipser Elements</a> or <a href="#tipser-react-elements">Tipser React Elements</a> - a complete toolkit of native commerce experience that requires less than 5 minutes of tech setup.</p>
 
-<p>These parameters control the market in the API and are used for some of the methods.</p>
+<p>Need more control? Head out to <a href="#tipser-sdk">Tipser SDK</a> section for low-level JavaScript SDK or go check sections for advanced integrations, such as integrating AMP or setting up tracking with Analytics.</p>
 
-<p>Market controls the currency, and ship-to country. </p>
+<aside class="notice">This document is a technical reference of Tipser Elements and SDK. It requires some technical knowledge. For conceptual and business resources, head out to our official <a href="https://www.tipser.com/tipser-elements">Publisher's Guide</a>.</aside>
 
-<p>Available markets are: </p>
+<aside class="warning">This document refers to the Tipser Elements, which is meant to deprecate and eventually replace existing Tipser Widget. You may still access the <a href="https://developers.tipser.com/tipser-script">documentation for old Tipser Widget</a>, but we recommend integrating with Tipser Elements from start and migrating to Tipser Elements for existing Tipser Widget. Migration guide to be described soon!</aside>
 
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Country</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>de</td>
-<td>Germany</td>
-</tr>
-<tr>
-<td>de-CH</td>
-<td>Switzerland - German language</td>
-</tr>
-<tr>
-<td>fr-CH</td>
-<td>Switzerland - French language</td>
-</tr>
-<tr>
-<td>se</td>
-<td>Sweden (default)</td>
-</tr>
-</tbody></table>
-
-<p>These parameters control the market in the API and are used for some of the methods.</p>
-<h2 id='products'>Products</h2>
-<blockquote>
-<p>PRODUCT MODEL</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-    </span><span class="err">title</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-    </span><span class="err">description</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-    </span><span class="err">priceIncVat</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="p">,</span><span class="w">
-        </span><span class="err">currency</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-        </span><span class="err">formatted</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">vat</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="p">,</span><span class="w">
-        </span><span class="err">formatted</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">currency</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-    </span><span class="err">deliveryTime</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-    </span><span class="err">deliveryCost</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="p">,</span><span class="w">
-        </span><span class="err">currency</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-        </span><span class="err">formatted</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">brand</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-    </span><span class="err">categories</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="err">department</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-        </span><span class="err">section</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="err">categoriesValue</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-    </span><span class="err">market</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-    </span><span class="err">merchant</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-    </span><span class="err">merchantName</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-    </span><span class="err">accessRights</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-    </span><span class="err">isInStock</span><span class="p">:</span><span class="w"> </span><span class="err">boolean</span><span class="p">,</span><span class="w">
-    </span><span class="err">images</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-            </span><span class="mi">250</span><span class="w"> </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
-            </span><span class="mi">450</span><span class="w"> </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
-            </span><span class="mi">960</span><span class="w"> </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
-            </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-            </span><span class="err">original</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
-            </span><span class="mi">50</span><span class="w"> </span><span class="err">x</span><span class="mi">50</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="err">variants</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-            </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-            </span><span class="err">productId</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-            </span><span class="err">title</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-            </span><span class="err">description</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-            </span><span class="err">stockCount</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="p">,</span><span class="w">
-            </span><span class="err">stockCountUnlimited</span><span class="p">:</span><span class="w"> </span><span class="err">boolean</span><span class="p">,</span><span class="w">
-            </span><span class="err">attributes</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="err">key</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="err">attributesValue</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-            </span><span class="err">priceIncVat</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="p">,</span><span class="w">
-                </span><span class="err">currency</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-                </span><span class="err">formatted</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="err">vat</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="p">,</span><span class="w">
-                </span><span class="err">formatted</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="err">currency</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-            </span><span class="err">images</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-                </span><span class="mi">250</span><span class="w"> </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
-                </span><span class="mi">450</span><span class="w"> </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
-                </span><span class="mi">960</span><span class="w"> </span><span class="err">x</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
-                </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-                </span><span class="err">original</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="p">,</span><span class="w">
-                </span><span class="mi">50</span><span class="w"> </span><span class="err">x</span><span class="mi">50</span><span class="p">:</span><span class="w"> </span><span class="err">URI</span><span class="w">
-               </span><span class="p">},</span><span class="w">
-               </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="err">sku</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="p">,</span><span class="w">
-            </span><span class="err">isInStock</span><span class="p">:</span><span class="w"> </span><span class="err">boolean</span><span class="p">,</span><span class="w">
-            </span><span class="err">gtin</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="err">type</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unknown"</span><span class="p">,</span><span class="w">
-                </span><span class="err">value</span><span class="p">:</span><span class="w"> </span><span class="s2">"874034007676"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="err">mpn</span><span class="p">:</span><span class="w"> </span><span class="s2">"80950086000"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="err">lastUpdateDate</span><span class="p">:</span><span class="w"> </span><span class="err">date</span><span class="p">,</span><span class="w">
-    </span><span class="err">freeReturn</span><span class="p">:</span><span class="w"> </span><span class="err">boolean</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>All product related methods: <code>/v4/products</code></p>
-<h3 id='fetching-products-using-search'>Fetching products using search</h3>
-<p>Search over Tipser public product repository, with support for filtering by text, brands, prices with sorting and pagination.</p>
-
-<p><code>GET https://t3-prod-api.tipser.com/v4/products</code></p>
-
-<p>Query string parameters</p>
-
-<table><thead>
-<tr>
-<th>query</th>
-<th>string</th>
-<th>Search query</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>brands</td>
-<td>string</td>
-<td>Brand name</td>
-</tr>
-<tr>
-<td>merchants</td>
-<td>string</td>
-<td>Merchant name</td>
-</tr>
-<tr>
-<td>limit</td>
-<td>integer</td>
-<td>Number of items to show</td>
-</tr>
-<tr>
-<td>skip</td>
-<td>integer</td>
-<td>Number or items to skip</td>
-</tr>
-<tr>
-<td>sort</td>
-<td>name/-name/price/-price</td>
-<td></td>
-</tr>
-<tr>
-<td>priceFrom</td>
-<td>integer</td>
-<td></td>
-</tr>
-<tr>
-<td>priceTo</td>
-<td>integer</td>
-<td></td>
-</tr>
-<tr>
-<td>market</td>
-<td>string</td>
-<td>See above</td>
-</tr>
-</tbody></table>
-
-<p>Example requests (try me):</p>
-
-<p><a href="https://t3-prod-api.tipser.com/v4/products?query=vita+skor&amp;brands=Birkenstock">https://t3-prod-api.tipser.com/v4/products?query=vita+skor&amp;brands=Birkenstock</a></p>
-
-<p><a href="https://t3-prod-api.tipser.com/v4/products?limit=3">https://t3-prod-api.tipser.com/v4/products?limit=3</a></p>
-
-<p><a href="https://t3-prod-api.tipser.com/v4/products?limit=3&amp;skip=3">https://t3-prod-api.tipser.com/v4/products?limit=3&amp;skip=3</a></p>
-<h3 id='fetch-product-by-id'>Fetch product by id</h3>
-<p><code>GET https://t3-prod-api.tipser.com/v4/products/:productId(?pos=:posId)</code></p>
-
-<p>Query string parameters
-<strong>productId:</strong> string
-<strong>pos:</strong> string (optional) - posId needed to ie. show pos-specific discounts etc.</p>
-
-<p><a href="https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663">https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663</a></p>
-
-<p><a href="https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663?pos=54fdfcf378415516b41e88c8">https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663?pos=54fdfcf378415516b41e88c8</a></p>
-<h2 id='essential-product-model-attribute'>Essential product model attribute</h2>
-<p><strong>id:</strong> used to reference for the product when adding to cart or getting to know more about it (ie. list of variants, similar products)</p>
-
-<p><strong>images:</strong> a list of image objects, keyed by the resolution (250,450,960) but also with an option to get the original size. Also, note underlined URI fragment (h_50,w_50), that you may modify to get the desired image size.</p>
-
-<p><strong>price:</strong> original price of an item</p>
-
-<p><strong>salesPrice:</strong> the price that we currently sell the item for. If it is equal to the price, it means that there&#39;s no any sale. If the price is lower, then it means the product is on a sale</p>
-
-<p><strong>available:</strong> if true, you should be able to add it to cart. else no</p>
-
-<p><strong>variants:</strong> all SKUs nested into the master product</p>
-
-<p><strong>attributes:</strong> what concrete product variant is that (color, size, sex etc)</p>
-<h2 id='category-names'>Category names</h2>
-<p>Get translated category names for a product
-To get the translated category names, used in the product model, you can use the API endpoint:</p>
-
-<p><code>GET https://t3-dev-api.tipser.com/v4/categories?market=se</code></p>
-<h1 id='tipser-script-sdk'>Tipser Script SDK</h1>
-<p>The Tipser SDK is a modular version of the Tipser script that provides only the core functionality necessary for integration with Tipser, specifically built for customers who have their own development resources and plan to build their shopping experience on their own.</p>
-<h2 id='installation'>Installation</h2><h3 id='using-npm-or-yarn'>Using npm or yarn</h3>
-<p>You can add the Tipser SDK to your project by adding it through npm or yarn.</p>
-
-<p><strong>Yarn:</strong> </p>
-
-<p><code>yarn add @tipser/tipser-sdk</code></p>
-
-<p><strong>NPM:</strong></p>
-
-<p><code>npm install --save @tipser/tipser-sdk</code></p>
-
-<p><a href="https://www.npmjs.com/package/@tipser/tipser-sdk">Package instructions</a></p>
-<h3 id='using-a-script-tag-on-your-page'>Using a script tag on your page</h3>
-<blockquote>
-<p>Add a script to your page:</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://tipser.com/widget/sdk.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span></code></pre>
-<blockquote>
-<p>You may also want to use the test version of the Tipser SDK (to simulate the payment without actual money transfer)</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://t3-stage.tipser.com/widget/sdk.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span></code></pre>
-<p>You need to add a script to your HTML source.</p>
-
-<aside class="success">
-Congratulations! Now Tipser is part of your website
-</aside>
-<h2 id='initialization'>Initialization</h2>
-<p>To initialize you need to create a tipser const.</p>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="nx">posId</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="nx">options</span><span class="p">:</span> <span class="nx">object</span><span class="p">):</span> <span class="nx">TipserSDK</span><span class="p">;</span>
-</code></pre>
-<p><em>Arguments:</em></p>
-
-<p><strong>posId</strong> (string) - id of shop&#39;s account in Tipser (required)</p>
-
-<p><strong>options</strong> (object) - an object of options (optional). The same options are supported as for Tipser Widget (<a href="#tipser-widget">docs</a>), except of <code>posId</code> option that is provided as a first argument here</p>
-
-<p><em>Returns:</em></p>
-
-<p>Initialized Tipser SDK object that can be used to perform API calls further in this document.</p>
-
-<p><em>Example:</em></p>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"yellow"</span><span class="p">});</span>
-</code></pre>
-<p>The example connects Tipser SDK with Tipser shop and sets primary color to yellow.</p>
-<h2 id='customizing-tipser-environment'>Customizing Tipser Environment</h2>
-<blockquote>
-<p>Example:</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">env</span><span class="p">:</span> <span class="s2">"stage"</span><span class="p">});</span>
-</code></pre>
-<p>By default, Tipser SDK connects to production Tipser environment. Yet if testing environment is preferred (e.g. in order to do test purchase), then it can be customized with env parameter in TipserSDK options, which accepts the following values:</p>
-
-<p><strong>prod</strong> or production</p>
-
-<p><strong>stage</strong> or staging</p>
-
-<p><strong>dev</strong> or development</p>
-<h2 id='parameters-for-dialog-customization'>Parameters for dialog customization</h2>
-<p>Sometimes Tipser dialogue styling and functionality needs to be customized. It is possible with modalUi parameters group.</p>
-
-<blockquote>
-<p>Complete example of dialog customizations:</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code>    <span class="kd">var</span> <span class="nx">tipserOptions</span> <span class="o">=</span> <span class="p">{</span>
-       <span class="na">modalUi</span><span class="p">:</span> <span class="p">{</span>
-          <span class="na">hideSearchIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-          <span class="na">hideFavouritesIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-          <span class="na">hideCartIcon</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-          <span class="na">hideMoreIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-          <span class="na">hideSimilarProducts</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-          <span class="na">useCustomCss</span><span class="p">:</span> <span class="kc">true</span>
-       <span class="p">}</span>
-        <span class="p">});</span>
-</code></pre><h3 id='hiding-icons-on-menu-bar'>Hiding icons on menu bar</h3>
-<p>The following parameters under modalUi can be used to selectively hide tipser icons on the dialog menu bar: </p>
-
-<p><code>hideSearchIcon</code> <br> 
-<code>hideFavouritesIcon</code> <br>
-<code>hideCartIcon</code> <br>
-<code>hideMoreIcon</code> <br></p>
-
-<p><a href="images/widget1.png"><img src="images/widget1.png" alt="Widget1" /></a></p>
-<h3 id='hiding-similar-products-module'>Hiding Similar Products Module</h3>
-<p>Similarly, <code>hideSimilarProducts</code> parameter, if set to <strong>true</strong>, can be used to hide Similar Products Module on product page</p>
-
-<p><a href="images/widget2.png"><img src="images/widget2.png" alt="Widget2" /></a></p>
-<h3 id='custom-css'>Custom CSS</h3>
-<p>If there is a need to use custom css stylesheet, it may be activated in two steps:</p>
-
-<ol>
-<li><p>set <code>useCustomCss</code> parameter to <strong>true</strong></p></li>
-<li><p>Send the custom css stylesheet to Tipser administrator in order for it to be uploaded to your account.</p></li>
-</ol>
+<hr>
 <h1 id='tipser-elements'>Tipser Elements</h1>
+<p>Tipser Elements is a set of shoppable elements built on top of Tipser REST API and Tipser SDK:</p>
+
+<ul>
+<li><strong>Product</strong> - product display with variant selector and add to cart button</li>
+<li><strong>Collection</strong> - a group of products</li>
+<li><strong>Store</strong> - shop with collections, products and menu navigation</li>
+<li><strong>Cart</strong> - cart icon with an easy access to the cart and checkout</li>
+</ul>
+
+<p><img src="https://images.ctfassets.net/i8t5uby4h6ds/5PibEm4ryfOXZHxZtZDEXd/f604521da24ce17b93bfd3c24a87e619/collection-small.png" alt="Tipser Elements" /></p>
+
+<hr>
+<h2 id='quick-start'>Quick start</h2>
+<p>This quick guide explains how to intialize and render Tipser Elements on your page. It requires you to have a publisher account created in order to get the <code>posId</code>, as well as have some collections created in your shop. For a guide how to manage your collections, check the <strong>Tipser Tools</strong> tutorial.</p>
+
+<p>If you&#39;re all set up, follow this three steps to install Tipser Elements on your site!</p>
+
+<hr>
+<h3 id='step-1-initial-setup-of-tipser-elements'><em>Step 1:</em> Initial setup of Tipser Elements</h3>
+<p>To use Tipser Elements on your site, add following script on your pages. This is an entry point to Tipser Elements that exposes a global <code>tipser</code> object, that you will use later to initialize Elements and customize its behavior.</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.tipser.com/tipser-script/latest.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+<aside class="notice">
+Make sure, that Tipser Elements script is <strong>loaded only once on your page</strong>. Additionally, it is recommended to load any scripts at the end of the <code>body</code> tag of your page so that the rendering is not blocked by JavaScript parsing. 
+</aside>
+
+<hr>
+<h3 id='step-2-store-element'><em>Step 2:</em> <code>Store</code> element</h3>
+<p>Insert below HTML on your page in the place where you want the <code>Store</code> element to be rendered. Typically, this can be a new blank subpage created in your CMS as the <code>Store</code> is best displayed in the full page mode.</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tipser_store"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre>
+<aside class="notice">Tipser Elements works by scanning your HTML and replacing special tags into shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
+
+<hr>
+<h3 id='step-3-initialize-tipser-element'><em>Step 3:</em> Initialize Tipser Element</h3>
+<p>Finally, initialize Tipser Elements that has been injected in the first step. </p>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">TipserElements</span> <span class="o">=</span> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">)</span>
+</code></pre>
+<p>Make sure that the <code>posId</code> is replaced with the actual id. </p>
+
+<p>If everything was setup correctly, you should see an <code>Store</code> element with all your collections in the place where the tag <code>&lt;div id=&quot;tipser_store&quot;&gt;</code> was initially. </p>
+
+<p><a href="images/tipser_elements_store.png"><img src="images/tipser_elements_store.png" alt="Tipser elements store" /></a></p>
+
+<blockquote>
+<p><a href="https://codepen.io/tipser-tech/pen/YMMKMp">Open this snippet on Code Pen</a></p>
+</blockquote>
+
+<aside class="success">Congratulations! You have successfully integrated and setup Tipser Elements on your side. Read below the full specification of Elements and their configurations.</aside>
+
+<hr>
+<h2 id='configuration'>Configuration</h2>
+<p>Main Tipser Elements function has two arguments.</p>
+<pre class="highlight typescript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="nx">posId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">config</span><span class="p">?:</span> <span class="nx">TipserElementsConfig</span><span class="p">)</span>
+</code></pre>
+<ul>
+<li><code>posId</code> - <strong>required</strong> - unique POS identifier. Must be specified in order to show your personalized store, handle campaigns and commissions.</li>
+<li><code>config</code> - allows you to specify how Tisper Elements will look and behave on your website. Below section describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found in the <a href="#API-reference">API reference</a> section.</li>
+</ul>
+
+<hr>
+<h3 id='language-and-locale'>Language and locale</h3>
+<p><code>lang</code> configuration option specifies the language to be used. Supported languages are currently: <code>en</code>, <code>de</code>, <code>fr</code> and <code>sv</code>.</p>
+<pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span>
+  <span class="p">})</span>
+</code></pre>
+<p>It will affect all the localizable texts in the UI - buy buttons, store, shopping cart and checkout. It will not affect the currency in which the customer will pay for the product.</p>
+
+<hr>
+<h3 id='environment'>Environment</h3>
+<p>It is possible to use Tipser Elements in a sandbox environment (also known as <em>staging</em> or <em>test</em> environment) to be able to do test checkouts without charging actual money. The environment can be specified using the <code>env</code> configuration option.</p>
+<pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">env</span><span class="p">:</span> <span class="s1">'stage'</span>
+  <span class="p">})</span>
+</code></pre>
+<p>Supported values are <code>stage</code> and <code>prod</code>. This configuration option is optional, default env is <code>prod</code>, which means actual production environment.</p>
+
+<hr>
+<h3 id='event-handlers'>Event handlers</h3>
+<p>Event handlers can be passed as part of configuration. There is a number of event exposed by the Tipser Elements that can be listened to programatically, such as technical events, shopping behavior, errors and analytics. You may hook in your event listener into Tipser Elements via <code>eventsHandlers</code> option.</p>
+<pre class="highlight javascript"><code> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span> 
+    <span class="na">eventsHandlers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">onAddToCart</span><span class="p">:</span> <span class="nx">payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hurray, you have added item to cart. '</span><span class="p">,</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">product</span><span class="p">);</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Your cart size is now. '</span><span class="p">,</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">cartSize</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+</code></pre>
+<p>Whenever an event occurs, Tipser Elements will call your event listener, passing only one argument - <code>payload</code> - which will hold event data (different to each event type). Above example demonstrates how to listen to the add to cart event and log current cart size and newly added product. Currently supported handlers are:  <code>onAddToCart</code> and <code>onError</code>.</p>
+
+<hr>
+<h4 id='addtocart'>addToCart</h4><pre class="highlight plaintext"><code>onAddToCart: (cartSize: number, product: TipserProductModel)
+</code></pre>
+<ul>
+<li><code>cartSize</code>- property contains the cart size <strong>after a product has been added to the cart</strong> </li>
+<li><code>product</code> - is an object as well and representing the product which has been added to cart. The model of the <code>product</code> field is as follows.</li>
+</ul>
+
+<p><code>TipserProductModel</code> interface is as follows:</p>
+<pre class="highlight typescript"><code><span class="kr">interface</span> <span class="nx">TipserProductModel</span> <span class="p">{</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">description</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">brand</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">images</span><span class="p">:</span> <span class="kr">any</span><span class="p">[];</span>
+    <span class="nl">isInStock</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="nl">deliveryTime</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">priceIncVat</span><span class="p">:</span> <span class="nx">PriceModel</span><span class="p">;</span>
+    <span class="nl">deliveryCost</span><span class="p">:</span> <span class="nx">PriceModel</span><span class="p">;</span>
+    <span class="nl">variants</span><span class="p">:</span> <span class="nx">TipserProductModel</span><span class="p">[];</span>
+    <span class="nl">discountPriceIncVat</span><span class="p">:</span> <span class="nx">PriceModel</span><span class="p">;</span>
+    <span class="nl">freeReturn</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+<hr>
+<h4 id='error'>error</h4>
+<p>By default, in case of an unexpected error happening (connection issues or unhandled runtime exceptions), an error popup will appear. If you want to disable the deafult error messages, set <code>useDefaultErrorHandler</code> option to <code>false</code>, and listen to error messages via <code>onError</code> event handler.</p>
+<pre class="highlight javascript"><code> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span> 
+    <span class="na">useDefaultErrorHandler</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> 
+    <span class="na">eventsHandlers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">onError</span><span class="p">:</span> <span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+</code></pre>
+<p>The payload of <code>error</code> event is as follows:</p>
+
+<ul>
+<li><p><code>type</code>: <code>TipserElementError</code> object </p></li>
+<li><p><code>id</code>: string</p></li>
+<li><p><code>message</code>: error message</p></li>
+<li><p><code>stack</code>: typical error stack of js error</p></li>
+</ul>
+
+<p>The <code>onError</code> event handler is used with <code>useDefaultErrorHandler</code> config option. When that option is set to false (default to true) the error will not be shown on the screen.</p>
+
+<aside class="warning">This section requires simplification. It isn't clear how to use event handler with combination of this configuration</aside>
+
+<hr>
+<h2 id='store-element'><code>Store</code> Element</h2>
+<p>Store is the simplest to use yet, the most complete Element you can insert on your website. It requires collections to be created in your store, otherwise no content will be rendered. </p>
+
+<p>Insert below HTML on your page in the place where you want the <code>Store</code> element to be rendered.</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tipser_store"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre>
+<aside class="notify"><code>Store</code> Element is best inserted as a top level Element on a separate page and should contain the full content area for the best shopping experience.</aside>
+<h2 id='product-element'><code>Product</code> Element</h2>
+<p>In order to insert a <code>Product</code> Element in your content, insert below code in your content.</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">data-tipser-pid=</span><span class="s">"5ba2334a781baa0001ccdf61"</span> <span class="nt">/&gt;</span>
+</code></pre>
+<p>Elements with attribute <code>data-tipser-pid</code> will be replaced with <code>Product</code> Element. Product ID is taken from the value of the attribute. By default a full inline product component is displayed (with product details, unique selling points and variant selection)</p>
+
+<p><a href="images/full-product.png"><img src="images/full-product.png" alt="Full product" /></a></p>
+
+<hr>
+
+<p>To display <code>Product</code> in a compact view, add the <code>data-tipser-view=&quot;compact&quot;</code> attribute to above tag.</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">data-tipser-pid=</span><span class="s">"57233dac89862012f8ec1001"</span> <span class="na">data-tipser-view=</span><span class="s">"compact"</span> <span class="nt">/&gt;</span>
+</code></pre>
+<p><a href="images/compact-product.png"><img src="images/compact-product.png" alt="Compact product" /></a></p>
+
+<aside class="success">All Elements are mobile first. This means, that even if you insert a regular `Product` Element, it will be rendered as a compact product on the mobile devices for better experience.</aside>
+
+<hr>
+<h2 id='collection-element'><code>Collection</code> Element</h2>
+<p>You can your store in collections. Each collection however can be rendered separately as a get the look widget or a simple product group, depending on your needs. It is all possible through <code>Collection</code> Element.</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;p</span> <span class="na">name=</span><span class="s">"My collection"</span> <span class="na">data-tipser-cid=</span><span class="s">"5b2788909d25801adcb23f4f"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">name=</span><span class="s">"My collection"</span> <span class="na">data-tipser-cid=</span><span class="s">"5b2788909d25801adcb23f4f"</span> <span class="na">data-tipser-imgsize=</span><span class="s">"1.2"</span> <span class="nt">/&gt;</span>
+</code></pre>
+<p>Elements with attribute <code>data-tipser-cid</code> will be replaced with <code>Collection</code> element of given id (value of <code>data-tipser-cid</code>). To make the collection items smaller / larger use the <code>data-tipser-imgsize</code> attribute with values <code>0.8</code> for smaller  and <code>1.2</code> for lager product tiles. The default value for imgSize parameter is <code>1</code>.</p>
+
+<blockquote>
+<p><a href="https://codepen.io/tipser-tech/pen/YMMKMp">Open this snippet on Code Pen</a></p>
+</blockquote>
+
+<hr>
+<h2 id='cart-element'><code>Cart</code> Element</h2>
+<p>To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.</p>
+<pre class="highlight javascript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">mountCart</span><span class="p">(</span><span class="s1">'.my-cart-container'</span><span class="p">);</span>
+</code></pre>
+<p>To activate the Cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to <code>mountCart</code> function, as in the example snippet.</p>
+
+<p>The cart icon can be placed anywhere on your website. If you want to keep it visible at all times please follow the <a href="#cart">instructions</a>.</p>
+<h2 id='api-reference'>API reference</h2>
+<p>All configuration supported by Tipser Elements is listed below.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lang</td>
+<td><code>&#39;en&#39;</code></td>
+<td>a locale to be used by the Tipser content. Possible values: <code>&#39;en&#39;</code>, <code>&#39;de&#39;</code>, <code>&#39;fr&#39;</code> and <code>&#39;sv&#39;</code>.</td>
+<td><code>&#39;de&#39;</code></td>
+</tr>
+<tr>
+<td>env</td>
+<td><code>&#39;prod&#39;</code></td>
+<td>Tipser environment to be used by the Tipser content. Possible values: <code>&#39;stage&#39;</code> and <code>&#39;prod&#39;</code>.</td>
+<td><code>&#39;stage&#39;</code></td>
+</tr>
+<tr>
+<td>disableDomReplacement</td>
+<td><code>false</code></td>
+<td>Advanced setting. Set to true in case for some reason you don&#39;t wish any tag replacement to happen (see: <a href="#replacing-elements-on-your-page">Replacing elements on your page</a> ).</td>
+<td>true</td>
+</tr>
+<tr>
+<td>defaultAddedToCartPopup</td>
+<td><code>true</code></td>
+<td>Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.</td>
+<td><code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td>useDefaultErrorHandler</td>
+<td><code>true</code></td>
+<td>when set to false and error happens, default message won&#39;t be displayed</td>
+<td>see <a href="#adding-event-handlers">Adding event handlers</a></td>
+</tr>
+<tr>
+<td>eventsHandlers</td>
+<td><code>object</code></td>
+<td><code>null</code></td>
+<td>the object of event handlers</td>
+</tr>
+</tbody></table>
+
+<p>In addition to the options described above all the configuration options supported by Tipser Elements library are supported.</p>
+<h2 id='starter-projects'>Starter projects</h2>
+<p>A working examples of page based on Tipser Widget can be found on <a href="https://tipser.github.io/tipser-widget-bootstrap/">Tipser Widget Bootstrap page</a>.</p>
+
+<p>The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-widget-bootstrap">Tipser Widget Bootstrap project</a>. Feel free to checkout it and play with it on your local machine!</p>
+<h2 id='bonus-displaying-cms-content-on-page'><em>Bonus:</em> Displaying CMS content on page</h2><pre class="highlight javascript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'myPosId'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">mountContent</span><span class="p">(</span><span class="s2">"3UvCQHKV7gmMdcegDHSr5B"</span><span class="p">,</span> <span class="s2">".shopping-zone .store-container"</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace the value for <code>myPosId</code> and parameters of <code>mountContent</code> function.</p>
+
+<p><a href="https://codepen.io/tipser-tech/pen/RONrZv">Open this snippet on Code Pen</a></p>
+</blockquote>
+
+<p>Instead of (or in addition to) replacing elements marked by attribute, you may want to import content from Tipser&#39;s CMS (Contentful) to your page with <code>.mountContent</code> function.</p>
+
+<p><em>Prerequisites:</em> you need to have a Contentful content created and configured (which is typically done by Tipser staff) and dedicate part of your page to inject that content.</p>
+
+<p><code>mountContent</code> function accepts two parameters:</p>
+
+<p><code>contentId</code>: the id of the content in the CMS <br>
+<code>target</code>: It is a <a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS selector</a> pointing to the element on your page where the CMS content will be injected.</p>
+<h2 id='bonus-displaying-several-pieces-of-cms-content-and-cart-icon'><em>Bonus:</em> Displaying several pieces of CMS content and cart icon</h2><pre class="highlight javascript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'myPosId'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">mountContent</span><span class="p">(</span><span class="s2">"3UvCQHKV7gmMdcegDHSr5B"</span><span class="p">,</span> <span class="s2">".shopping-zone .content-container1"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">mountContent</span><span class="p">(</span><span class="s2">"3UvCQHKV7gmMdcegDHSr5C"</span><span class="p">,</span> <span class="s2">".shopping-zone .content-container2"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">mountCart</span><span class="p">(</span><span class="s2">".shopping-zone .cart-container"</span><span class="p">);</span>
+</code></pre>
+<p>It is possible to combine multiple invocations of <code>mountContent()</code> with zero or one invocations of <code>mountCart()</code> as presented in the code snippet. That will lead to multiple pieces of content
+AND a cart icon being displayed on the page.</p>
+<h1 id='tipser-react-elements'>Tipser React Elements</h1>
 <p>Tipser Elements is a React components library from Tipser enabling you to add shoppable content to your site with minimal effort.  You can add simple components like products with buy buttons, collections of products and articles, but also more complex grids or whole pages.</p>
 
 <p>The package allows you to use Tipser&#39;s product repository and create inline shops embedded into your page as well as the entire websites.</p>
@@ -742,7 +710,7 @@ Congratulations! Now Tipser is part of your website
 <p><code>npm start</code></p>
 <h3 id='example-inserting-elements-in-your-site'>Example inserting elements in your site</h3>
 <p>You can combine Tipser Elements with your own application:</p>
-<pre class="highlight javascript"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<pre class="highlight jsx tab-jsx"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
 <span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">'react-dom'</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">TipserElement</span><span class="p">,</span> <span class="nx">TipserProduct</span><span class="p">,</span> <span class="nx">CartIcon</span><span class="p">,</span> <span class="nx">TipserElementsProvider</span><span class="p">,</span> <span class="nx">ShopComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@tipser/tipser-elements'</span><span class="p">;</span>
 
@@ -752,23 +720,23 @@ Congratulations! Now Tipser is part of your website
 <span class="p">};</span>
 
 <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">TipserElementsProvider</span> <span class="nx">posId</span><span class="o">=</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span> <span class="nx">config</span><span class="o">=</span><span class="p">{</span><span class="nx">tipserElementsConfig</span><span class="p">}</span><span class="o">&gt;</span>   
-        <span class="o">&lt;</span><span class="nx">header</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">nav</span><span class="o">&gt;</span>
-                <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">Nav</span> <span class="nx">Element</span><span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
-</span>                <span class="o">&lt;</span><span class="nx">CartIcon</span><span class="o">/&gt;</span>
-            <span class="o">&lt;</span><span class="sr">/nav</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="sr">/header</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">main</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">TipserElement</span>  <span class="nx">id</span><span class="o">=</span><span class="s2">"1larHZb8TeMQiqmi4W8CIS"</span> <span class="o">/&gt;</span>
-            <span class="o">&lt;</span><span class="nx">TipserProduct</span> <span class="nx">productId</span><span class="o">=</span><span class="s2">"5ba2334a781baa0001ccdffc"</span><span class="o">/&gt;</span>
-            <span class="o">&lt;</span><span class="nx">ShopComponent</span> <span class="o">/&gt;</span>
-        <span class="o">&lt;</span><span class="sr">/main</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="nx">footer</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="nx">This</span> <span class="nx">is</span> <span class="nx">the</span> <span class="nx">footer</span><span class="o">&lt;</span><span class="sr">/span</span><span class="err">&gt;
-</span>        <span class="o">&lt;</span><span class="sr">/footer</span><span class="err">&gt;
-</span>    <span class="o">&lt;</span><span class="sr">/TipserElementsProvider&gt;,</span><span class="err"> 
-</span>    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">));</span>
+    <span class="p">&lt;</span><span class="nc">TipserElementsProvider</span> <span class="na">posId=</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span> <span class="na">config=</span><span class="si">{</span><span class="nx">tipserElementsConfig</span><span class="si">}</span><span class="p">&gt;</span>   
+        <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Nav Element<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nc">CartIcon</span><span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nc">TipserElement</span>  <span class="na">id=</span><span class="s2">"1larHZb8TeMQiqmi4W8CIS"</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nc">TipserProduct</span> <span class="na">productId=</span><span class="s2">"5ba2334a781baa0001ccdffc"</span><span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nc">ShopComponent</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>This is the footer<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nc">TipserElementsProvider</span><span class="p">&gt;,</span> 
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">));</span>
 </code></pre>
 <blockquote>
 <p>&quot;root&quot; is the id of the HTML element where the Tipser element goes</p>
@@ -976,6 +944,134 @@ for products on sale.</p>
 If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.</p>
 
 <p>If you&#39;d like to change other elements&#39; color as well, please use our specific classes to override the styles.</p>
+<h1 id='tipser-sdk'>Tipser SDK</h1>
+<p>Tipser SDK is a modular version of the Tipser script that provides only the core functionality necessary for integration with Tipser, specifically built for customers who have their own development resources and plan to build their shopping experience on their own.</p>
+<h2 id='installation'>Installation</h2><h3 id='using-npm-or-yarn'>Using npm or yarn</h3>
+<p>You can add the Tipser SDK to your project by adding it through npm or yarn.</p>
+
+<p><strong>Yarn:</strong> </p>
+
+<p><code>yarn add @tipser/tipser-sdk</code></p>
+
+<p><strong>NPM:</strong></p>
+
+<p><code>npm install --save @tipser/tipser-sdk</code></p>
+
+<p><a href="https://www.npmjs.com/package/@tipser/tipser-sdk">Package instructions</a></p>
+<h3 id='using-a-script-tag-on-your-page'>Using a script tag on your page</h3>
+<blockquote>
+<p>Add a script to your page:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://tipser.com/widget/sdk.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre>
+<blockquote>
+<p>You may also want to use the test version of the Tipser SDK (to simulate the payment without actual money transfer)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"https://t3-stage.tipser.com/widget/sdk.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre>
+<p>You need to add a script to your HTML source.</p>
+
+<aside class="success">
+Congratulations! Now Tipser is part of your website
+</aside>
+<h2 id='initialization'>Initialization</h2>
+<p>To initialize you need to create a tipser const.</p>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="nx">posId</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="nx">options</span><span class="p">:</span> <span class="nx">object</span><span class="p">):</span> <span class="nx">TipserSDK</span><span class="p">;</span>
+</code></pre>
+<p><em>Arguments:</em></p>
+
+<p><strong>posId</strong> (string) - id of shop&#39;s account in Tipser (required)</p>
+
+<p><strong>options</strong> (object) - an object of options (optional). The same options are supported as for Tipser Widget (<a href="#tipser-widget">docs</a>), except of <code>posId</code> option that is provided as a first argument here</p>
+
+<p><em>Returns:</em></p>
+
+<p>Initialized Tipser SDK object that can be used to perform API calls further in this document.</p>
+
+<p><em>Example:</em></p>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"yellow"</span><span class="p">});</span>
+</code></pre>
+<p>The example connects Tipser SDK with Tipser shop and sets primary color to yellow.</p>
+<h2 id='customizing-tipser-environment'>Customizing Tipser Environment</h2>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">env</span><span class="p">:</span> <span class="s2">"stage"</span><span class="p">});</span>
+</code></pre>
+<p>By default, Tipser SDK connects to production Tipser environment. Yet if testing environment is preferred (e.g. in order to do test purchase), then it can be customized with env parameter in TipserSDK options, which accepts the following values:</p>
+
+<p><strong>prod</strong> or production</p>
+
+<p><strong>stage</strong> or staging</p>
+
+<p><strong>dev</strong> or development</p>
+<h2 id='parameters-for-dialog-customization'>Parameters for dialog customization</h2>
+<p>Sometimes Tipser dialogue styling and functionality needs to be customized. It is possible with modalUi parameters group.</p>
+
+<blockquote>
+<p>Complete example of dialog customizations:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>    <span class="kd">var</span> <span class="nx">tipserOptions</span> <span class="o">=</span> <span class="p">{</span>
+       <span class="na">modalUi</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">hideSearchIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="na">hideFavouritesIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="na">hideCartIcon</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="na">hideMoreIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="na">hideSimilarProducts</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="na">useCustomCss</span><span class="p">:</span> <span class="kc">true</span>
+       <span class="p">}</span>
+        <span class="p">});</span>
+</code></pre><h3 id='hiding-icons-on-menu-bar'>Hiding icons on menu bar</h3>
+<p>The following parameters under modalUi can be used to selectively hide tipser icons on the dialog menu bar: </p>
+
+<p><code>hideSearchIcon</code> <br> 
+<code>hideFavouritesIcon</code> <br>
+<code>hideCartIcon</code> <br>
+<code>hideMoreIcon</code> <br></p>
+
+<p><a href="images/widget1.png"><img src="images/widget1.png" alt="Widget1" /></a></p>
+<h3 id='hiding-similar-products-module'>Hiding Similar Products Module</h3>
+<p>Similarly, <code>hideSimilarProducts</code> parameter, if set to <strong>true</strong>, can be used to hide Similar Products Module on product page</p>
+
+<p><a href="images/widget2.png"><img src="images/widget2.png" alt="Widget2" /></a></p>
+<h3 id='custom-css'>Custom CSS</h3>
+<p>If there is a need to use custom css stylesheet, it may be activated in two steps:</p>
+
+<ol>
+<li><p>set <code>useCustomCss</code> parameter to <strong>true</strong></p></li>
+<li><p>Send the custom css stylesheet to Tipser administrator in order for it to be uploaded to your account.</p></li>
+</ol>
+<h1 id='amp'>AMP</h1>
+<p>Tipser Elements can be also rendered as a part of an AMP-based page. </p>
+
+<p>Due to the limitations of AMP format, AMP snippet is limited in functionality compared to standard Tipser Elements.</p>
+<h2 id='limitations'>Limitations</h2>
+<ul>
+<li>even if you need to display only one product, please create a Tipser collection with just one product</li>
+<li>there is no support for an interactive shopping cart icon</li>
+<li>the checkout process is finalized after a redirect to tipser.com page (no way to keep the user in the article)</li>
+</ul>
+
+<p>But despite those limitations, the basic shopping experience is sustained, allowing AMP articles to generate income from E-commerce.  </p>
+<h2 id='installation'>Installation</h2><h3 id='required-imports'>Required imports</h3>
+<p>Add the following AMP imports to the <code>&lt;head&gt;</code> element of your page or make sure they are already there.</p>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">async</span> <span class="na">custom-element=</span><span class="s">"amp-list"</span> <span class="na">src=</span><span class="s">"https://cdn.ampproject.org/v0/amp-list-0.1.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">async</span> <span class="na">custom-template=</span><span class="s">"amp-mustache"</span> <span class="na">src=</span><span class="s">"https://cdn.ampproject.org/v0/amp-mustache-0.2.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">async</span> <span class="na">custom-element=</span><span class="s">"amp-iframe"</span> <span class="na">src=</span><span class="s">"https://cdn.ampproject.org/v0/amp-iframe-0.1.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">async</span> <span class="na">custom-element=</span><span class="s">"amp-bind"</span> <span class="na">src=</span><span class="s">"https://cdn.ampproject.org/v0/amp-bind-0.1.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre><h3 id='styles'>Styles</h3>
+<p>Add the following Tipser styles to the <code>&lt;head&gt;</code> element of your page. They are not mandatory but highly recommended.</p>
+<pre class="highlight plaintext"><code>&lt;style amp-custom&gt;*{box-sizing:border-box}.list{display:flex}.tipser-product-tile{cursor:pointer;float:left;max-width:250px;min-width:160px;position:relative;overflow:hidden;width:25%;padding:10px}.tipser-product-tile:hover .tipser-product-text{opacity:1;transform:translate(0,-3)}.tipser-tile-img-container{display:block;position:relative;background:#fff;height:250px;width:100%}amp-img.tipser-tile-img img{object-fit:contain}amp-img.tipser-tile-img-hover{transition:.7s;opacity:0}.tipser-product-tile:hover .tipser-tile-img-hover{opacity:1}.tipser-product-text{background:rgba(255,255,255,0.9);bottom:0;border-top:1px solid #ececec;color:black;margin-left:auto;margin-right:auto;min-height:140px;left:0;letter-spacing:.3px;opacity:0;position:absolute;right:0;text-align:center;transition:.7s;z-index:2}.tipser-tile-product-text,.tipser-tile-product-text[data-tipser-hide-text="slide"]{font-size:12px;padding:10px;text-align:center;transition:.5s}.tipser-tile-prod-brand{color:#afafaf;line-height:1.8em;text-transform:uppercase;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.tipser-tile-prod-name{line-height:1.8em;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.tipser-buy-button-small{background-color:#e91e63;border-radius:0;color:white;display:inline-block;font-size:12px;font-weight:700;line-height:1.8;margin:5px auto 0;padding:5px 30px;padding:10px 30px;position:relative;text-transform:uppercase;text-align:center;transition:.5s;width:auto}.tipser-tile-price{height:30px;overflow:hidden}.tipser-label-price-new{color:#cd5550;font-size:13.2px;font-weight:bold;white-space:nowrap}.tipser-label-price-new+.tipser-label-price-old{text-decoration:line-through}.tipser-label-price-save{color:#cd5550}.overlay{background:rgba(255,255,255,0.7);bottom:0;left:0;overflow:auto;position:fixed;right:0;top:0;z-index:10}.dialog{background-color:#fff;border:1px solid lightgray;bottom:5px;left:5px;position:fixed;right:5px;top:5px;z-index:1}.tipser-dialog{display:block;transition:opacity 2s ease;opacity:0;overflow:hidden;border:1px red solid;position:fixed;top:4%;left:5%;bottom:5%;right:5%}.tipser-dialog_closed{pointer-events:none;opacity:0;height:1px}.tipser-dialog_open{opacity:1;pointer-events:all}.close_button{cursor:pointer;float:right;padding:10px 15px;z-index:2}.list-overflow[overflow]{position:absolute;bottom:0;left:10px;background:lightgray;color:gray;font-size:12px;padding:6px 35px;width:130px}.tipser-product-text[data-tipser-hide-text="false"]{background-color:transparent;border:0;opacity:1;position:relative;width:100%}@media(max-width:900px){.tipser-product-tile{max-width:300px;width:calc((100% - 20px) / 3)}.tipser-product-text{background-color:transparent;border:0;opacity:1;position:relative;width:100%}.tipser-tile-product-text{padding:10px 0 0 0}.tipser-buy-button-small{width:100%}}@media(max-width:620px){.tipser-product-tile{max-width:250px;width:calc((100% - 20px) / 2)}}@media(max-width:360px){.tipser-product-tile{max-width:unset;width:calc(100% - 20px)}}&lt;/style&gt;
+</code></pre><h2 id='insert-collection'>Insert collection</h2>
+<p>This step assumes that your are familiar with <a href="https://developers.tipser.com/tipser-tools">Tipser Bookmarklet</a>. Feel free to write to support@tipser.com to get a more personalized introduction.</p>
+
+<ol>
+<li>Log-in to Tipser Bookmarklet</li>
+<li>Click &quot;Insert collections&quot; button</li>
+<li>From the collections list, select the collection that you want to embed</li>
+<li>Click &quot;Insert collection&quot; button and in the dialog that opens tick &quot;Google AMP ready&quot; checkbox</li>
+<li>Copy the code from the dialog and paste it somewhere into the <code>body</code> section of your page</li>
+</ol>
 <h1 id='tipser-elements-analytics'>Tipser Elements Analytics</h1>
 <p>Tipser Elements library sends a number of analytics events to Google Analytics as a result of user actions.</p>
 <h3 id='ga-account-configuration'>GA account configuration</h3>
@@ -1208,263 +1304,249 @@ once or that was never purchased.</p>
 <td>Yes (with one or many products attached)</td>
 </tr>
 </tbody></table>
-<h1 id='tipser-widget'>Tipser Widget</h1>
-<p>Tipser Widget is a small and handy script that you can use to embed Tipser products and shops on your page and start selling with Tipser.</p>
-<h2 id='see-it-live'>See it live!</h2>
-<p>A working examples of page based on Tipser Widget can be found on <a href="https://tipser.github.io/tipser-widget-bootstrap/">Tipser Widget Bootstrap page</a>.</p>
-
-<p>The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-widget-bootstrap">Tipser Widget Bootstrap project</a>. Feel free to checkout it and play with it on your local machine!</p>
-<h2 id='basic-usage'>Basic usage</h2><pre class="highlight html tab-html"><code><span class="nt">&lt;script&gt;</span>
-    <span class="kd">var</span> <span class="nx">scriptTag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
-    <span class="nx">scriptTag</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">"https://cdn.tipser.com/tipser-script/latest.js"</span><span class="p">;</span>
-    <span class="nx">scriptTag</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">scriptTag</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s2">"myPosId"</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">scriptTag</span><span class="p">);</span>
-<span class="nt">&lt;/script&gt;</span>
-</code></pre>
-<p>To use Tipser Widget, add the following snippet to your page.</p>
-
+<h1 id='rest-api'>Rest API</h1>
+<p>Tipser provides a RESTful API you can use to fully integrate your platform with Tipser.</p>
+<h2 id='endpoints'>Endpoints</h2><h2 id='markets'>Markets</h2>
 <blockquote>
-<p>Make sure to replace <code>myPosId</code> with your Tipser account id.</p>
-
-<p><a href="https://codepen.io/tipser-tech/pen/BEyogM">Open this snippet on Code Pen</a></p>
+<p>Get available markets</p>
 </blockquote>
-
-<aside class="notice">
-The recommended place to add the script is the end of the <code>body</code> tag of your page.
-</aside>
-
-<p>If you are hosting your page on a CMS like Wordpress, one common pattern to load this script is to include it in a footer element of your page. If you are hosting your page on a web server, you may need to ask you web developers to include the snippet.</p>
-
-<p>The only part of the script really interesting for you is the body of the function. (The remaining code examples will only include that part).</p>
-
-<aside class="notice">
-Make sure to replace <code>myPosId</code> with your Tipser account id. If you are not sure what to put here, please contact Tipser staff.
-</aside>
-<h2 id='replacing-elements-on-your-page'>Replacing elements on your page</h2>
-<p>The simplest way to use Tipser Widget is to include the script described in <a href="#basic-usage">Basic usage</a> and mark HTML elements on your page with special attributes <code>data-tipser-pid</code> and/or <code>data-tipser-cid</code>. 
-Tipser Widget will find them and replace with Product or Collection.</p>
-
-<p><em>Prerequisites:</em> find Tipser ids of products that you want to sell or create your own customized collections of products in your account at <a href="www.tipser.com">www.tipser.com</a>.</p>
-<h3 id='embedding-product-on-the-page'>Embedding Product on the page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">data-tipser-pid=</span><span class="s">"5ba2334a781baa0001ccdf61"</span> <span class="nt">/&gt;</span>
-</code></pre>
-<p>Elements with attribute <code>data-tipser-pid</code> will be replaced with Product component, using the product with Tipser id passed in the attribute. By default a full inline product component is displayed.</p>
-
-<p><a href="images/full-product.png"><img src="images/full-product.png" alt="Full product" /></a></p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">data-tipser-pid=</span><span class="s">"57233dac89862012f8ec1001"</span> <span class="na">data-tipser-view=</span><span class="s">"compact"</span> <span class="nt">/&gt;</span>
-</code></pre>
-<p>To display a compact Product view you need to add <code>data-tipser-view=&quot;compact&quot;</code> attribute in addition to <code>data-tipser-pid</code>.</p>
-
-<p><a href="images/compact-product.png"><img src="images/compact-product.png" alt="Compact product" /></a></p>
-<h3 id='embedding-collection-on-the-page'>Embedding Collection on the page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;p</span> <span class="na">name=</span><span class="s">"My collection"</span> <span class="na">data-tipser-cid=</span><span class="s">"5b2788909d25801adcb23f4f"</span> <span class="nt">/&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">name=</span><span class="s">"My collection"</span> <span class="na">data-tipser-cid=</span><span class="s">"5b2788909d25801adcb23f4f"</span> <span class="na">data-tipser-imgsize=</span><span class="s">"1.2"</span> <span class="nt">/&gt;</span>
-</code></pre>
-<p>Elements with attribute <code>data-tipser-cid</code> will be replaced with Collection component, using the collection with Tipser id passed in the attribute. To make the collection items smaller / larger use the <code>data-tipser-imgsize</code> attribute with values <code>&quot;0.8&quot;</code> for smaller  and <code>&quot;1.2&quot;</code> for lager product tiles. The default value for imgSize parameter is <code>&quot;1&quot;</code>.</p>
-<h3 id='embedding-store-on-the-page'>Embedding Store on the page</h3><pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tipser_store"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<pre class="highlight plaintext"><code>GET https://t3-prod-api.tipser.com/v4/markets
 </code></pre>
 <blockquote>
-<p><a href="https://codepen.io/tipser-tech/pen/YMMKMp">Open this snippet on Code Pen</a></p>
+<p>Market model:</p>
 </blockquote>
-
-<p>Element with id <code>tipser_store</code> will be replaced with Store component for the user whose <code>posId</code> has been passed to <code>tipser.elements()</code> call (see: <a href="#basic-usage">Basic Usage</a> ).</p>
-
-<p><a href="images/shop_component.png"><img src="images/shop_component.png" alt="Shop component" /></a></p>
-
-<p>Note: the Store is updating the top-level page URL (when it&#39;s tabs are clicked). For this reason, please double check if it won&#39;t interfere with your web framework. 
-For the same reason, there can&#39;t be more than one Store on the page (the DOM replacement logic will replace only the last occurence of a component with <code>tipser_store</code> id).</p>
-<h2 id='displaying-cms-content-on-page'>Displaying CMS content on page</h2><pre class="highlight javascript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'myPosId'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">mountContent</span><span class="p">(</span><span class="s2">"3UvCQHKV7gmMdcegDHSr5B"</span><span class="p">,</span> <span class="s2">".shopping-zone .store-container"</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace the value for <code>myPosId</code> and parameters of <code>mountContent</code> function.</p>
-
-<p><a href="https://codepen.io/tipser-tech/pen/RONrZv">Open this snippet on Code Pen</a></p>
-</blockquote>
-
-<p>Instead of (or in addition to) replacing elements marked by attribute, you may want to import content from Tipser&#39;s CMS (Contentful) to your page with <code>.mountContent</code> function.</p>
-
-<p><em>Prerequisites:</em> you need to have a Contentful content created and configured (which is typically done by Tipser staff) and dedicate part of your page to inject that content.</p>
-
-<p><code>mountContent</code> function accepts two parameters:</p>
-
-<p><code>contentId</code>: the id of the content in the CMS <br>
-<code>target</code>: It is a <a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS selector</a> pointing to the element on your page where the CMS content will be injected.</p>
-<h2 id='displaying-cart'>Displaying Cart</h2><pre class="highlight javascript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'myPosId'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">mountCart</span><span class="p">(</span><span class="s2">".shopping-zone .cart-container"</span><span class="p">);</span>
-</code></pre>
-<p>To keep the user informed about the state of his shopping cart and make it possible to finalize the checkout process at any time, Tipser Widget can attach a live shopping cart icon on your page.</p>
-
-<p>To activate the Cart, you need to dedicate an element on your page to host a shopping cart and pass a CSS selector to that element to <code>mountCart</code> function, as in the example snippet.</p>
-
-<p>The cart icon can be placed anywhere on your website. If you want to keep it visible at all times please follow the <a href="#cart">instructions</a>.</p>
-<h2 id='advanced-example-displaying-several-pieces-of-cms-content-and-cart-icon'>Advanced example: displaying several pieces of CMS content and cart icon</h2><pre class="highlight javascript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'myPosId'</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">mountContent</span><span class="p">(</span><span class="s2">"3UvCQHKV7gmMdcegDHSr5B"</span><span class="p">,</span> <span class="s2">".shopping-zone .content-container1"</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">mountContent</span><span class="p">(</span><span class="s2">"3UvCQHKV7gmMdcegDHSr5C"</span><span class="p">,</span> <span class="s2">".shopping-zone .content-container2"</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">mountCart</span><span class="p">(</span><span class="s2">".shopping-zone .cart-container"</span><span class="p">);</span>
-</code></pre>
-<p>It is possible to combine multiple invocations of <code>mountContent()</code> with zero or one invocations of <code>mountCart()</code> as presented in the code snippet. That will lead to multiple pieces of content
-AND a cart icon being displayed on the page.</p>
-<h2 id='specifying-a-locale'>Specifying a locale</h2><pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s2">"myPosId"</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span>
-  <span class="p">})</span>
-</code></pre>
-<p>The function <code>tipser.elements</code> accepts a second optional parameter which is an object of configuraton options.</p>
-
-<p><code>lang</code> configuration option specifies the language to be used. Supported languages are currently: <code>en</code>, <code>de</code>, <code>fr</code> and <code>sv</code>.</p>
-
-<p>A complete index of all the supported configuration options can be found in <a href="#all-configuration-options">All configuration options</a> section.</p>
-<h2 id='specifying-an-environment'>Specifying an environment</h2><pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s2">"myPosId"</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">env</span><span class="p">:</span> <span class="s1">'stage'</span>
-  <span class="p">})</span>
-</code></pre>
-<p>It is possible to use Tipser Elements in test (staging) environment to be able to do test checkouts. The environment can be activated using the <code>env</code> configuration option, as in the snippet, 
-where supported environments are <code>stage</code> and <code>prod</code>. This configuration option is optional and in case it is missing, <code>prod</code> environment will be used. </p>
-<h2 id='adding-event-handlers'>Adding event handlers</h2><pre class="highlight javascript"><code>
-<span class="c1">// how to use event handlers:</span>
- <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'5075d7715c3d090a90585e87'</span><span class="p">,</span> <span class="p">{</span> <span class="c1">//pos id (Tipser user id)</span>
-    <span class="c1">//The configuration of tipser widget comes here</span>
-    <span class="na">lang</span><span class="p">:</span> <span class="s2">"en"</span><span class="p">,</span>
-    <span class="na">useDefaultErrorHandler</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// default to true, false if you dont need error message</span>
-    <span class="na">eventsHandlers</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">onError</span><span class="p">:</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-      <span class="p">},</span>
-      <span class="na">onAddToCart</span><span class="p">:</span> <span class="p">(</span><span class="nx">param</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hurray, you have added item to cart. '</span><span class="p">,</span> <span class="nx">param</span><span class="p">.</span><span class="nx">product</span><span class="p">);</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Your cart size is now. '</span><span class="p">,</span> <span class="nx">param</span><span class="p">.</span><span class="nx">cartSize</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
-<span class="p">};</span>
-
-<span class="c1">// product contains properties:</span>
-<span class="p">{</span>
-    <span class="nl">id</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
-    <span class="nl">title</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
-    <span class="nl">description</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
-    <span class="nl">brand</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
-    <span class="nl">images</span><span class="p">:</span> <span class="nx">any</span><span class="p">[];</span>
-    <span class="nl">isInStock</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
-    <span class="nl">deliveryTime</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
-    <span class="nl">priceIncVat</span><span class="p">:</span> <span class="nx">PriceModel</span><span class="p">;</span>
-    <span class="nl">deliveryCost</span><span class="p">:</span> <span class="nx">PriceModel</span><span class="p">;</span>
-    <span class="nl">variants</span><span class="p">:</span> <span class="nx">TipserProductModel</span><span class="p">[];</span>
-    <span class="nl">discountPriceIncVat</span><span class="p">:</span> <span class="nx">PriceModel</span><span class="p">;</span>
-    <span class="nl">freeReturn</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+<pre class="highlight javascript"><code><span class="p">{</span>
+  <span class="nl">id</span><span class="p">:</span> <span class="s2">"59dde7e3b8f3f67f24d6f6c9"</span><span class="p">,</span>
+  <span class="nx">name</span><span class="p">:</span> <span class="s2">"CH_FR"</span><span class="p">,</span>
+  <span class="nx">currencyName</span><span class="p">:</span> <span class="s2">"CHF"</span><span class="p">,</span>
+  <span class="nx">currencySymbol</span><span class="p">:</span> <span class="s2">"CHF"</span><span class="p">,</span>
+  <span class="nx">country</span><span class="p">:</span> <span class="s2">"CH"</span><span class="p">,</span>
+  <span class="nx">locale</span><span class="p">:</span> <span class="s2">"fr-CH"</span><span class="p">,</span>
+  <span class="nx">defaultVat</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">value</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="nx">formatted</span><span class="p">:</span> <span class="s2">"8%"</span>
+  <span class="p">},</span>
+  <span class="nx">availablePsp</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"stripe"</span>
+  <span class="p">]</span>
 <span class="p">}</span>
-
 </code></pre>
-<p>Event handlers may be passed as part of configuration. There is a number of events exposed for developer.</p>
+<p>Available markets for the product endpoint: <code>/v4/markets</code></p>
 
-<p>In <code>eventsHandler</code> config option you can add your own handlers for events <code>onError</code> and <code>onAddToCart</code>.</p>
+<p>These parameters control the market in the API and are used for some of the methods.</p>
 
-<p><code>onError</code> is triggered when an error appears (i.e. when adding product to the cart failed);</p>
+<p>Market controls the currency, and ship-to country. </p>
 
-<p><code>onAddToCart</code> event is triggered when the product has been added to the cart;</p>
-
-<p><br></p>
-
-<p>The handler for <code>onError</code> takes error argument (see code example) as an object type with properties :</p>
-
-<ul>
-<li><p><code>type</code>: <code>TipserElementError</code> object </p></li>
-<li><p><code>id</code>: string</p></li>
-<li><p><code>message</code>: error message</p></li>
-<li><p><code>stack</code>: typical error stack of js error</p></li>
-</ul>
-
-<p>The <code>onError</code> event handler is used with <code>useDefaultErrorHandler</code> config option. When that option is set to false (default to true) the error will not be shown on the screen.
-<br><br>
-<code>onAddToCart</code> event handler takes an object of <code>{cartSize, product}</code> as argument:</p>
-
-<ul>
-<li><p><code>cartSize</code> property contains the value of current cartSize after adding it to the cart </p></li>
-<li><p><code>product</code> is an object as well and representing the product which has been added to cart. </p></li>
-</ul>
-<h2 id='all-configuration-options'>All configuration options</h2>
-<p>Tipser Widget supports following configuration options.</p>
+<p>Available markets are: </p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-<th>Example</th>
+<th>Name</th>
+<th>Country</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>lang</td>
-<td><code>&#39;en&#39;</code></td>
-<td>a locale to be used by the Tipser content. Possible values: <code>&#39;en&#39;</code>, <code>&#39;de&#39;</code>, <code>&#39;fr&#39;</code> and <code>&#39;sv&#39;</code>.</td>
-<td><code>&#39;de&#39;</code></td>
+<td>de</td>
+<td>Germany</td>
 </tr>
 <tr>
-<td>env</td>
-<td><code>&#39;prod&#39;</code></td>
-<td>Tipser environment to be used by the Tipser content. Possible values: <code>&#39;stage&#39;</code> and <code>&#39;prod&#39;</code>.</td>
-<td><code>&#39;stage&#39;</code></td>
+<td>de-CH</td>
+<td>Switzerland - German language</td>
 </tr>
 <tr>
-<td>disableDomReplacement</td>
-<td><code>false</code></td>
-<td>Advanced setting. Set to true in case for some reason you don&#39;t wish any tag replacement to happen (see: <a href="#replacing-elements-on-your-page">Replacing elements on your page</a> ).</td>
-<td>true</td>
+<td>fr-CH</td>
+<td>Switzerland - French language</td>
 </tr>
 <tr>
-<td>defaultAddedToCartPopup</td>
-<td><code>true</code></td>
-<td>Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td>useDefaultErrorHandler</td>
-<td><code>true</code></td>
-<td>when set to false and error happens, default message won&#39;t be displayed</td>
-<td>see <a href="#adding-event-handlers">Adding event handlers</a></td>
-</tr>
-<tr>
-<td>eventsHandlers</td>
-<td><code>object</code></td>
-<td><code>null</code></td>
-<td>the object of event handlers</td>
+<td>se</td>
+<td>Sweden (default)</td>
 </tr>
 </tbody></table>
 
-<p>In addition to the options described above all the configuration options supported by Tipser Elements library are supported.</p>
-<h1 id='amp-snippet'>AMP snippet</h1>
-<p>AMP snippet is a piece of code that allows to render Tipser collections on an AMP page.</p>
+<p>These parameters control the market in the API and are used for some of the methods.</p>
+<h2 id='products'>Products</h2>
+<blockquote>
+<p>PRODUCT MODEL</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="p">{</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">title</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">description</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">priceIncVat</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nl">value</span><span class="p">:</span> <span class="nx">integer</span><span class="p">,</span>
+        <span class="nx">currency</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+        <span class="nx">formatted</span><span class="p">:</span> <span class="nx">string</span>
+    <span class="p">},</span>
+    <span class="nx">vat</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nl">value</span><span class="p">:</span> <span class="nx">integer</span><span class="p">,</span>
+        <span class="nx">formatted</span><span class="p">:</span> <span class="nx">string</span>
+    <span class="p">},</span>
+    <span class="nx">currency</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">deliveryTime</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">deliveryCost</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nl">value</span><span class="p">:</span> <span class="nx">integer</span><span class="p">,</span>
+        <span class="nx">currency</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+        <span class="nx">formatted</span><span class="p">:</span> <span class="nx">string</span>
+    <span class="p">},</span>
+    <span class="nx">brand</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">categories</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">department</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+        <span class="na">section</span><span class="p">:</span> <span class="nx">string</span>
+    <span class="p">}],</span>
+    <span class="nx">categoriesValue</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">market</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">merchant</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">merchantName</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">accessRights</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+    <span class="nx">isInStock</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span>
+    <span class="nx">images</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="mi">250</span> <span class="na">x</span><span class="p">:</span> <span class="nx">URI</span><span class="p">,</span>
+            <span class="mi">450</span> <span class="na">x</span><span class="p">:</span> <span class="nx">URI</span><span class="p">,</span>
+            <span class="mi">960</span> <span class="na">x</span><span class="p">:</span> <span class="nx">URI</span><span class="p">,</span>
+            <span class="na">id</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+            <span class="na">original</span><span class="p">:</span> <span class="nx">URI</span><span class="p">,</span>
+            <span class="mi">50</span> <span class="na">x50</span><span class="p">:</span> <span class="nx">URI</span>
+        <span class="p">},</span>
+        <span class="p">{...}</span>
+    <span class="p">],</span>
+    <span class="nx">variants</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="na">id</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+            <span class="na">productId</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+            <span class="na">title</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+            <span class="na">description</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+            <span class="na">stockCount</span><span class="p">:</span> <span class="nx">integer</span><span class="p">,</span>
+            <span class="na">stockCountUnlimited</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span>
+            <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">key</span><span class="p">:</span> <span class="nx">string</span>
+            <span class="p">},</span>
+            <span class="na">attributesValue</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+            <span class="na">priceIncVat</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">value</span><span class="p">:</span> <span class="nx">integer</span><span class="p">,</span>
+                <span class="na">currency</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+                <span class="na">formatted</span><span class="p">:</span> <span class="nx">string</span>
+            <span class="p">},</span>
+            <span class="na">vat</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">value</span><span class="p">:</span> <span class="nx">integer</span><span class="p">,</span>
+                <span class="na">formatted</span><span class="p">:</span> <span class="nx">string</span>
+            <span class="p">},</span>
+            <span class="na">currency</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+            <span class="na">images</span><span class="p">:</span> <span class="p">[{</span>
+                <span class="mi">250</span> <span class="na">x</span><span class="p">:</span> <span class="nx">URI</span><span class="p">,</span>
+                <span class="mi">450</span> <span class="na">x</span><span class="p">:</span> <span class="nx">URI</span><span class="p">,</span>
+                <span class="mi">960</span> <span class="na">x</span><span class="p">:</span> <span class="nx">URI</span><span class="p">,</span>
+                <span class="na">id</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+                <span class="na">original</span><span class="p">:</span> <span class="nx">URI</span><span class="p">,</span>
+                <span class="mi">50</span> <span class="na">x50</span><span class="p">:</span> <span class="nx">URI</span>
+               <span class="p">},</span>
+               <span class="p">{...}</span>
+            <span class="p">],</span>
+            <span class="na">sku</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+            <span class="na">isInStock</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">,</span>
+            <span class="na">gtin</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">type</span><span class="p">:</span> <span class="s2">"Unknown"</span><span class="p">,</span>
+                <span class="na">value</span><span class="p">:</span> <span class="s2">"874034007676"</span>
+            <span class="p">},</span>
+            <span class="na">mpn</span><span class="p">:</span> <span class="s2">"80950086000"</span>
+        <span class="p">},</span>
+        <span class="p">{...}</span>
+    <span class="p">],</span>
+    <span class="nx">lastUpdateDate</span><span class="p">:</span> <span class="nx">date</span><span class="p">,</span>
+    <span class="nx">freeReturn</span><span class="p">:</span> <span class="kr">boolean</span>
+<span class="p">}</span>
+</code></pre>
+<p>All product related methods: <code>/v4/products</code></p>
+<h3 id='fetching-products-using-search'>Fetching products using search</h3>
+<p>Search over Tipser public product repository, with support for filtering by text, brands, prices with sorting and pagination.</p>
 
-<p>Due to the limitations of AMP format, AMP snippet is limited in functionality compared to Tipser Widget.</p>
+<p><code>GET https://t3-prod-api.tipser.com/v4/products</code></p>
 
-<p>Significant limitations:</p>
+<p>Query string parameters</p>
 
-<ul>
-<li>even if you need to display only one product, please create a Tipser collection with just one product</li>
-<li>there is no support for an interactive shopping cart icon</li>
-<li>the checkout process is finalized after a redirect to tipser.com page (no way to keep the user in the article)</li>
-</ul>
+<table><thead>
+<tr>
+<th>query</th>
+<th>string</th>
+<th>Search query</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>brands</td>
+<td>string</td>
+<td>Brand name</td>
+</tr>
+<tr>
+<td>merchants</td>
+<td>string</td>
+<td>Merchant name</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>integer</td>
+<td>Number of items to show</td>
+</tr>
+<tr>
+<td>skip</td>
+<td>integer</td>
+<td>Number or items to skip</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>name/-name/price/-price</td>
+<td></td>
+</tr>
+<tr>
+<td>priceFrom</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>priceTo</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>market</td>
+<td>string</td>
+<td>See above</td>
+</tr>
+</tbody></table>
 
-<p>But despite those limitations, the basic shopping experience is sustained, allowing AMP articles to generate income from E-commerce.  </p>
-<h2 id='how-to-use-it'>How to use it</h2><h3 id='step-1-include-the-necessary-amp-imports'>Step 1: include the necessary AMP imports</h3>
-<p>Add the following AMP imports to the <code>&lt;head&gt;</code> element of your page.</p>
-<pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">async</span> <span class="na">custom-element=</span><span class="s">"amp-list"</span> <span class="na">src=</span><span class="s">"https://cdn.ampproject.org/v0/amp-list-0.1.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">async</span> <span class="na">custom-template=</span><span class="s">"amp-mustache"</span> <span class="na">src=</span><span class="s">"https://cdn.ampproject.org/v0/amp-mustache-0.2.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">async</span> <span class="na">custom-element=</span><span class="s">"amp-iframe"</span> <span class="na">src=</span><span class="s">"https://cdn.ampproject.org/v0/amp-iframe-0.1.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">async</span> <span class="na">custom-element=</span><span class="s">"amp-bind"</span> <span class="na">src=</span><span class="s">"https://cdn.ampproject.org/v0/amp-bind-0.1.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre><h3 id='step-2-add-tipser-inline-styles'>Step 2: add Tipser inline styles</h3>
-<p>Add the following Tipser styles to the <code>&lt;head&gt;</code> element of your page.</p>
-<pre class="highlight plaintext"><code>&lt;style amp-custom&gt;*{box-sizing:border-box}.list{display:flex}.tipser-product-tile{cursor:pointer;float:left;max-width:250px;min-width:160px;position:relative;overflow:hidden;width:25%;padding:10px}.tipser-product-tile:hover .tipser-product-text{opacity:1;transform:translate(0,-3)}.tipser-tile-img-container{display:block;position:relative;background:#fff;height:250px;width:100%}amp-img.tipser-tile-img img{object-fit:contain}amp-img.tipser-tile-img-hover{transition:.7s;opacity:0}.tipser-product-tile:hover .tipser-tile-img-hover{opacity:1}.tipser-product-text{background:rgba(255,255,255,0.9);bottom:0;border-top:1px solid #ececec;color:black;margin-left:auto;margin-right:auto;min-height:140px;left:0;letter-spacing:.3px;opacity:0;position:absolute;right:0;text-align:center;transition:.7s;z-index:2}.tipser-tile-product-text,.tipser-tile-product-text[data-tipser-hide-text="slide"]{font-size:12px;padding:10px;text-align:center;transition:.5s}.tipser-tile-prod-brand{color:#afafaf;line-height:1.8em;text-transform:uppercase;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.tipser-tile-prod-name{line-height:1.8em;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.tipser-buy-button-small{background-color:#e91e63;border-radius:0;color:white;display:inline-block;font-size:12px;font-weight:700;line-height:1.8;margin:5px auto 0;padding:5px 30px;padding:10px 30px;position:relative;text-transform:uppercase;text-align:center;transition:.5s;width:auto}.tipser-tile-price{height:30px;overflow:hidden}.tipser-label-price-new{color:#cd5550;font-size:13.2px;font-weight:bold;white-space:nowrap}.tipser-label-price-new+.tipser-label-price-old{text-decoration:line-through}.tipser-label-price-save{color:#cd5550}.overlay{background:rgba(255,255,255,0.7);bottom:0;left:0;overflow:auto;position:fixed;right:0;top:0;z-index:10}.dialog{background-color:#fff;border:1px solid lightgray;bottom:5px;left:5px;position:fixed;right:5px;top:5px;z-index:1}.tipser-dialog{display:block;transition:opacity 2s ease;opacity:0;overflow:hidden;border:1px red solid;position:fixed;top:4%;left:5%;bottom:5%;right:5%}.tipser-dialog_closed{pointer-events:none;opacity:0;height:1px}.tipser-dialog_open{opacity:1;pointer-events:all}.close_button{cursor:pointer;float:right;padding:10px 15px;z-index:2}.list-overflow[overflow]{position:absolute;bottom:0;left:10px;background:lightgray;color:gray;font-size:12px;padding:6px 35px;width:130px}.tipser-product-text[data-tipser-hide-text="false"]{background-color:transparent;border:0;opacity:1;position:relative;width:100%}@media(max-width:900px){.tipser-product-tile{max-width:300px;width:calc((100% - 20px) / 3)}.tipser-product-text{background-color:transparent;border:0;opacity:1;position:relative;width:100%}.tipser-tile-product-text{padding:10px 0 0 0}.tipser-buy-button-small{width:100%}}@media(max-width:620px){.tipser-product-tile{max-width:250px;width:calc((100% - 20px) / 2)}}@media(max-width:360px){.tipser-product-tile{max-width:unset;width:calc(100% - 20px)}}&lt;/style&gt;
-</code></pre><h3 id='step-3-insert-product-collection-html-code-generated-by-tipser-bookmarklet'>Step 3: insert product collection HTML code generated by Tipser Bookmarklet</h3>
-<p>This step assumes that your are familiar with <a href="https://developers.tipser.com/tipser-tools">Tipser Bookmarklet</a>. Feel free to write to support@tipser.com to get a more personalized introduction.</p>
+<p>Example requests (try me):</p>
 
-<ol>
-<li>Log-in to Tipser Bookmarklet</li>
-<li>Click &quot;Insert collections&quot; button</li>
-<li>From the collections list, select the collection that you want to embed</li>
-<li>Click &quot;Insert collection&quot; button and in the dialog that opens tick &quot;Google AMP ready&quot; checkbox</li>
-<li>Copy the code from the dialog and paste it somewhere into the <code>body</code> section of your page</li>
-</ol>
+<p><a href="https://t3-prod-api.tipser.com/v4/products?query=vita+skor&amp;brands=Birkenstock">https://t3-prod-api.tipser.com/v4/products?query=vita+skor&amp;brands=Birkenstock</a></p>
+
+<p><a href="https://t3-prod-api.tipser.com/v4/products?limit=3">https://t3-prod-api.tipser.com/v4/products?limit=3</a></p>
+
+<p><a href="https://t3-prod-api.tipser.com/v4/products?limit=3&amp;skip=3">https://t3-prod-api.tipser.com/v4/products?limit=3&amp;skip=3</a></p>
+<h3 id='fetch-product-by-id'>Fetch product by id</h3>
+<p><code>GET https://t3-prod-api.tipser.com/v4/products/:productId(?pos=:posId)</code></p>
+
+<p>Query string parameters
+<strong>productId:</strong> string
+<strong>pos:</strong> string (optional) - posId needed to ie. show pos-specific discounts etc.</p>
+
+<p><a href="https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663">https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663</a></p>
+
+<p><a href="https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663?pos=54fdfcf378415516b41e88c8">https://t3-prod-api.tipser.com/v4/products/5889a1648aa0ce36b8cd5663?pos=54fdfcf378415516b41e88c8</a></p>
+<h2 id='essential-product-model-attribute'>Essential product model attribute</h2>
+<p><strong>id:</strong> used to reference for the product when adding to cart or getting to know more about it (ie. list of variants, similar products)</p>
+
+<p><strong>images:</strong> a list of image objects, keyed by the resolution (250,450,960) but also with an option to get the original size. Also, note underlined URI fragment (h_50,w_50), that you may modify to get the desired image size.</p>
+
+<p><strong>price:</strong> original price of an item</p>
+
+<p><strong>salesPrice:</strong> the price that we currently sell the item for. If it is equal to the price, it means that there&#39;s no any sale. If the price is lower, then it means the product is on a sale</p>
+
+<p><strong>available:</strong> if true, you should be able to add it to cart. else no</p>
+
+<p><strong>variants:</strong> all SKUs nested into the master product</p>
+
+<p><strong>attributes:</strong> what concrete product variant is that (color, size, sex etc)</p>
+<h2 id='category-names'>Category names</h2>
+<p>Get translated category names for a product
+To get the translated category names, used in the product model, you can use the API endpoint:</p>
+
+<p><code>GET https://t3-dev-api.tipser.com/v4/categories?market=se</code></p>
 
       </div>
       <div class="dark-box">
