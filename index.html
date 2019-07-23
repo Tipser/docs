@@ -427,7 +427,7 @@
 <p>If you&#39;re all set up, follow this three steps to install Tipser Elements on your site!</p>
 
 <hr>
-<h3 id='step-1-initial-setup-of-tipser-elements'><em>Step 1:</em> Initial setup of Tipser Elements</h3>
+<h3 id='installation'>Installation</h3>
 <p>To use Tipser Elements on your site, add following script on your pages. This is an entry point to Tipser Elements that exposes a global <code>tipser</code> object, that you will use later to initialize Elements and customize its behavior.</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.tipser.com/tipser-script/latest.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre>
@@ -436,20 +436,32 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 </aside>
 
 <hr>
-<h3 id='step-2-store-element'><em>Step 2:</em> <code>Store</code> element</h3>
+<h3 id='inserting-tipser-element'>Inserting Tipser Element</h3>
 <p>Insert below HTML on your page in the place where you want the <code>Store</code> element to be rendered. Typically, this can be a new blank subpage created in your CMS as the <code>Store</code> is best displayed in the full page mode.</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tipser_store"</span><span class="nt">&gt;&lt;/div&gt;</span>
 </code></pre>
 <aside class="notice">Tipser Elements works by scanning your HTML and replacing special tags into shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
 
 <hr>
-<h3 id='step-3-initialize-tipser-element'><em>Step 3:</em> Initialize Tipser Element</h3>
-<p>Finally, initialize Tipser Elements that has been injected in the first step. </p>
-<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">TipserElements</span> <span class="o">=</span> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">)</span>
+<h3 id='initialize-tipser-elements'>Initialize Tipser Elements</h3>
+<p>Finally, initialize Tipser Elements.</p>
+<pre class="highlight javascript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">)</span>
 </code></pre>
 <p>Make sure that the <code>posId</code> is replaced with the actual id. </p>
 
-<p>If everything was setup correctly, you should see an <code>Store</code> element with all your collections in the place where the tag <code>&lt;div id=&quot;tipser_store&quot;&gt;</code> was initially. </p>
+<p>Complete working example could look like:</p>
+<pre class="highlight html tab-html"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tipser_store"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.tipser.com/tipser-script/latest.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script&gt;</span>
+      <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'5075d7715c3d090a90585e87'</span><span class="p">)</span>
+    <span class="nt">&lt;/script&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+<p>If everything was setup correctly, you should see the <code>Store</code> element with all your collections in the place where the tag <code>&lt;div id=&quot;tipser_store&quot;&gt;</code> was initially. </p>
 
 <p><a href="images/tipser_elements_store.png"><img src="images/tipser_elements_store.png" alt="Tipser elements store" /></a></p>
 
@@ -457,7 +469,7 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 <p><a href="https://codepen.io/tipser-tech/pen/YMMKMp">Open this snippet on Code Pen</a></p>
 </blockquote>
 
-<aside class="success">Congratulations! You have successfully integrated and setup Tipser Elements on your side. Read below the full specification of Elements and their configurations.</aside>
+<aside class="success">Congratulations! You have successfully integrated and setup Tipser Elements on your site.</aside>
 
 <hr>
 <h2 id='configuration'>Configuration</h2>
@@ -465,8 +477,8 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 <pre class="highlight typescript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="nx">posId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">config</span><span class="p">?:</span> <span class="nx">TipserElementsConfig</span><span class="p">)</span>
 </code></pre>
 <ul>
-<li><code>posId</code> - <strong>required</strong> - unique POS identifier. Must be specified in order to show your personalized store, handle campaigns and commissions.</li>
-<li><code>config</code> - allows you to specify how Tisper Elements will look and behave on your website. Below section describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found in the <a href="#API-reference">API reference</a> section.</li>
+<li><code>posId</code> - <strong>required</strong> - unique POS identifier. Must be specified in order to show your personalized store, handle campaigns and commissions. If you are not sure where to get it from, contact your account manager. </li>
+<li><code>config</code> - allows you to specify how Tipser Elements will look and behave on your site. Below section describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the <a href="#api-reference">API reference</a> section.</li>
 </ul>
 
 <hr>
@@ -477,78 +489,6 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
   <span class="p">})</span>
 </code></pre>
 <p>It will affect all the localizable texts in the UI - buy buttons, store, shopping cart and checkout. It will not affect the currency in which the customer will pay for the product.</p>
-
-<hr>
-<h3 id='environment'>Environment</h3>
-<p>It is possible to use Tipser Elements in a sandbox environment (also known as <em>staging</em> or <em>test</em> environment) to be able to do test checkouts without charging actual money. The environment can be specified using the <code>env</code> configuration option.</p>
-<pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">env</span><span class="p">:</span> <span class="s1">'stage'</span>
-  <span class="p">})</span>
-</code></pre>
-<p>Supported values are <code>stage</code> and <code>prod</code>. This configuration option is optional, default env is <code>prod</code>, which means actual production environment.</p>
-
-<hr>
-<h3 id='event-handlers'>Event handlers</h3>
-<p>Event handlers can be passed as part of configuration. There is a number of event exposed by the Tipser Elements that can be listened to programatically, such as technical events, shopping behavior, errors and analytics. You may hook in your event listener into Tipser Elements via <code>eventsHandlers</code> option.</p>
-<pre class="highlight javascript"><code> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span> 
-    <span class="na">eventsHandlers</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">onAddToCart</span><span class="p">:</span> <span class="nx">payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hurray, you have added item to cart. '</span><span class="p">,</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">product</span><span class="p">);</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Your cart size is now. '</span><span class="p">,</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">cartSize</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
-</code></pre>
-<p>Whenever an event occurs, Tipser Elements will call your event listener, passing only one argument - <code>payload</code> - which will hold event data (different to each event type). Above example demonstrates how to listen to the add to cart event and log current cart size and newly added product. Currently supported handlers are:  <code>onAddToCart</code> and <code>onError</code>.</p>
-
-<hr>
-<h4 id='addtocart'>addToCart</h4><pre class="highlight plaintext"><code>onAddToCart: (cartSize: number, product: TipserProductModel)
-</code></pre>
-<ul>
-<li><code>cartSize</code>- property contains the cart size <strong>after a product has been added to the cart</strong> </li>
-<li><code>product</code> - is an object as well and representing the product which has been added to cart. The model of the <code>product</code> field is as follows.</li>
-</ul>
-
-<p><code>TipserProductModel</code> interface is as follows:</p>
-<pre class="highlight typescript"><code><span class="kr">interface</span> <span class="nx">TipserProductModel</span> <span class="p">{</span>
-    <span class="nl">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
-    <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
-    <span class="nl">description</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
-    <span class="nl">brand</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
-    <span class="nl">images</span><span class="p">:</span> <span class="kr">any</span><span class="p">[];</span>
-    <span class="nl">isInStock</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
-    <span class="nl">deliveryTime</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
-    <span class="nl">priceIncVat</span><span class="p">:</span> <span class="nx">PriceModel</span><span class="p">;</span>
-    <span class="nl">deliveryCost</span><span class="p">:</span> <span class="nx">PriceModel</span><span class="p">;</span>
-    <span class="nl">variants</span><span class="p">:</span> <span class="nx">TipserProductModel</span><span class="p">[];</span>
-    <span class="nl">discountPriceIncVat</span><span class="p">:</span> <span class="nx">PriceModel</span><span class="p">;</span>
-    <span class="nl">freeReturn</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre>
-<hr>
-<h4 id='error'>error</h4>
-<p>By default, in case of an unexpected error happening (connection issues or unhandled runtime exceptions), an error popup will appear. If you want to disable the deafult error messages, set <code>useDefaultErrorHandler</code> option to <code>false</code>, and listen to error messages via <code>onError</code> event handler.</p>
-<pre class="highlight javascript"><code> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span> 
-    <span class="na">useDefaultErrorHandler</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> 
-    <span class="na">eventsHandlers</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">onError</span><span class="p">:</span> <span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
-          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
-</code></pre>
-<p>The payload of <code>error</code> event is as follows:</p>
-
-<ul>
-<li><p><code>type</code>: <code>TipserElementError</code> object </p></li>
-<li><p><code>id</code>: string</p></li>
-<li><p><code>message</code>: error message</p></li>
-<li><p><code>stack</code>: typical error stack of js error</p></li>
-</ul>
-
-<p>The <code>onError</code> event handler is used with <code>useDefaultErrorHandler</code> config option. When that option is set to false (default to true) the error will not be shown on the screen.</p>
-
-<aside class="warning">This section requires simplification. It isn't clear how to use event handler with combination of this configuration</aside>
 
 <hr>
 <h2 id='store-element'><code>Store</code> Element</h2>
@@ -646,6 +586,78 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 </tbody></table>
 
 <p>In addition to the options described above all the configuration options supported by Tipser Elements library are supported.</p>
+
+<hr>
+<h3 id='environment'>Environment</h3>
+<p>It is possible to use Tipser Elements in a sandbox environment (also known as <em>staging</em> or <em>test</em> environment) to be able to do test checkouts without charging actual money. The environment can be specified using the <code>env</code> configuration option.</p>
+<pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">env</span><span class="p">:</span> <span class="s1">'stage'</span>
+  <span class="p">})</span>
+</code></pre>
+<p>Supported values are <code>stage</code> and <code>prod</code>. This configuration option is optional, default env is <code>prod</code>, which means actual production environment.</p>
+
+<hr>
+<h3 id='event-handlers'>Event handlers</h3>
+<p>Event handlers can be passed as part of configuration. There is a number of event exposed by the Tipser Elements that can be listened to programatically, such as technical events, shopping behavior, errors and analytics. You may hook in your event listener into Tipser Elements via <code>eventsHandlers</code> option.</p>
+<pre class="highlight javascript"><code> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span> 
+    <span class="na">eventsHandlers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">onAddToCart</span><span class="p">:</span> <span class="nx">payload</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hurray, you have added item to cart. '</span><span class="p">,</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">product</span><span class="p">);</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Your cart size is now. '</span><span class="p">,</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">cartSize</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+</code></pre>
+<p>Whenever an event occurs, Tipser Elements will call your event listener, passing only one argument - <code>payload</code> - which will hold event data (different to each event type). Above example demonstrates how to listen to the add to cart event and log current cart size and newly added product. Currently supported handlers are:  <code>onAddToCart</code> and <code>onError</code>.</p>
+
+<hr>
+<h4 id='addtocart'>addToCart</h4><pre class="highlight plaintext"><code>onAddToCart: (cartSize: number, product: TipserProductModel)
+</code></pre>
+<ul>
+<li><code>cartSize</code>- property contains the cart size <strong>after a product has been added to the cart</strong> </li>
+<li><code>product</code> - is an object as well and representing the product which has been added to cart. The model of the <code>product</code> field is as follows.</li>
+</ul>
+
+<p><code>TipserProductModel</code> interface is as follows:</p>
+<pre class="highlight typescript"><code><span class="kr">interface</span> <span class="nx">TipserProductModel</span> <span class="p">{</span>
+    <span class="nl">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">title</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">description</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">brand</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">images</span><span class="p">:</span> <span class="kr">any</span><span class="p">[];</span>
+    <span class="nl">isInStock</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="nl">deliveryTime</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="nl">priceIncVat</span><span class="p">:</span> <span class="nx">PriceModel</span><span class="p">;</span>
+    <span class="nl">deliveryCost</span><span class="p">:</span> <span class="nx">PriceModel</span><span class="p">;</span>
+    <span class="nl">variants</span><span class="p">:</span> <span class="nx">TipserProductModel</span><span class="p">[];</span>
+    <span class="nl">discountPriceIncVat</span><span class="p">:</span> <span class="nx">PriceModel</span><span class="p">;</span>
+    <span class="nl">freeReturn</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+<hr>
+<h4 id='error'>error</h4>
+<p>By default, in case of an unexpected error happening (connection issues or unhandled runtime exceptions), an error popup will appear. If you want to disable the deafult error messages, set <code>useDefaultErrorHandler</code> option to <code>false</code>, and listen to error messages via <code>onError</code> event handler.</p>
+<pre class="highlight javascript"><code> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span> 
+    <span class="na">useDefaultErrorHandler</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> 
+    <span class="na">eventsHandlers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">onError</span><span class="p">:</span> <span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+</code></pre>
+<p>The payload of <code>error</code> event is as follows:</p>
+
+<ul>
+<li><p><code>type</code>: <code>TipserElementError</code> object </p></li>
+<li><p><code>id</code>: string</p></li>
+<li><p><code>message</code>: error message</p></li>
+<li><p><code>stack</code>: typical error stack of js error</p></li>
+</ul>
+
+<p>The <code>onError</code> event handler is used with <code>useDefaultErrorHandler</code> config option. When that option is set to false (default to true) the error will not be shown on the screen.</p>
+
+<aside class="warning">This section requires simplification. It isn't clear how to use event handler with combination of this configuration</aside>
 <h2 id='starter-projects'>Starter projects</h2>
 <p>A working examples of page based on Tipser Widget can be found on <a href="https://tipser.github.io/tipser-widget-bootstrap/">Tipser Widget Bootstrap page</a>.</p>
 
@@ -976,7 +988,7 @@ Congratulations! Now Tipser is part of your website
 </aside>
 <h2 id='initialization'>Initialization</h2>
 <p>To initialize you need to create a tipser const.</p>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="nx">posId</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span> <span class="nx">options</span><span class="p">:</span> <span class="nx">object</span><span class="p">):</span> <span class="nx">TipserSDK</span><span class="p">;</span>
+<pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="nx">posId</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">options</span><span class="p">:</span> <span class="nx">TipserSdkConfig</span><span class="p">):</span> <span class="nx">TipserSDKInstance</span><span class="p">;</span>
 </code></pre>
 <p><em>Arguments:</em></p>
 
@@ -989,14 +1001,14 @@ Congratulations! Now Tipser is part of your website
 <p>Initialized Tipser SDK object that can be used to perform API calls further in this document.</p>
 
 <p><em>Example:</em></p>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"yellow"</span><span class="p">});</span>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"yellow"</span><span class="p">});</span>
 </code></pre>
 <p>The example connects Tipser SDK with Tipser shop and sets primary color to yellow.</p>
 <h2 id='customizing-tipser-environment'>Customizing Tipser Environment</h2>
 <blockquote>
 <p>Example:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">env</span><span class="p">:</span> <span class="s2">"stage"</span><span class="p">});</span>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">env</span><span class="p">:</span> <span class="s2">"stage"</span><span class="p">});</span>
 </code></pre>
 <p>By default, Tipser SDK connects to production Tipser environment. Yet if testing environment is preferred (e.g. in order to do test purchase), then it can be customized with env parameter in TipserSDK options, which accepts the following values:</p>
 
@@ -1011,16 +1023,16 @@ Congratulations! Now Tipser is part of your website
 <blockquote>
 <p>Complete example of dialog customizations:</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code>    <span class="kd">var</span> <span class="nx">tipserOptions</span> <span class="o">=</span> <span class="p">{</span>
-       <span class="na">modalUi</span><span class="p">:</span> <span class="p">{</span>
-          <span class="na">hideSearchIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-          <span class="na">hideFavouritesIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-          <span class="na">hideCartIcon</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-          <span class="na">hideMoreIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-          <span class="na">hideSimilarProducts</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-          <span class="na">useCustomCss</span><span class="p">:</span> <span class="kc">true</span>
-       <span class="p">}</span>
-        <span class="p">});</span>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipserOptions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">modalUi</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">hideSearchIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">hideFavouritesIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">hideCartIcon</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">hideMoreIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">hideSimilarProducts</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">useCustomCss</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 </code></pre><h3 id='hiding-icons-on-menu-bar'>Hiding icons on menu bar</h3>
 <p>The following parameters under modalUi can be used to selectively hide tipser icons on the dialog menu bar: </p>
 
