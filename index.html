@@ -280,19 +280,19 @@
             <a href="#tipser-react-elements" class="toc-h1 toc-link" data-title="Tipser React Elements">Tipser React Elements</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#see-it-live" class="toc-h2 toc-link" data-title="See it live!">See it live!</a>
+                    <a href="#live-demo" class="toc-h2 toc-link" data-title="Live demo">Live demo</a>
                   </li>
                   <li>
-                    <a href="#quick-start-with-npm-version" class="toc-h2 toc-link" data-title="Quick Start with NPM version">Quick Start with NPM version</a>
+                    <a href="#quick-start" class="toc-h2 toc-link" data-title="Quick Start">Quick Start</a>
                   </li>
                   <li>
-                    <a href="#quick-start-with-scripted-injectable-version" class="toc-h2 toc-link" data-title="Quick start with scripted injectable version">Quick start with scripted injectable version</a>
-                  </li>
-                  <li>
-                    <a href="#quick-react-example" class="toc-h2 toc-link" data-title="Quick React example">Quick React example</a>
+                    <a href="#api-reference" class="toc-h2 toc-link" data-title="API reference">API reference</a>
                   </li>
                   <li>
                     <a href="#customizing-tipser-elements-styles" class="toc-h2 toc-link" data-title="Customizing Tipser Elements Styles">Customizing Tipser Elements Styles</a>
+                  </li>
+                  <li>
+                    <a href="#quick-react-example" class="toc-h2 toc-link" data-title="Quick React example">Quick React example</a>
                   </li>
               </ul>
           </li>
@@ -687,62 +687,54 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 <p>It is possible to combine multiple invocations of <code>mountContent()</code> with zero or one invocations of <code>mountCart()</code> as presented in the code snippet. That will lead to multiple pieces of content
 AND a cart icon being displayed on the page.</p>
 <h1 id='tipser-react-elements'>Tipser React Elements</h1>
-<p>Tipser Elements is a React components library from Tipser enabling you to add shoppable content to your site with minimal effort.  You can add simple components like products with buy buttons, collections of products and articles, but also more complex grids or whole pages.</p>
+<p>Tipser React Elements is a component library from Tipser enabling you to add shoppable content to your React APP with minimal effort. You can add simple components like products with buy buttons, collections of products and articles, but also more complex grids or whole pages. </p>
 
-<p>The package allows you to use Tipser&#39;s product repository and create inline shops embedded into your page as well as the entire websites.</p>
-<h2 id='see-it-live'>See it live!</h2>
-<p>A working examples of page based on tipser-elements can be found on <a href="https://tipser.github.io/tipser-elements-react-bootstrap/">Tipser Elements Bootstrap page</a>.</p>
+<aside class="notice">
+Not using React? Or wanted to learn what Tipser Elements are generally? Go check <a href="#tipser-elements">Tipser Elements</a> docs. This section covers only <strong>React API</strong> for Elements. 
+</aside>
 
-<p>The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-elements-react-bootstrap">Tipser Elements Bootstrap project</a>. Feel free to checkout it and play with it on your local machine! </p>
-<h2 id='quick-start-with-npm-version'>Quick Start with NPM version</h2>
+<hr>
+<h3 id='live-demo'>Live demo</h3>
+<p>A working examples of page based on Tipser React Elements can be found on <a href="https://tipser.github.io/tipser-elements-react-bootstrap/">Tipser Elements Bootstrap page</a>.</p>
+
+<p>The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-elements-react-bootstrap">Tipser Elements Bootstrap project</a>. Feel free to checkout it and play with it on your local environment! </p>
+
+<hr>
+<h2 id='quick-start'>Quick Start</h2>
+<p>This quick guide explains how to intialize and render Tipser React Elements on your React app. It requires you to have a publisher account created in order to get the <code>posId</code>, as well as have some collections created in your shop. For a guide how to manage your collections, check the <strong>Tipser Tools</strong> tutorial.</p>
+
+<p>If you&#39;re all set up, follow this three steps to rock on your app with Tipser React Elements!</p>
+
+<hr>
+<h3 id='instalation'>Instalation</h3>
 <p>Add the library to your project:</p>
 
 <p><code>npm install --save @tipser/tipser-elements</code></p>
 
-<p>Follow the instructions in the Available Components section to add particular components to your app.</p>
-<h2 id='quick-start-with-scripted-injectable-version'>Quick start with scripted injectable version</h2>
-<p>There is a bundled, out-of-the-box solution to be placed on your website called Tipser Widget. For more information and instructions how to use it, please refer to <a href="#tipser-widget">Tipser Widget docs</a>.</p>
-
-<p>If you feel comfortable with React and need to address more advanced use cases, read further!</p>
-<h2 id='quick-react-example'>Quick React example</h2>
-<p>Create a React app using e.g. <a href="https://facebook.github.io/create-react-app/docs/getting-started">Create React App</a> (follow the instructions on their page). </p>
-
-<p><code>npx create-react-app my-tipser-elements-app</code></p>
-
-<p><code>cd my-tipser-elements-app</code></p>
-
-<p>Add Tipser Elements to the project with npm: </p>
-
-<p><code>npm install @tipser/tipser-elements</code></p>
-
-<p>Put your Elements code (e.g. copy the example below) in src/index.js file.</p>
-
-<p>Start the application</p>
-
-<p><code>npm start</code></p>
-<h3 id='example-inserting-elements-in-your-site'>Example inserting elements in your site</h3>
-<p>You can combine Tipser Elements with your own application:</p>
+<hr>
+<h3 id='import-tipser-react-elements'>Import Tipser React Elements</h3>
+<p>You can combine Tipser Elements with your own application.</p>
 <pre class="highlight jsx tab-jsx"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
 <span class="kr">import</span> <span class="nx">ReactDOM</span> <span class="nx">from</span> <span class="s1">'react-dom'</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">TipserElement</span><span class="p">,</span> <span class="nx">TipserProduct</span><span class="p">,</span> <span class="nx">CartIcon</span><span class="p">,</span> <span class="nx">TipserElementsProvider</span><span class="p">,</span> <span class="nx">ShopComponent</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@tipser/tipser-elements'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Product</span><span class="p">,</span> <span class="nx">Cart</span><span class="p">,</span> <span class="nx">Store</span><span class="p">,</span> <span class="nx">TipserElementsProvider</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@tipser/tipser-elements'</span><span class="p">;</span>
 
-<span class="kr">const</span> <span class="nx">tipserElementsConfig</span> <span class="o">=</span> <span class="p">{</span>
+<span class="c1">// simple configuration</span>
+<span class="kr">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
     <span class="na">primaryColor</span><span class="p">:</span> <span class="s1">'blue'</span><span class="p">,</span>    
 <span class="p">};</span>
 
 <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
-    <span class="p">&lt;</span><span class="nc">TipserElementsProvider</span> <span class="na">posId=</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span> <span class="na">config=</span><span class="si">{</span><span class="nx">tipserElementsConfig</span><span class="si">}</span><span class="p">&gt;</span>   
+    <span class="p">&lt;</span><span class="nc">TipserElementsProvider</span> <span class="na">posId=</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span> <span class="na">config=</span><span class="si">{</span><span class="nx">config</span><span class="si">}</span><span class="p">&gt;</span>   
         <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Nav Element<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nc">CartIcon</span><span class="p">/&gt;</span>
+                Welcome to my store! 
+                <span class="p">&lt;</span><span class="nc">Cart</span> <span class="p">/&gt;</span>
             <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
         <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nc">TipserElement</span>  <span class="na">id=</span><span class="s2">"1larHZb8TeMQiqmi4W8CIS"</span> <span class="p">/&gt;</span>
-            <span class="p">&lt;</span><span class="nc">TipserProduct</span> <span class="na">productId=</span><span class="s2">"5ba2334a781baa0001ccdffc"</span><span class="p">/&gt;</span>
-            <span class="p">&lt;</span><span class="nc">ShopComponent</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Product</span> <span class="na">productId=</span><span class="s2">"5ba2334a781baa0001ccdffc"</span><span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nc">Store</span> <span class="p">/&gt;</span>
         <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>This is the footer<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
@@ -750,10 +742,12 @@ AND a cart icon being displayed on the page.</p>
     <span class="p">&lt;/</span><span class="nc">TipserElementsProvider</span><span class="p">&gt;,</span> 
     <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">));</span>
 </code></pre>
-<blockquote>
-<p>&quot;root&quot; is the id of the HTML element where the Tipser element goes</p>
-</blockquote>
-<h4 id='tipserelementsprovider'><code>TipserElementsProvider</code></h4>
+<p>Make sure your HTML document contains an element of id <code>root</code> (<code>&lt;div id=&quot;root&quot;/&gt;</code>) so that React can mount the app to your HTML document.</p>
+
+<aside class="success">Great job! You're all set up with React Elements. For the reference of all Tipser Reac Elements, check below section.</aside>
+
+<hr>
+<h2 id='api-reference'>API reference</h2><h3 id='tipserelementsprovider'><code>TipserElementsProvider</code></h3>
 <p>Entry point to Tipser Elements (creating a context for other Elements);</p>
 
 <table><thead>
@@ -782,10 +776,12 @@ AND a cart icon being displayed on the page.</p>
 </tbody></table>
 <h4 id='tipserelement'><code>TipserElement</code></h4>
 <p>Generic Element that can render any Contentful content that&#39;s fed as a prop to the element.</p>
-<h4 id='tipserproduct'><code>TipserProduct</code></h4>
+<h4 id='product'><code>Product</code></h4>
 <p>Element that renders the product given the Tipser product ID as the prop.</p>
-<h4 id='carticon'><code>CartIcon</code></h4>
+<h4 id='cart'><code>Cart</code></h4>
 <p>Element that displays the number of items in your cart and gives the user a way to open the checkout dialog.</p>
+<h4 id='store'><code>Store</code></h4>
+<p>Element that displays the store consisting of all your collections.</p>
 <h3 id='all-configuration-options-of-tipser-elements'>All configuration options of Tipser Elements</h3>
 <p>Configuration is an object, which should be inserted into <code>TipserElementsProvider</code> as <code>config</code> prop.</p>
 
@@ -896,7 +892,7 @@ AND a cart icon being displayed on the page.</p>
 <code>Menu</code><br>
 <code>Page</code><br>
 <code>Product</code><br></p>
-<h3 id='store'>Store</h3>
+<h3 id='store-2'>Store</h3>
 <p>Store component is a HTML widget displaying a list of all Tipser public collections for the POS.   </p>
 
 <p>It can be used with <code>Store</code> react component.</p>
@@ -925,7 +921,7 @@ and:<br/>
 <code>.te-product-card-sales-price</code><br/>
 <code>.te-product-card-price-regular-price</code><br/>
 for products on sale.</p>
-<h3 id='cart'>Cart</h3><pre class="highlight css tab-css"><code><span class="nc">.cart-icon</span> <span class="p">{</span>
+<h3 id='cart-2'>Cart</h3><pre class="highlight css tab-css"><code><span class="nc">.cart-icon</span> <span class="p">{</span>
     <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
     <span class="nl">right</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
     <span class="nl">top</span><span class="p">:</span> <span class="m">121px</span><span class="p">;</span>
@@ -956,6 +952,22 @@ for products on sale.</p>
 If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.</p>
 
 <p>If you&#39;d like to change other elements&#39; color as well, please use our specific classes to override the styles.</p>
+<h2 id='quick-react-example'>Quick React example</h2>
+<p>Create a React app using e.g. <a href="https://facebook.github.io/create-react-app/docs/getting-started">Create React App</a> (follow the instructions on their page). </p>
+
+<p><code>npx create-react-app my-tipser-elements-app</code></p>
+
+<p><code>cd my-tipser-elements-app</code></p>
+
+<p>Add Tipser Elements to the project with npm: </p>
+
+<p><code>npm install @tipser/tipser-elements</code></p>
+
+<p>Put your Elements code (e.g. copy the example below) in src/index.js file.</p>
+
+<p>Start the application</p>
+
+<p><code>npm start</code></p>
 <h1 id='tipser-sdk'>Tipser SDK</h1>
 <p>Tipser SDK is a modular version of the Tipser script that provides only the core functionality necessary for integration with Tipser, specifically built for customers who have their own development resources and plan to build their shopping experience on their own.</p>
 <h2 id='installation'>Installation</h2><h3 id='using-npm-or-yarn'>Using npm or yarn</h3>
