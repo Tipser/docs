@@ -286,13 +286,10 @@
                     <a href="#quick-start" class="toc-h2 toc-link" data-title="Quick Start">Quick Start</a>
                   </li>
                   <li>
-                    <a href="#api-reference" class="toc-h2 toc-link" data-title="API reference">API reference</a>
+                    <a href="#api-reference-of-tipser-react-elements" class="toc-h2 toc-link" data-title="API reference of Tipser React Elements">API reference of Tipser React Elements</a>
                   </li>
                   <li>
                     <a href="#customizing-tipser-elements-styles" class="toc-h2 toc-link" data-title="Customizing Tipser Elements Styles">Customizing Tipser Elements Styles</a>
-                  </li>
-                  <li>
-                    <a href="#quick-react-example" class="toc-h2 toc-link" data-title="Quick React example">Quick React example</a>
                   </li>
               </ul>
           </li>
@@ -305,11 +302,22 @@
                   <li>
                     <a href="#initialization" class="toc-h2 toc-link" data-title="Initialization">Initialization</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#configuration-options" class="toc-h1 toc-link" data-title="Configuration options">Configuration options</a>
+              <ul class="toc-list-h2">
                   <li>
-                    <a href="#customizing-tipser-environment" class="toc-h2 toc-link" data-title="Customizing Tipser Environment">Customizing Tipser Environment</a>
+                    <a href="#environment" class="toc-h2 toc-link" data-title="Environment">Environment</a>
+                  </li>
+                  <li>
+                    <a href="#language-and-locale" class="toc-h2 toc-link" data-title="Language and locale">Language and locale</a>
                   </li>
                   <li>
                     <a href="#parameters-for-dialog-customization" class="toc-h2 toc-link" data-title="Parameters for dialog customization">Parameters for dialog customization</a>
+                  </li>
+                  <li>
+                    <a href="#deep-linking" class="toc-h2 toc-link" data-title="Deep linking">Deep linking</a>
                   </li>
               </ul>
           </li>
@@ -406,8 +414,6 @@
 <aside class="notice">This document is a technical reference of Tipser Elements and SDK. It requires some technical knowledge. For conceptual and business resources, head out to our official <a href="https://www.tipser.com/tipser-elements">Publisher's Guide</a>.</aside>
 
 <aside class="warning">This document refers to the Tipser Elements, which is meant to deprecate and eventually replace existing Tipser Widget. You may still access the <a href="https://developers.tipser.com/tipser-script">documentation for old Tipser Widget</a>, but we recommend integrating with Tipser Elements from start and migrating to Tipser Elements for existing Tipser Widget. Migration guide to be described soon!</aside>
-
-<hr>
 <h1 id='tipser-elements'>Tipser Elements</h1>
 <p>Tipser Elements is a set of shoppable elements built on top of Tipser REST API and Tipser SDK:</p>
 
@@ -427,8 +433,8 @@
 <p>If you&#39;re all set up, follow this three steps to install Tipser Elements on your site!</p>
 
 <hr>
-<h3 id='installation'>Installation</h3>
-<p>To use Tipser Elements on your site, add following script on your pages. This is an entry point to Tipser Elements that exposes a global <code>tipser</code> object, that you will use later to initialize Elements and customize its behavior.</p>
+<h3 id='installation-of-tipser-elements'>Installation of Tipser Elements</h3>
+<p>To use Tipser Elements on your site, add following script to your page. This is an entry point to Tipser Elements that exposes a global <code>tipser</code> object, that you will use later to initialize Elements and customize its behavior.</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.tipser.com/tipser-script/latest.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre>
 <aside class="notice">
@@ -440,14 +446,14 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 <p>Insert below HTML on your page in the place where you want the <code>Store</code> element to be rendered. Typically, this can be a new blank subpage created in your CMS as the <code>Store</code> is best displayed in the full page mode.</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tipser_store"</span><span class="nt">&gt;&lt;/div&gt;</span>
 </code></pre>
-<aside class="notice">Tipser Elements works by scanning your HTML and replacing special tags into shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
+<aside class="notice">Tipser Elements works by scanning your HTML and replacing special tags with shoppable elements - even if these special tags are added dynamically, thanks to the usage of <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver API</a>.</aside>
 
 <hr>
 <h3 id='initialize-tipser-elements'>Initialize Tipser Elements</h3>
 <p>Finally, initialize Tipser Elements.</p>
 <pre class="highlight javascript"><code><span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">)</span>
 </code></pre>
-<p>Make sure that the <code>posId</code> is replaced with the actual id. </p>
+<p>Make sure that the <code>posId</code> is replaced with the actual id corresponding to your account. </p>
 
 <p>Complete working example could look like:</p>
 <pre class="highlight html tab-html"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -461,7 +467,7 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre>
-<p>If everything was setup correctly, you should see the <code>Store</code> element with all your collections in the place where the tag <code>&lt;div id=&quot;tipser_store&quot;&gt;</code> was initially. </p>
+<p>If everything was setup correctly, you should see the <code>Store</code> element populated with all your collections in place of <code>&lt;div id=&quot;tipser_store&quot;&gt;</code>. </p>
 
 <p><a href="images/tipser_elements_store.png"><img src="images/tipser_elements_store.png" alt="Tipser elements store" /></a></p>
 
@@ -478,21 +484,12 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 </code></pre>
 <ul>
 <li><code>posId</code> - <strong>required</strong> - unique POS identifier. Must be specified in order to show your personalized store, handle campaigns and commissions. If you are not sure where to get it from, contact your account manager. </li>
-<li><code>config</code> - allows you to specify how Tipser Elements will look and behave on your site. Below section describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the <a href="#api-reference">API reference</a> section.</li>
+<li><code>config</code> - allows you to specify how Tipser Elements will look and behave on your site. See the <a href="#configuration-options">customization</a> section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the <a href="#api-reference">API reference</a> section.</li>
 </ul>
 
 <hr>
-<h3 id='language-and-locale'>Language and locale</h3>
-<p><code>lang</code> configuration option specifies the language to be used. Supported languages are currently: <code>en</code>, <code>de</code>, <code>fr</code> and <code>sv</code>.</p>
-<pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span>
-  <span class="p">})</span>
-</code></pre>
-<p>It will affect all the localizable texts in the UI - buy buttons, store, shopping cart and checkout. It will not affect the currency in which the customer will pay for the product.</p>
-
-<hr>
 <h2 id='store-element'><code>Store</code> Element</h2>
-<p>Store is the simplest to use yet, the most complete Element you can insert on your website. It requires collections to be created in your store, otherwise no content will be rendered. </p>
+<p>Before you insert Store on your page, make sure there is at least one collection created in your store, otherwise no content will be rendered if your shop is empty.</p>
 
 <p>Insert below HTML on your page in the place where you want the <code>Store</code> element to be rendered.</p>
 <pre class="highlight html tab-html"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"tipser_store"</span><span class="nt">&gt;&lt;/div&gt;</span>
@@ -550,13 +547,13 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 <tr>
 <td>lang</td>
 <td><code>&#39;en&#39;</code></td>
-<td>a locale to be used by the Tipser content. Possible values: <code>&#39;en&#39;</code>, <code>&#39;de&#39;</code>, <code>&#39;fr&#39;</code> and <code>&#39;sv&#39;</code>.</td>
+<td>a locale to be used by the Tipser content. Possible values: <code>&#39;en&#39;</code>, <code>&#39;de&#39;</code>, <code>&#39;fr&#39;</code> and <code>&#39;sv&#39;</code>. More info at <a href="#language-and-locale">Language and locale</a><a href="#environment">Environment</a></td>
 <td><code>&#39;de&#39;</code></td>
 </tr>
 <tr>
 <td>env</td>
 <td><code>&#39;prod&#39;</code></td>
-<td>Tipser environment to be used by the Tipser content. Possible values: <code>&#39;stage&#39;</code> and <code>&#39;prod&#39;</code>.</td>
+<td>Tipser environment to be used by the Tipser content. Possible values: <code>&#39;stage&#39;</code> and <code>&#39;prod&#39;</code>. More info at <a href="#environment">Environment</a></td>
 <td><code>&#39;stage&#39;</code></td>
 </tr>
 <tr>
@@ -575,26 +572,29 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 <td>useDefaultErrorHandler</td>
 <td><code>true</code></td>
 <td>when set to false and error happens, default message won&#39;t be displayed</td>
-<td>see <a href="#adding-event-handlers">Adding event handlers</a></td>
+<td>see <a href="#onerror">Adding onError handler</a></td>
 </tr>
 <tr>
 <td>eventsHandlers</td>
+<td><code>{}</code></td>
+<td>the object of event handlers. See <a href="#event-handlers">Event handlers</a></td>
 <td><code>object</code></td>
-<td><code>null</code></td>
-<td>the object of event handlers</td>
+</tr>
+<tr>
+<td>useDeepLinking</td>
+<td><code>true</code></td>
+<td>Makes Shop element to use hash navigation when switching between categories. More info at <a href="#use-deep-linking">Use Deep Linking</a>:</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>modalUi</td>
+<td><code>{}</code></td>
+<td>Customization of Tipser Dialog. More info at <a href="#parameters-for-dialog-customization">Parameters for dialog customization</a></td>
+<td><code>{ hideSearchIcon : true}</code></td>
 </tr>
 </tbody></table>
 
 <p>In addition to the options described above all the configuration options supported by Tipser Elements library are supported.</p>
-
-<hr>
-<h3 id='environment'>Environment</h3>
-<p>It is possible to use Tipser Elements in a sandbox environment (also known as <em>staging</em> or <em>test</em> environment) to be able to do test checkouts without charging actual money. The environment can be specified using the <code>env</code> configuration option.</p>
-<pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">env</span><span class="p">:</span> <span class="s1">'stage'</span>
-  <span class="p">})</span>
-</code></pre>
-<p>Supported values are <code>stage</code> and <code>prod</code>. This configuration option is optional, default env is <code>prod</code>, which means actual production environment.</p>
 
 <hr>
 <h3 id='event-handlers'>Event handlers</h3>
@@ -611,7 +611,7 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 <p>Whenever an event occurs, Tipser Elements will call your event listener, passing only one argument - <code>payload</code> - which will hold event data (different to each event type). Above example demonstrates how to listen to the add to cart event and log current cart size and newly added product. Currently supported handlers are:  <code>onAddToCart</code> and <code>onError</code>.</p>
 
 <hr>
-<h4 id='addtocart'>addToCart</h4><pre class="highlight plaintext"><code>onAddToCart: (cartSize: number, product: TipserProductModel)
+<h4 id='onaddtocart'>onAddToCart</h4><pre class="highlight plaintext"><code>onAddToCart: (cartSize: number, product: TipserProductModel)
 </code></pre>
 <ul>
 <li><code>cartSize</code>- property contains the cart size <strong>after a product has been added to the cart</strong> </li>
@@ -635,7 +635,7 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 <span class="p">}</span>
 </code></pre>
 <hr>
-<h4 id='error'>error</h4>
+<h4 id='onerror'>onError</h4>
 <p>By default, in case of an unexpected error happening (connection issues or unhandled runtime exceptions), an error popup will appear. If you want to disable the deafult error messages, set <code>useDefaultErrorHandler</code> option to <code>false</code>, and listen to error messages via <code>onError</code> event handler.</p>
 <pre class="highlight javascript"><code> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span> 
     <span class="na">useDefaultErrorHandler</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> 
@@ -690,7 +690,7 @@ AND a cart icon being displayed on the page.</p>
 <p>Tipser React Elements is a component library from Tipser enabling you to add shoppable content to your React APP with minimal effort. You can add simple components like products with buy buttons, collections of products and articles, but also more complex grids or whole pages. </p>
 
 <aside class="notice">
-Not using React? Or wanted to learn what Tipser Elements are generally? Go check <a href="#tipser-elements">Tipser Elements</a> docs. This section covers only <strong>React API</strong> for Elements. 
+Not using React? Looking for an overview on Tipser Elements? Go check <a href="#tipser-elements">Tipser Elements</a> docs. This section covers only <strong>React API</strong> for Elements. 
 </aside>
 
 <hr>
@@ -742,12 +742,12 @@ Not using React? Or wanted to learn what Tipser Elements are generally? Go check
     <span class="p">&lt;/</span><span class="nc">TipserElementsProvider</span><span class="p">&gt;,</span> 
     <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">));</span>
 </code></pre>
-<p>Make sure your HTML document contains an element of id <code>root</code> (<code>&lt;div id=&quot;root&quot;/&gt;</code>) so that React can mount the app to your HTML document.</p>
+<p>Make sure your HTML document contains an element of id <code>root</code> (<code>&lt;div id=&quot;root&quot;/&gt;</code>) so that React can mount the app to your HTML document. Also check our <a href="#configuration-options">configuration</a> options.</p>
 
-<aside class="success">Great job! You're all set up with React Elements. For the reference of all Tipser Reac Elements, check below section.</aside>
+<aside class="success">Great job! You're all set up with React Elements. For the reference of all Tipser React Elements, check below section.</aside>
 
 <hr>
-<h2 id='api-reference'>API reference</h2><h3 id='tipserelementsprovider'><code>TipserElementsProvider</code></h3>
+<h2 id='api-reference-of-tipser-react-elements'>API reference of Tipser React Elements</h2><h3 id='tipserelementsprovider'><code>TipserElementsProvider</code></h3>
 <p>Entry point to Tipser Elements (creating a context for other Elements);</p>
 
 <table><thead>
@@ -782,36 +782,60 @@ Not using React? Or wanted to learn what Tipser Elements are generally? Go check
 <p>Element that displays the number of items in your cart and gives the user a way to open the checkout dialog.</p>
 <h4 id='store'><code>Store</code></h4>
 <p>Element that displays the store consisting of all your collections.</p>
-<h3 id='all-configuration-options-of-tipser-elements'>All configuration options of Tipser Elements</h3>
+<h3 id='all-configuration-options-of-tipser-react-elements'>All configuration options of Tipser React Elements</h3>
 <p>Configuration is an object, which should be inserted into <code>TipserElementsProvider</code> as <code>config</code> prop.</p>
 
 <p>All properties are optional:</p>
 
 <table><thead>
 <tr>
-<th>property name</th>
-<th>description</th>
-<th>type</th>
-<th>default value</th>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+<th>Example</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>defaultAddedToCartPopup</code></td>
-<td>controls whether default Added To Cart Popup is displayed</td>
-<td>boolean</td>
-<td>true</td>
+<td>lang</td>
+<td><code>&#39;en&#39;</code></td>
+<td>a locale to be used by the Tipser content. Possible values: <code>&#39;en&#39;</code>, <code>&#39;de&#39;</code>, <code>&#39;fr&#39;</code> and <code>&#39;sv&#39;</code>. More info at <a href="#language-and-locale">Language and locale</a><a href="#environment">Environment</a></td>
+<td><code>&#39;de&#39;</code></td>
 </tr>
 <tr>
-<td><code>eventsHandlers</code></td>
-<td>gives possibility to add handlers to Tipser Elements events</td>
-<td>object</td>
-<td>{}</td>
+<td>env</td>
+<td><code>&#39;prod&#39;</code></td>
+<td>Tipser environment to be used by the Tipser content. Possible values: <code>&#39;stage&#39;</code> and <code>&#39;prod&#39;</code>. More info at <a href="#environment">Environment</a></td>
+<td><code>&#39;stage&#39;</code></td>
 </tr>
 <tr>
-<td><code>useDefaultErrorHandler</code></td>
+<td>defaultAddedToCartPopup</td>
+<td><code>true</code></td>
+<td>Controls default Added To Cart Popup. It appears when user adds a product to the cart. It improves UX by highlighting the action and allowing to navigate quickly to the cart modal window.</td>
+<td><code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td>useDefaultErrorHandler</td>
+<td><code>true</code></td>
 <td>when set to false and error happens, default message won&#39;t be displayed</td>
-<td>boolean</td>
-<td>true</td>
+<td>see <a href="#onerror">Adding onError handler</a></td>
+</tr>
+<tr>
+<td>eventsHandlers</td>
+<td><code>{}</code></td>
+<td>the object of event handlers. See <a href="#event-handlers">Event handlers</a></td>
+<td><code>object</code></td>
+</tr>
+<tr>
+<td>useDeepLinking</td>
+<td><code>true</code></td>
+<td>Makes Shop element to use hash navigation when switching between categories. More info at <a href="#use-deep-linking">Use Deep Linking</a>:</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>modalUi</td>
+<td><code>{}</code></td>
+<td>Customization of Tipser Dialog. More info at <a href="#parameters-for-dialog-customization">Parameters for dialog customization</a></td>
+<td><code>{ hideSearchIcon : true}</code></td>
 </tr>
 </tbody></table>
 <h3 id='event-handlers'>Event Handlers</h3><pre class="highlight javascript"><code>
@@ -863,8 +887,6 @@ Not using React? Or wanted to learn what Tipser Elements are generally? Go check
 <span class="p">}</span>
 </code></pre>
 <p>Param of <code>onError</code> handlers</p>
-
-<p><br><br><br><br></p>
 <h3 id='tipser-product-model-interface'>Tipser Product Model interface</h3><pre class="highlight javascript"><code><span class="kr">export</span> <span class="kr">interface</span> <span class="nx">TipserProductModel</span> <span class="p">{</span>
     <span class="nl">id</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
     <span class="nl">title</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
@@ -880,8 +902,7 @@ Not using React? Or wanted to learn what Tipser Elements are generally? Go check
     <span class="nl">freeReturn</span><span class="p">:</span> <span class="kr">boolean</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre>
-<p>When onAddToCart is being dispatched the handlers are triggered with object with cart size of type string and product of type TipserProductModel.
-<br><br><br><br><br><br><br><br><br><br><br><br></p>
+<p>When onAddToCart is being dispatched the handlers are triggered with object with cart size of type string and product of type TipserProductModel.</p>
 <h3 id='content-components'>Content components</h3>
 <p>Content components are the building blocks of Tipser Elements. Any components need to be a descendant of <strong>TipserElementsProvider</strong> component. Container components such as <strong>Grid</strong> may contain other components. </p>
 
@@ -906,12 +927,12 @@ Not using React? Or wanted to learn what Tipser Elements are generally? Go check
 For the same reason, it&#39;s not recommended to include more than one <code>&lt;Store /&gt;</code> on a single page. </p>
 <h2 id='customizing-tipser-elements-styles'>Customizing Tipser Elements Styles</h2>
 <p>Tipser Elements are the &quot;building blocks&quot; designed to fit your page as much as possible. We created the styling in a way that delivers a nice look &amp; feel from the start, but also allows you to change them easily to fit your unique sense of style. </p>
-<h3 id='product-card'>Product Card</h3><pre class="highlight css tab-css"><code><span class="nc">.te-product-card</span> <span class="p">{</span>
+<h3 id='product-card'>Product Card</h3>
+<p>The Product Card is an item used for displaying single <code>Collection</code> or <code>Store</code> component, among others. The font-family used in the description section of the Product Card is inherited from your website&#39;s styles, and the font-size is expressed in the relative <code>em</code> units controlled in <code>.te-product-card</code> class. The default value used there is <code>12px</code>, which you can easily change by adding to your CSS the following style:</p>
+<pre class="highlight css tab-css"><code><span class="nc">.te-product-card</span> <span class="p">{</span>
     <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre>
-<p>The Product Card is an item used for displaying single <code>Collection</code> or <code>Store</code> component, among others. The font-family used in the description section of the Product Card is inherited from your website&#39;s styles, and the font-size is expressed in the relative <code>em</code> units controlled in <code>.te-product-card</code> class. The default value used there is <code>12px</code>, which you can easily change by adding to your CSS the following style:</p>
-
 <p>All the description elements (product name, brand and price) will become bigger / smaller according to the value you specify in the <code>px</code> unit. If you wish to change single description element, please use its specific class names: </p>
 
 <p><code>.te-product-card-name</code> <br/>
@@ -921,7 +942,9 @@ and:<br/>
 <code>.te-product-card-sales-price</code><br/>
 <code>.te-product-card-price-regular-price</code><br/>
 for products on sale.</p>
-<h3 id='cart-2'>Cart</h3><pre class="highlight css tab-css"><code><span class="nc">.cart-icon</span> <span class="p">{</span>
+<h3 id='cart-2'>Cart</h3>
+<p>The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:</p>
+<pre class="highlight css tab-css"><code><span class="nc">.cart-icon</span> <span class="p">{</span>
     <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
     <span class="nl">right</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
     <span class="nl">top</span><span class="p">:</span> <span class="m">121px</span><span class="p">;</span>
@@ -930,10 +953,11 @@ for products on sale.</p>
     <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">-2px</span> <span class="m">2px</span> <span class="m">7px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.3</span><span class="p">);</span>
     <span class="nl">z-index</span><span class="p">:</span> <span class="m">10</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre>
-<p>The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:
-<br><br><br><br><br></p>
-<h3 id='primary-color'>Primary color</h3><pre class="highlight css tab-css"><code><span class="nc">.te-primary-fill</span> <span class="p">{</span>
+</code></pre><h3 id='primary-color'>Primary color</h3>
+<p>If you&#39;d like to unify our design with your own color-theme, you can use our primary-color theme to change the color of <code>add-to-cart</code> buttons in Product and indicator of items number in Cart. These elements on the page will be altered with one small change in your CSS:
+<a href="images/primary-color.png"><img src="images/primary-color.png" alt="Primary color" /></a>
+If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.</p>
+<pre class="highlight css tab-css"><code><span class="nc">.te-primary-fill</span> <span class="p">{</span>
     <span class="nl">background-color</span><span class="p">:</span> <span class="m">#5F9F9F</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -947,27 +971,7 @@ for products on sale.</p>
     <span class="nl">color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre>
-<p>If you&#39;d like to unify our design with your own color-theme, you can use our primary-color theme to change the color of <code>add-to-cart</code> buttons in Product and indicator of items number in Cart. These elements on the page will be altered with one small change in your CSS:
-<a href="images/primary-color.png"><img src="images/primary-color.png" alt="Primary color" /></a>
-If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.</p>
-
 <p>If you&#39;d like to change other elements&#39; color as well, please use our specific classes to override the styles.</p>
-<h2 id='quick-react-example'>Quick React example</h2>
-<p>Create a React app using e.g. <a href="https://facebook.github.io/create-react-app/docs/getting-started">Create React App</a> (follow the instructions on their page). </p>
-
-<p><code>npx create-react-app my-tipser-elements-app</code></p>
-
-<p><code>cd my-tipser-elements-app</code></p>
-
-<p>Add Tipser Elements to the project with npm: </p>
-
-<p><code>npm install @tipser/tipser-elements</code></p>
-
-<p>Put your Elements code (e.g. copy the example below) in src/index.js file.</p>
-
-<p>Start the application</p>
-
-<p><code>npm start</code></p>
 <h1 id='tipser-sdk'>Tipser SDK</h1>
 <p>Tipser SDK is a modular version of the Tipser script that provides only the core functionality necessary for integration with Tipser, specifically built for customers who have their own development resources and plan to build their shopping experience on their own.</p>
 <h2 id='installation'>Installation</h2><h3 id='using-npm-or-yarn'>Using npm or yarn</h3>
@@ -1016,19 +1020,56 @@ Congratulations! Now Tipser is part of your website
 <pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"yellow"</span><span class="p">});</span>
 </code></pre>
 <p>The example connects Tipser SDK with Tipser shop and sets primary color to yellow.</p>
-<h2 id='customizing-tipser-environment'>Customizing Tipser Environment</h2>
-<blockquote>
-<p>Example:</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">env</span><span class="p">:</span> <span class="s2">"stage"</span><span class="p">});</span>
+
+<p>For configuration options see <a href="#configuration-options">configuration</a> chapter of our documentation.</p>
+<h1 id='configuration-options'>Configuration options</h1>
+<p>Both Tipser Elements and Tipser SDK initialization functions accept configuration object as a second parameter. </p>
+
+<p>Tipser Elements example:</p>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipserElements</span> <span class="o">=</span> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"yellow"</span><span class="p">});</span>
 </code></pre>
-<p>By default, Tipser SDK connects to production Tipser environment. Yet if testing environment is preferred (e.g. in order to do test purchase), then it can be customized with env parameter in TipserSDK options, which accepts the following values:</p>
+<p>Tipser SDK Example:</p>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipserSdk</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"yellow"</span><span class="p">});</span>
+</code></pre>
+<p>The example connects Tipser SDK and sets primary color to yellow.</p>
+
+<p>All the available configuaration options are: </p>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">configurationOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"yellow"</span><span class="p">,</span>
+  <span class="na">env</span><span class="p">:</span> <span class="s2">"stage"</span><span class="p">,</span>
+  <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
+  <span class="na">modalUi</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">hideSearchIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">hideFavouritesIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">hideCartIcon</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">hideMoreIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">hideSimilarProducts</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">useCustomCss</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="na">useDeepLinking</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</code></pre>
+<p>They will be described in the following sections.</p>
+
+<hr>
+<h2 id='environment'>Environment</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">env</span><span class="p">:</span> <span class="s2">"stage"</span><span class="p">});</span>
+</code></pre>
+<p>By default, Tipser Elements and SDK connect to production Tipser environment. Yet if testing environment is preferred (e.g. in order to do test purchase), then it can be customized with env parameter in Tipser options, which accept the following values:</p>
 
 <p><strong>prod</strong> or production</p>
 
 <p><strong>stage</strong> or staging</p>
 
 <p><strong>dev</strong> or development</p>
+<h2 id='language-and-locale'>Language and locale</h2>
+<p><code>lang</code> configuration option specifies the language to be used. Supported languages are currently: <code>en</code>, <code>de</code>, <code>fr</code> and <code>sv</code>.</p>
+<pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span>
+  <span class="p">})</span>
+</code></pre>
+<p>It affects all the localizable texts in the UI - buy buttons, store, shopping cart and checkout. It does not affect the currency in which the customer will pay for the product.</p>
+
+<hr>
 <h2 id='parameters-for-dialog-customization'>Parameters for dialog customization</h2>
 <p>Sometimes Tipser dialogue styling and functionality needs to be customized. It is possible with modalUi parameters group.</p>
 
@@ -1059,12 +1100,16 @@ Congratulations! Now Tipser is part of your website
 
 <p><a href="images/widget2.png"><img src="images/widget2.png" alt="Widget2" /></a></p>
 <h3 id='custom-css'>Custom CSS</h3>
-<p>If there is a need to use custom css stylesheet, it may be activated in two steps:</p>
+<p>If there is a need to use custom css stylesheet inside the Tipser dialog iframe, it may be activated in two steps:</p>
 
 <ol>
 <li><p>set <code>useCustomCss</code> parameter to <strong>true</strong></p></li>
 <li><p>Send the custom css stylesheet to Tipser administrator in order for it to be uploaded to your account.</p></li>
 </ol>
+<h2 id='deep-linking'>Deep linking</h2>
+<p>By default the <code>Store</code> component saves the active collection in the browser&#39;s URL hash part (everything after the <code>#</code> symbol in the URL). It means that your shopping page may be bookmarked by the user or shared with other users by sending a browser link (the same collection will be active in the <code>Store</code> when opening that link). </p>
+
+<p>If, you wish to turn this behaviour off (e.g. because it interferes with your the routing system of your site), set the <code>useDeepLinking</code> parameter to <strong>false</strong>.</p>
 <h1 id='amp'>AMP</h1>
 <p>Tipser Elements can be also rendered as a part of an AMP-based page. </p>
 
