@@ -345,6 +345,20 @@
             <a href="#tipser-elements-analytics" class="toc-h1 toc-link" data-title="Tipser Elements Analytics">Tipser Elements Analytics</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#general-overview-of-the-tipser-elements-analytics-collector" class="toc-h2 toc-link" data-title="General overview of the Tipser Elements Analytics collector">General overview of the Tipser Elements Analytics collector</a>
+                  </li>
+                  <li>
+                    <a href="#list-of-supported-interactions" class="toc-h2 toc-link" data-title="List of supported interactions">List of supported interactions</a>
+                  </li>
+                  <li>
+                    <a href="#objects-structures" class="toc-h2 toc-link" data-title="Objects structures">Objects structures</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#google-analytics" class="toc-h1 toc-link" data-title="Google Analytics">Google Analytics</a>
+              <ul class="toc-list-h2">
+                  <li>
                     <a href="#ga-account-configuration" class="toc-h2 toc-link" data-title="GA account configuration">GA account configuration</a>
                   </li>
                   <li>
@@ -352,15 +366,6 @@
                   </li>
                   <li>
                     <a href="#advanced-e-commerce-events" class="toc-h2 toc-link" data-title="Advanced E-commerce events">Advanced E-commerce events</a>
-                  </li>
-                  <li>
-                    <a href="#shop-view" class="toc-h2 toc-link" data-title="Shop view">Shop view</a>
-                  </li>
-                  <li>
-                    <a href="#shop-list-clicked" class="toc-h2 toc-link" data-title="Shop list clicked">Shop list clicked</a>
-                  </li>
-                  <li>
-                    <a href="#product-tile-view" class="toc-h2 toc-link" data-title="Product tile view">Product tile view</a>
                   </li>
                   <li>
                     <a href="#product-details-view" class="toc-h2 toc-link" data-title="Product details view">Product details view</a>
@@ -1168,7 +1173,235 @@ Congratulations! Now Tipser is part of your website
 <li>Copy the code from the dialog and paste it somewhere into the <code>body</code> section of your page</li>
 </ol>
 <h1 id='tipser-elements-analytics'>Tipser Elements Analytics</h1>
-<p>Tipser Elements library sends a number of analytics events to Google Analytics as a result of user actions.</p>
+<p>Tipser has implemented an event for the Tipser Elements Analytics that users of the script can listen to in order to gather analytics about Tipser interactions and feed them into their own analytics engines.  </p>
+<h2 id='general-overview-of-the-tipser-elements-analytics-collector'>General overview of the Tipser Elements Analytics collector</h2>
+<p>By listening to the event <code>tw-track</code> certain Tipser events can be gathered and pushed into an external analytics engine.</p>
+
+<p>The event contains the object detail that contains the following items:</p>
+
+<p><code>detail</code> object</p>
+<pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="nv">action</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># what action is taken on the target, mandatory</span>
+  <span class="nv">target</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># where this action is taken, mandatory</span>
+  <span class="nv">description</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># describing what is being logged</span>
+  <span class="nv">object</span><span class="pi">:</span> <span class="c1"># details about the tracked object, e.g. product name, product price, etc.</span>
+  <span class="pi">[</span>    
+    <span class="pi">{</span>  
+      <span class="c1"># some properties here               </span>
+    <span class="pi">},</span>     
+    <span class="nv">...</span><span class="pi">,</span> <span class="c1"># this array can contain more than 1 object</span>
+  <span class="pi">]</span>
+<span class="pi">}</span>
+</code></pre>
+<p>Example of an event listener:</p>
+<pre class="highlight javascript tab-javascript"><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'tw-track'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">detial</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">;</span> 
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'tw-track'</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'tw-track action'</span><span class="p">,</span><span class="nx">detial</span><span class="p">.</span><span class="nx">action</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'tw-track description'</span><span class="p">,</span><span class="nx">detial</span><span class="p">.</span><span class="nx">description</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'tw-track target'</span><span class="p">,</span><span class="nx">detial</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'tw-track object'</span><span class="p">,</span><span class="nx">detial</span><span class="p">.</span><span class="nx">object</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre><h2 id='list-of-supported-interactions'>List of supported interactions</h2><h3 id='view-collection'>View collection</h3>
+<p>When a collection appears in the viewport.</p>
+
+<p><code>detail</code> object structure</p>
+<pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="nv">description</span><span class="pi">:</span> <span class="nv">‘Viewport scrolled’</span><span class="pi">,</span>
+  <span class="nv">action</span><span class="pi">:</span> <span class="s1">'</span><span class="s">View'</span><span class="pi">,</span>
+  <span class="nv">target</span><span class="pi">:</span> <span class="s1">'</span><span class="s">List'</span><span class="pi">,</span>
+  <span class="nv">object</span><span class="pi">:</span>  <span class="pi">{</span>
+    <span class="nv">id</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+    <span class="nv">ownerUserId</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+    <span class="nv">created</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1">#e.g. DateTime ISO 2019-06-11T08:40:29.377Z</span>
+    <span class="nv">modified</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1">#e.g. DateTime ISO 2019-06-11T08:40:29.377Z</span>
+    <span class="nv">postComment</span><span class="pi">:</span> <span class="nv">null |</span> <span class="pi">?</span>
+    <span class="nv">product</span><span class="pi">:</span> <span class="nv">Product</span>     
+  <span class="pi">}[]</span>
+<span class="pi">}</span>
+</code></pre>
+<p><em>Quick links to object structures: <a href="#product-structure">Product</a></em> </p>
+<h3 id='click-product-in-collection'>Click product in collection</h3>
+<p>When a product in a collection is clicked.</p>
+
+<p><code>detail</code> object structure</p>
+<pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="nv">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Product</span><span class="nv"> </span><span class="s">tile</span><span class="nv"> </span><span class="s">clicked'</span><span class="pi">,</span>
+  <span class="nv">action</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Click'</span><span class="pi">,</span>
+  <span class="nv">target</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Product</span><span class="nv"> </span><span class="s">tile'</span><span class="pi">,</span>
+  <span class="nv">object</span><span class="pi">:</span> <span class="nv">Product</span><span class="pi">[]</span>
+<span class="pi">}</span>
+</code></pre>
+<p><em>Quick links to object structures: <a href="#product-structure">Product</a></em></p>
+<h3 id='view-product-details'>View product details</h3>
+<p>It is emitted every time product tile is clicked and product dialog is displayed.</p>
+
+<p><code>detail</code> object structure</p>
+<pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="nv">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Product</span><span class="nv"> </span><span class="s">detail</span><span class="nv"> </span><span class="s">page</span><span class="nv"> </span><span class="s">viewed'</span><span class="pi">,</span>
+  <span class="nv">action</span><span class="pi">:</span> <span class="s1">'</span><span class="s">View'</span><span class="pi">,</span>
+  <span class="nv">target</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Product'</span><span class="pi">,</span>
+  <span class="nv">object</span><span class="pi">:</span> <span class="nv">Product</span><span class="pi">[]</span> <span class="c1"># Product which interests us is the first element of an Array </span>
+<span class="pi">}</span>
+</code></pre>
+<p><em>Quick links to object structures: <a href="#product-structure">Product</a></em></p>
+<h3 id='view-the-store'>View the Store</h3>
+<p>When the Tipser store appears in the viewport.</p>
+
+<p><code>detail</code> object structure</p>
+<pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="nv">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Shop</span><span class="nv"> </span><span class="s">viewed'</span><span class="pi">,</span>
+  <span class="nv">action</span><span class="pi">:</span> <span class="s1">'</span><span class="s">View'</span><span class="pi">,</span>
+  <span class="nv">target</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Shop'</span><span class="pi">,</span>
+  <span class="nv">object</span><span class="pi">:</span> <span class="pi">[</span>
+    <span class="pi">{</span> 
+      <span class="nv">url_slug</span><span class="pi">:</span> <span class="nv">string</span> <span class="c1"># store url slug </span>
+    <span class="pi">}</span>
+  <span class="pi">]</span>
+<span class="pi">}</span>
+</code></pre><h3 id='click-menu-item-in-shop'>Click menu item in shop</h3>
+<p>When a menu item is clicked in the shop.</p>
+
+<p><code>detail</code> object structure</p>
+<pre class="highlight yaml tab-yaml"><code><span class="pi">{</span> 
+  <span class="nv">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">List</span><span class="nv"> </span><span class="s">clicked'</span><span class="pi">,</span>
+  <span class="nv">action</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Click,</span>
+  <span class="s">target:</span><span class="nv"> </span><span class="s">'</span><span class="nv">List'</span><span class="pi">,</span>
+  <span class="nv">object</span><span class="pi">:[</span>
+    <span class="pi">{</span> 
+      <span class="nv">id</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># collection id</span>
+    <span class="pi">}</span> 
+  <span class="pi">]</span>
+</code></pre><h3 id='click-cart-tab'>Click cart tab</h3>
+<p>When the shopping cart tab is clicked.</p>
+
+<p><code>detail</code> object structure</p>
+<pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="nv">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Cart</span><span class="nv"> </span><span class="s">clicked'</span><span class="pi">,</span>
+  <span class="nv">action</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Click'</span><span class="pi">,</span>
+  <span class="nv">target</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Cart-tab'</span><span class="pi">,</span>
+  <span class="nv">object</span><span class="pi">:</span> <span class="pi">[]</span>
+<span class="pi">}</span>
+</code></pre><h3 id='add-product-to-cart'>Add product to cart</h3>
+<p>When a product is added to a shopping cart.</p>
+
+<p><code>detail</code> object structure</p>
+<pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="nv">description</span><span class="pi">:</span> <span class="nv">‘Product added to cart’</span><span class="pi">,</span>
+  <span class="nv">action</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Cart'</span><span class="pi">,</span>
+  <span class="nv">target</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Product'</span><span class="pi">,</span>
+  <span class="nv">object</span><span class="pi">:</span> <span class="nv">ProductLegacy</span><span class="pi">[]</span>
+<span class="pi">}</span>
+</code></pre>
+<p><em>Quick links to object structures: <a href="#productlegacy-structure">ProductLegacy</a></em></p>
+<h3 id='view-cart-with-purchase-intent'>View cart - with purchase intent</h3>
+<p>When cart appears in the viewport, and getting payment in view.</p>
+
+<p><code>detail</code> object structure</p>
+<pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="nv">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">View</span><span class="nv"> </span><span class="s">cart</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">payment</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">viewport'</span><span class="pi">,</span>
+  <span class="nv">action</span><span class="pi">:</span> <span class="s1">'</span><span class="s">View'</span><span class="pi">,</span>
+  <span class="nv">target</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Payment'</span><span class="pi">,</span>
+  <span class="nv">object</span><span class="pi">:</span> <span class="nv">OrderedProductLegacy</span><span class="pi">[]</span>
+<span class="pi">}</span>
+</code></pre>
+<p><em>Quick links to object structures: <a href="#orderedproductlegacy-structure">OrderedProductLegacy</a></em></p>
+<h3 id='product-purchased'>Product purchased</h3>
+<p>When a product was bought (thank you page).</p>
+
+<p><code>detail</code> object structure</p>
+<pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="nv">description</span><span class="pi">:</span> <span class="nv">‘Product purchased’</span><span class="pi">,</span>
+  <span class="nv">action</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Purchase'</span><span class="pi">,</span>
+  <span class="nv">target</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Order'</span><span class="pi">,</span>
+  <span class="nv">object</span><span class="pi">:</span> <span class="pi">[</span>
+    <span class="pi">{</span>
+      <span class="nv">OrderId</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> 
+      <span class="nv">Products</span><span class="pi">:</span> <span class="nv">ProductLegacy</span><span class="pi">[]</span>
+    <span class="pi">}</span>
+  <span class="pi">]</span>
+<span class="pi">}</span>
+</code></pre>
+<p><em>Quick links to object structures: <a href="#productlegacy-structure">ProductLegacy</a></em></p>
+<h3 id='view-cart'>View cart</h3>
+<p>When cart icon appears in the viewport.</p>
+
+<p><code>detail</code> object structure</p>
+<pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="nv">description</span><span class="pi">:</span> <span class="nv">‘View cart’</span><span class="pi">,</span>
+  <span class="nv">action</span><span class="pi">:</span> <span class="s1">'</span><span class="s">View'</span><span class="pi">,</span>
+  <span class="nv">target</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Cart'</span><span class="pi">,</span>
+  <span class="nv">object</span><span class="pi">:</span> <span class="pi">[]</span>
+<span class="pi">}</span>
+</code></pre><h2 id='objects-structures'>Objects structures</h2><h3 id='productlegacy-structure'><code>ProductLegacy</code> structure</h3><pre class="highlight yaml tab-yaml"><code><span class="pi">{</span> <span class="c1"># Representation of product, but slightly different schema than Product</span>
+  <span class="nv">id</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+  <span class="nv">name</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+  <span class="nv">brand</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+  <span class="nv">campaign</span><span class="pi">:</span> <span class="nv">undefined</span><span class="pi">,</span>
+  <span class="nv">categories</span><span class="pi">:</span> <span class="nv">CategoriesLegacy</span>
+  <span class="nv">image</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># url</span>
+  <span class="nv">listPrice</span><span class="pi">:</span> <span class="nv">Price</span><span class="pi">,</span>
+  <span class="nv">salesPrice</span><span class="pi">:</span> <span class="nv">Price</span><span class="pi">,</span>
+  <span class="nv">variant</span><span class="pi">:</span> <span class="pi">[],</span>
+  <span class="nv">merchant</span><span class="pi">:</span> <span class="nv">undefined</span>
+<span class="pi">}</span>
+</code></pre>
+<p><em>Quick links to object structures: <a href="#categorieslegacy-structure">CategoriesLegacy</a>, <a href="#price-structure">Price</a></em></p>
+<h3 id='orderedproductlegacy-structure'><code>OrderedProductLegacy</code> structure</h3><pre class="highlight yaml tab-yaml"><code><span class="pi">{</span> <span class="c1"># Representation of product, but slightly different schema than Product</span>
+  <span class="nv">id</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+  <span class="nv">name</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+  <span class="nv">brand</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+  <span class="nv">campaign</span><span class="pi">:</span> <span class="nv">undefined</span><span class="pi">,</span>
+  <span class="nv">categories</span><span class="pi">:</span> <span class="nv">CategoriesLegacy</span> 
+  <span class="nv">merchant</span><span class="pi">:</span> <span class="nv">string</span>
+  <span class="nv">image</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># url</span>
+  <span class="nv">listPrice</span><span class="pi">:</span> <span class="nv">Price</span><span class="pi">,</span>
+  <span class="nv">salesPrice</span><span class="pi">:</span> <span class="nv">Price</span><span class="pi">,</span>
+  <span class="nv">variant</span><span class="pi">:</span> <span class="pi">[],</span>
+  <span class="nv">posId</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+  <span class="nv">quantity</span><span class="pi">:</span> <span class="nv">number</span>
+<span class="pi">}</span>
+</code></pre>
+<p><em>Quick links to object structures: <a href="#categorieslegacy-structure">CategoriesLegacy</a>, <a href="#price-structure">Price</a></em></p>
+<h3 id='categorieslegacy-structure'><code>CategoriesLegacy</code> structure</h3><pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="pi">[</span><span class="nv">key</span><span class="pi">]:</span> <span class="nv">string</span>
+<span class="pi">}[]</span>
+</code></pre><h3 id='product-structure'><code>Product</code> structure</h3><pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="nv">id</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+  <span class="nv">title</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+  <span class="nv">images</span><span class="pi">:</span> <span class="nv">Image</span><span class="pi">[],</span>
+  <span class="nv">brand</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+  <span class="nv">catgories</span><span class="pi">:</span> <span class="nv">Categories</span>
+  <span class="nv">currency</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1">#ISO 4217</span>
+  <span class="nv">description</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+  <span class="nv">priceInVat</span><span class="pi">:</span> <span class="nv">Price</span><span class="pi">,</span>
+  <span class="nv">isInStock</span><span class="pi">:</span> <span class="nv">boolean</span><span class="pi">,</span>
+  <span class="nv">variants</span><span class="pi">:</span> <span class="pi">[],</span>
+  <span class="nv">vat</span><span class="pi">:</span> <span class="pi">{</span> <span class="c1"># percentage of VAT</span>
+    <span class="nv">value</span><span class="pi">:</span> <span class="nv">number</span><span class="pi">,</span>
+    <span class="nv">formatted</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># human readable value percentage string</span>
+  <span class="pi">}</span>      
+  <span class="nv">categoriesValue</span><span class="pi">:</span> <span class="nv">string</span>
+<span class="pi">}</span>
+</code></pre>
+<p><em>Quick links to object structures: <a href="#categories-structure">Categories</a>, <a href="#price-structure">Price</a>, <a href="#image-structure">Image</a></em></p>
+<h3 id='image-structure'><code>Image</code> structure</h3><pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="pi">[</span><span class="nv">key</span><span class="pi">]:</span> <span class="nv">string</span> 
+  <span class="nv">id</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
+  <span class="nv">original</span><span class="pi">:</span> <span class="nv">string</span>
+<span class="pi">}</span>
+</code></pre>
+<p>Each value is url for the certain variation of an image. <code>key</code> determines size, and it is one of following: <code>250x</code>, <code>450x</code>, <code>960x</code>, <code>50x50</code>.</p>
+<h3 id='categories-structure'><code>Categories</code> structure</h3><pre class="highlight yaml tab-yaml"><code>  <span class="na">department</span><span class="pi">:</span> <span class="s">string,</span>
+  <span class="na">section</span><span class="pi">:</span> <span class="s">string,</span>
+  <span class="na">productType</span><span class="pi">:</span> <span class="s">string</span>
+</code></pre><h3 id='price-structure'><code>Price</code> structure</h3><pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
+  <span class="nv">value</span><span class="pi">:</span> <span class="nv">number</span><span class="pi">,</span>
+  <span class="nv">currency</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1">#ISO 4217</span>
+  <span class="nv">formatted</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># human readable price string    </span>
+<span class="pi">}</span>
+</code></pre><h1 id='google-analytics'>Google Analytics</h1>
+<p>Tipser sends a number of analytics events to Google Analytics as a result of user actions.</p>
 <h3 id='ga-account-configuration'>GA account configuration</h3>
 <p>Most of analytics events emitted by Tipser Elements assume <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce">Enhanced Ecommerce</a> plugin to be enabled on
 a receiver&#39;s Google Analytics account. So if you want to get most of Tipser Analytics, it is strongly recommended to enable Enhanced Ecommerce in your GA settings, as shown in a screenshots below.</p>
@@ -1213,94 +1446,18 @@ purposes, you may be receiving unexpected values for those Custom Dimensions.</p
 
 <p>Please refer to <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#ecommerce-data">Enhanced Ecommerce Data Types and Actions</a> and 
  <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities">Measuring Ecommerce Activities</a> sections in the official GA docs.</p>
-<h2 id='shop-view'>Shop view</h2>
-<p>This event is emitted every time <code>Store</code> is rendered on a page.</p>
-
-<p><a href="images/shop_viewed.png"><img src="images/shop_viewed.png" alt="Shop viewed" /></a></p>
-
-<p><em>In the screenshot above Store was rendered and &quot;Shop view&quot; event has been emitted.</em></p>
-<h3 id='prerequisites'>Prerequisites</h3>
-<p>An element of type <code>Layout - Container</code> needs to be defined in Contentful space. 
-The field <code>IsShop</code> on that element needs to be set to <code>true</code>. </p>
-<h3 id='additonal-notes'>Additonal notes</h3>
-<p>The event is emitted no matter if the shop element is actually visible on the screen.
-It is possible that if the shop element is positioned below the fold of the browser window, the event
-will be emitted for the shop that was not seen by the user.</p>
-<h3 id='ga-event-format'>GA event format</h3>
-<table><thead>
-<tr>
-<th>Category</th>
-<th>Action</th>
-<th>Standard Enhanced Ecommerce event?</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>Shops</code></td>
-<td><code>shop-viewed</code></td>
-<td>No</td>
-</tr>
-</tbody></table>
-<h2 id='shop-list-clicked'>Shop list clicked</h2>
-<p>This event is emitted every time a list in a Store is clicked.</p>
-
-<p><a href="images/shop_viewed.png"><img src="images/shop_list_clicked.png" alt="Shop list clicked" /></a></p>
-
-<p><em>In the screenshot above one of the Store lists was clicked (marked with a red rectangle) and &quot;Shop list clicked&quot; event has been emitted.</em></p>
-<h3 id='prerequisites-2'>Prerequisites</h3>
-<p>Store categories need to be defined as <code>Slottable Link</code> components (typically as a part of horizontal menu component) in Contentful space. In component hierarchy they need
- to be located anywhere under <code>Layout - Container</code> component whose field <code>IsShop</code> is set to <code>true</code> (otherwise they won&#39;t be recognized as a part of the Store).</p>
-<h3 id='ga-event-format-2'>GA event format</h3>
-<table><thead>
-<tr>
-<th>Category</th>
-<th>Action</th>
-<th>Standard Enhanced Ecommerce event?</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>Shops</code></td>
-<td><code>list-clicked</code></td>
-<td>No</td>
-</tr>
-</tbody></table>
-<h2 id='product-tile-view'>Product tile view</h2>
-<p>This event is emitted every time product tile is rendered on a page. One event is fired per every tile on the page.</p>
-
-<p><a href="images/inline_product_viewed.png"><img src="images/inline_product_viewed.png" alt="Inline product viewed" /></a></p>
-
-<p><em>In the screenshot above some product tiles were rendered on a page and &quot;Shop list clicked&quot; event has been emitted for each of them.</em></p>
-<h3 id='prerequisites-3'>Prerequisites</h3>
-<p>Products need to be defined as <code>Product</code> components in Contentful space.</p>
-<h3 id='additonal-notes-2'>Additonal notes</h3>
-<p>The event is emitted no matter if the Product tile element is actually visible on the screen.
-It is possible that if the product tile element is positioned below the fold of the browser window, the event
-will be emitted for the product tile that was not seen by the user.</p>
-<h3 id='ga-event-format-3'>GA event format</h3>
-<table><thead>
-<tr>
-<th>Category</th>
-<th>Action</th>
-<th>Standard Enhanced Ecommerce event?</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>E-commerce</code></td>
-<td><code>impression</code></td>
-<td>Yes (with one product attached)</td>
-</tr>
-</tbody></table>
 <h2 id='product-details-view'>Product details view</h2>
 <p>This event is emitted every time product tile is clicked and product dialog is displayed.</p>
 
 <p><a href="images/product_details_viewed.png"><img src="images/product_details_viewed.png" alt="Product details viewed" /></a></p>
 
 <p><em>In the screenshot above user has clicked on one of the product tiles and product dialog has been displayed as a result. &quot;Product details view&quot; event has been emitted.</em></p>
-<h3 id='prerequisites-4'>Prerequisites</h3>
+<h3 id='prerequisites'>Prerequisites</h3>
 <p>Products need to be defined as <code>Product</code> components in Contentful space.</p>
-<h3 id='additonal-notes-3'>Additonal notes</h3>
+<h3 id='additonal-notes'>Additonal notes</h3>
 <p>Please note below that opening a product dialog fires a pair of GA events (one with action <code>click</code> and the other with action <code>detail</code>) to reflect the flow of user actions
 (first clicking on a product title and then seeing the details).</p>
-<h3 id='ga-event-format-4'>GA event format</h3>
+<h3 id='ga-event-format'>GA event format</h3>
 <table><thead>
 <tr>
 <th>Category</th>
@@ -1325,7 +1482,7 @@ will be emitted for the product tile that was not seen by the user.</p>
 <p><a href="images/add_to_cart_event.png"><img src="images/add_to_cart_event.png" alt="Add to cart event" /></a></p>
 
 <p><em>In the screenshot above the user has clicked &quot;add to cart&quot; button which resulted in emitting &quot;Add to cart&quot; event.</em></p>
-<h3 id='ga-event-format-5'>GA event format</h3>
+<h3 id='ga-event-format-2'>GA event format</h3>
 <table><thead>
 <tr>
 <th>Category</th>
@@ -1341,7 +1498,7 @@ will be emitted for the product tile that was not seen by the user.</p>
 </tbody></table>
 <h2 id='remove-from-cart'>Remove from cart</h2>
 <p>This event is emitted when product is removed from cart in checkout dialog.</p>
-<h3 id='ga-event-format-6'>GA event format</h3>
+<h3 id='ga-event-format-3'>GA event format</h3>
 <table><thead>
 <tr>
 <th>Category</th>
@@ -1361,11 +1518,11 @@ will be emitted for the product tile that was not seen by the user.</p>
 <p><a href="images/product_checkout.png"><img src="images/product_checkout.png" alt="Product checkout" /></a></p>
 
 <p><em>In the screenshot above checkout dialog has been displayed and &quot;Checkout&quot; event has been emitted for a product &quot;Retexturising SERUM&quot;</em></p>
-<h3 id='additonal-notes-4'>Additonal notes</h3>
+<h3 id='additonal-notes-2'>Additonal notes</h3>
 <p>Please note that &quot;checkout&quot; is not the same thing as &quot;purchase&quot;. The event is emitted even if the product checkout is never finalized.
 The event is emitted every time checkout dialog is opened. This means that there may be several &quot;Checkout&quot; events emitted for product that was purchased just 
 once or that was never purchased.</p>
-<h3 id='ga-event-format-7'>GA event format</h3>
+<h3 id='ga-event-format-4'>GA event format</h3>
 <table><thead>
 <tr>
 <th>Category</th>
@@ -1385,7 +1542,7 @@ once or that was never purchased.</p>
 <p><a href="images/purchase_event.png"><img src="images/purchase_event.png" alt="Purchase event" /></a></p>
 
 <p><em>In the screenshot above the user has finalized the payment and the order confirmation dialog has been displayed. &quot;Purchase&quot; event has been emitted.</em></p>
-<h3 id='ga-event-format-8'>GA event format</h3>
+<h3 id='ga-event-format-5'>GA event format</h3>
 <table><thead>
 <tr>
 <th>Category</th>
