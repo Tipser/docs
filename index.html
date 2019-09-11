@@ -308,6 +308,9 @@
             <a href="#configuration-options" class="toc-h1 toc-link" data-title="Configuration options">Configuration options</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#primary-color" class="toc-h2 toc-link" data-title="Primary Color">Primary Color</a>
+                  </li>
+                  <li>
                     <a href="#environment" class="toc-h2 toc-link" data-title="Environment">Environment</a>
                   </li>
                   <li>
@@ -318,6 +321,9 @@
                   </li>
                   <li>
                     <a href="#deep-linking" class="toc-h2 toc-link" data-title="Deep linking">Deep linking</a>
+                  </li>
+                  <li>
+                    <a href="#custom-labels" class="toc-h2 toc-link" data-title="Custom Labels">Custom Labels</a>
                   </li>
               </ul>
           </li>
@@ -954,17 +960,8 @@ for products on sale.</p>
     <span class="nl">z-index</span><span class="p">:</span> <span class="m">10</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre><h3 id='primary-color'>Primary color</h3>
-<p>If you&#39;d like to unify our design with your own color-theme, you can use our primary-color theme to change the color of <code>add-to-cart</code> buttons in Product and indicator of items number in Cart. These elements on the page will be altered with one small change in your CSS:
-<a href="images/primary-color.png"><img src="images/primary-color.png" alt="Primary color" /></a>
-If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.</p>
-<pre class="highlight css tab-css"><code><span class="nc">.te-primary-fill</span> <span class="p">{</span>
-    <span class="nl">background-color</span><span class="p">:</span> <span class="m">#5F9F9F</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nc">.te-primary-border</span> <span class="p">{</span>
-    <span class="nl">border-color</span><span class="p">:</span> <span class="m">#5F9F9F</span><span class="p">;</span>
-<span class="p">}</span>
-
+<p>If you&#39;d like to unify our design with your own color-theme, you can use our primary-color <a href="#primary-color">configuration option</a>. If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.</p>
+<pre class="highlight css tab-css"><code>
 <span class="c">/* if your primary color is bright,
     you may consider changing also the text color for elements like buttons: */</span>
 <span class="nc">.te-button-text</span> <span class="p">{</span>
@@ -1026,16 +1023,16 @@ Congratulations! Now Tipser is part of your website
 <p>Both Tipser Elements and Tipser SDK initialization functions accept configuration object as a second parameter. </p>
 
 <p>Tipser Elements example:</p>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipserElements</span> <span class="o">=</span> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"yellow"</span><span class="p">});</span>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipserElements</span> <span class="o">=</span> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"#222"</span><span class="p">});</span>
 </code></pre>
 <p>Tipser SDK Example:</p>
-<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipserSdk</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"yellow"</span><span class="p">});</span>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipserSdk</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"#222"</span><span class="p">});</span>
 </code></pre>
 <p>The example connects Tipser SDK and sets primary color to yellow.</p>
 
 <p>All the available configuaration options are: </p>
 <pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">configurationOptions</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"yellow"</span><span class="p">,</span>
+  <span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"#222"</span><span class="p">,</span>
   <span class="na">env</span><span class="p">:</span> <span class="s2">"stage"</span><span class="p">,</span>
   <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
   <span class="na">modalUi</span><span class="p">:</span> <span class="p">{</span>
@@ -1046,10 +1043,24 @@ Congratulations! Now Tipser is part of your website
     <span class="na">hideSimilarProducts</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
     <span class="na">useCustomCss</span><span class="p">:</span> <span class="kc">true</span>
   <span class="p">},</span>
-  <span class="na">useDeepLinking</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="na">useDeepLinking</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">customLabels</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">buy</span><span class="p">:</span> <span class="s1">'custom button label'</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
 <p>They will be described in the following sections.</p>
+
+<hr>
+<h2 id='primary-color'>Primary Color</h2>
+<p>If you&#39;d like to unify our design with your own color-theme, you can use our primary color configuration option to change the color of <code>buy</code> buttons in Product and indicator of items number in Cart. You only need to make sure to use the right hex color code.</p>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipserSdk</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"#5F9F9F"</span><span class="p">});</span>
+</code></pre>
+<p><a href="images/primary-color.png"><img src="images/primary-color.png" alt="Primary color" /></a></p>
+
+<ul>
+<li>If your primary color is bright, you may consider changing also the text color for elements like buttons via CSS overrides of element&#39;s specific class <a href="#customizing-tipser-elements-styles">(examples)</a>. </li>
+</ul>
 
 <hr>
 <h2 id='environment'>Environment</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipser</span> <span class="o">=</span> <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">env</span><span class="p">:</span> <span class="s2">"stage"</span><span class="p">});</span>
@@ -1061,6 +1072,8 @@ Congratulations! Now Tipser is part of your website
 <p><strong>stage</strong> or staging</p>
 
 <p><strong>dev</strong> or development</p>
+
+<hr>
 <h2 id='language-and-locale'>Language and locale</h2>
 <p><code>lang</code> configuration option specifies the language to be used. Supported languages are currently: <code>en</code>, <code>de</code>, <code>fr</code> and <code>sv</code>.</p>
 <pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span>
@@ -1106,10 +1119,23 @@ Congratulations! Now Tipser is part of your website
 <li><p>set <code>useCustomCss</code> parameter to <strong>true</strong></p></li>
 <li><p>Send the custom css stylesheet to Tipser administrator in order for it to be uploaded to your account.</p></li>
 </ol>
+
+<hr>
 <h2 id='deep-linking'>Deep linking</h2>
 <p>By default the <code>Store</code> component saves the active collection in the browser&#39;s URL hash part (everything after the <code>#</code> symbol in the URL). It means that your shopping page may be bookmarked by the user or shared with other users by sending a browser link (the same collection will be active in the <code>Store</code> when opening that link). </p>
 
 <p>If, you wish to turn this behaviour off (e.g. because it interferes with your the routing system of your site), set the <code>useDeepLinking</code> parameter to <strong>false</strong>.</p>
+
+<hr>
+<h2 id='custom-labels'>Custom Labels</h2>
+<p>If you want to override our default text with your own, you can do it via customLabels option. At the moment we allow to change the label of the <code>buy button</code> only. </p>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipserOptions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">customLabels</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">buy</span><span class="p">:</span> <span class="s1">'buy now!'</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+<p><a href="images/custom-label.png"><img src="images/custom-label.png" alt="Custom label" /></a></p>
 <h1 id='amp'>AMP</h1>
 <p>Tipser Elements can be also rendered as a part of an AMP-based page. </p>
 
