@@ -1148,7 +1148,8 @@ Congratulations! Now Tipser is part of your website
 </ol>
 <h1 id='analytics'>Analytics</h1>
 <p>You can connect to Tipser analytics by listening to the <code>tw-track</code> event on your page:</p>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">tipserEventsCallback</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<pre class="highlight html tab-html"><code><span class="nt">&lt;script&gt;</span>
+<span class="kd">var</span> <span class="nx">tipserEventsCallback</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">//put here your own code handling the event, example below</span>
   <span class="kd">var</span> <span class="nx">detail</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">;</span> 
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Tipser analytics event: '</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
@@ -1158,7 +1159,10 @@ Congratulations! Now Tipser is part of your website
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Object'</span><span class="p">,</span><span class="nx">detail</span><span class="p">.</span><span class="nx">object</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'tw-track'</span><span class="p">,</span> <span class="nx">tipserEventsCallback</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
 </code></pre>
+<p>If you are using Tipser Elements via CMS, include the above script below Tipser Elements script (as described in <a href="#quick-start">Quick Start</a> section). Alternatively, you may include the above script in your JS files as long as that code will be executed after Tipser Elements is initialized.</p>
+
 <p>Example events intercepted this way are:</p>
 
 <ul>
@@ -1168,7 +1172,7 @@ Congratulations! Now Tipser is part of your website
 <li>transaction was finalized</li>
 </ul>
 
-<p>For a more detailed list of supported events refer to the <a href="#list-of-supported-interactions">List of supported interactions</a> section.</p>
+<p>For complete list of supported events refer to the <a href="#list-of-supported-interactions">List of supported interactions</a> section.</p>
 
 <p>What you do with those events is up to you. Typical usage examples are:</p>
 
