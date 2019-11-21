@@ -938,7 +938,7 @@ Not using React? Looking for an overview on Tipser Elements? Go check <a href="#
 For the same reason, it&#39;s not recommended to include more than one <code>&lt;Store /&gt;</code> on a single page. </p>
 <h2 id='customizing-tipser-elements-styles'>Customizing Tipser Elements Styles</h2>
 <p>Tipser Elements are the &quot;building blocks&quot; designed to fit your page as much as possible. We created the styling in a way that delivers a nice look &amp; feel from the start, but also allows you to change them easily to fit your unique sense of style. </p>
-<h3 id='product-card'>Product Card</h3>
+<h3 id='product-card-customization'>Product Card Customization</h3>
 <p>The Product Card is an item used for displaying single <code>Collection</code> or <code>Store</code> component, among others. The font-family used in the description section of the Product Card is inherited from your website&#39;s styles, and the font-size is expressed in the relative <code>em</code> units controlled in <code>.te-product-card</code> class. The default value used there is <code>12px</code>, which you can easily change by adding to your CSS the following style:</p>
 <pre class="highlight css tab-css"><code><span class="nc">.te-product-card</span> <span class="p">{</span>
     <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
@@ -953,7 +953,7 @@ and:<br/>
 <code>.te-product-card-sales-price</code><br/>
 <code>.te-product-card-price-regular-price</code><br/>
 for products on sale.</p>
-<h3 id='cart-2'>Cart</h3>
+<h3 id='cart-customization'>Cart Customization</h3>
 <p>The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:</p>
 <pre class="highlight css tab-css"><code><span class="nc">.cart-icon</span> <span class="p">{</span>
     <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
@@ -964,7 +964,7 @@ for products on sale.</p>
     <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">-2px</span> <span class="m">2px</span> <span class="m">7px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0.3</span><span class="p">);</span>
     <span class="nl">z-index</span><span class="p">:</span> <span class="m">10</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre><h3 id='primary-color'>Primary color</h3>
+</code></pre><h3 id='adding-primary-color'>Adding Primary color</h3>
 <p>If you&#39;d like to unify our design with your own color-theme, you can use our primary-color <a href="#primary-color">configuration option</a>. If your primary color is a bright one, you might want to change also the text color of the elements with primary color background. For example in buttons by default the color we use is white.</p>
 <pre class="highlight css tab-css"><code>
 <span class="c">/* if your primary color is bright,
@@ -1202,7 +1202,19 @@ Congratulations! Now Tipser is part of your website
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'tw-track target'</span><span class="p">,</span><span class="nx">detial</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'tw-track object'</span><span class="p">,</span><span class="nx">detial</span><span class="p">.</span><span class="nx">object</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre><h2 id='list-of-supported-interactions'>List of supported interactions</h2><h3 id='view-collection'>View collection</h3>
+</code></pre>
+<p>If you want to track <code>tw-track</code> events in your Google Analytics, you can use this code snippet:</p>
+<pre class="highlight javascript tab-javascript"><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'tw-track'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">ga</span><span class="p">(</span><span class="s1">'send'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">hitType</span><span class="p">:</span> <span class="s1">'event'</span><span class="p">,</span>
+        <span class="na">eventCategory</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">description</span><span class="p">,</span>
+        <span class="na">eventAction</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">action</span><span class="p">,</span>
+        <span class="na">eventLabel</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+<p>Please make sure you have Google Analytics enabled in your project.</p>
+<h2 id='list-of-supported-interactions'>List of supported interactions</h2><h3 id='view-collection'>View collection</h3>
 <p>When a collection appears in the viewport.</p>
 
 <p><code>detail</code> object structure</p>
