@@ -342,45 +342,19 @@
               </ul>
           </li>
           <li>
-            <a href="#tipser-elements-analytics" class="toc-h1 toc-link" data-title="Tipser Elements Analytics">Tipser Elements Analytics</a>
+            <a href="#analytics" class="toc-h1 toc-link" data-title="Analytics">Analytics</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#general-overview-of-the-tipser-elements-analytics-collector" class="toc-h2 toc-link" data-title="General overview of the Tipser Elements Analytics collector">General overview of the Tipser Elements Analytics collector</a>
+                    <a href="#events-structure" class="toc-h2 toc-link" data-title="Events structure">Events structure</a>
+                  </li>
+                  <li>
+                    <a href="#typical-use-case-google-analytics" class="toc-h2 toc-link" data-title="Typical use case: Google Analytics">Typical use case: Google Analytics</a>
                   </li>
                   <li>
                     <a href="#list-of-supported-interactions" class="toc-h2 toc-link" data-title="List of supported interactions">List of supported interactions</a>
                   </li>
                   <li>
                     <a href="#objects-structures" class="toc-h2 toc-link" data-title="Objects structures">Objects structures</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#google-analytics" class="toc-h1 toc-link" data-title="Google Analytics">Google Analytics</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#ga-account-configuration" class="toc-h2 toc-link" data-title="GA account configuration">GA account configuration</a>
-                  </li>
-                  <li>
-                    <a href="#custom-dimensions" class="toc-h2 toc-link" data-title="Custom dimensions">Custom dimensions</a>
-                  </li>
-                  <li>
-                    <a href="#advanced-e-commerce-events" class="toc-h2 toc-link" data-title="Advanced E-commerce events">Advanced E-commerce events</a>
-                  </li>
-                  <li>
-                    <a href="#product-details-view" class="toc-h2 toc-link" data-title="Product details view">Product details view</a>
-                  </li>
-                  <li>
-                    <a href="#add-to-cart" class="toc-h2 toc-link" data-title="Add to cart">Add to cart</a>
-                  </li>
-                  <li>
-                    <a href="#remove-from-cart" class="toc-h2 toc-link" data-title="Remove from cart">Remove from cart</a>
-                  </li>
-                  <li>
-                    <a href="#checkout" class="toc-h2 toc-link" data-title="Checkout">Checkout</a>
-                  </li>
-                  <li>
-                    <a href="#purchase" class="toc-h2 toc-link" data-title="Purchase">Purchase</a>
                   </li>
               </ul>
           </li>
@@ -1172,39 +1146,58 @@ Congratulations! Now Tipser is part of your website
 <li>Click &quot;Insert collection&quot; button and in the dialog that opens tick &quot;Google AMP ready&quot; checkbox</li>
 <li>Copy the code from the dialog and paste it somewhere into the <code>body</code> section of your page</li>
 </ol>
-<h1 id='tipser-elements-analytics'>Tipser Elements Analytics</h1>
-<p>Tipser has implemented an event for the Tipser Elements Analytics that users of the script can listen to in order to gather analytics about Tipser interactions and feed them into their own analytics engines.  </p>
-<h2 id='general-overview-of-the-tipser-elements-analytics-collector'>General overview of the Tipser Elements Analytics collector</h2>
-<p>By listening to the event <code>tw-track</code> certain Tipser events can be gathered and pushed into an external analytics engine.</p>
+<h1 id='analytics'>Analytics</h1>
+<p>You can connect to Tipser analytics by listening to the <code>tw-track</code> event on your page:</p>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">tipserEventsCallback</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//put here your own code handling the event, example below</span>
+  <span class="kd">var</span> <span class="nx">detail</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">;</span> 
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Tipser analytics event: '</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Action'</span><span class="p">,</span><span class="nx">detail</span><span class="p">.</span><span class="nx">action</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Description'</span><span class="p">,</span><span class="nx">detail</span><span class="p">.</span><span class="nx">description</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Target'</span><span class="p">,</span><span class="nx">detail</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Object'</span><span class="p">,</span><span class="nx">detail</span><span class="p">.</span><span class="nx">object</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'tw-track'</span><span class="p">,</span> <span class="nx">tipserEventsCallback</span><span class="p">);</span>
+</code></pre>
+<p>Example events intercepted this way are:</p>
 
-<p>The event contains the object detail that contains the following items:</p>
+<ul>
+<li>the user viewed a product on your page</li>
+<li>a product was added to cart</li>
+<li>product checkout dialog was opened</li>
+<li>transaction was finalized</li>
+</ul>
 
-<p><code>detail</code> object</p>
+<p>For a more detailed list of supported events refer to the <a href="#list-of-supported-interactions">List of supported interactions</a> section.</p>
+
+<p>What you do with those events is up to you. Typical usage examples are:</p>
+
+<ul>
+<li>forwarding them to your analytics system (e.g. Google Analytics, as described <a href="#typical-use-case-google-analytics">here</a>)</li>
+<li>logging them to the browser console for easier debugging</li>
+</ul>
+<h2 id='events-structure'>Events structure</h2>
+<p>Each event passed to <code>tipserEventsCallback</code> function follows the following structure:</p>
 <pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
-  <span class="nv">action</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># what action is taken on the target, mandatory</span>
-  <span class="nv">target</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># where this action is taken, mandatory</span>
-  <span class="nv">description</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># describing what is being logged</span>
-  <span class="nv">object</span><span class="pi">:</span> <span class="c1"># details about the tracked object, e.g. product name, product price, etc.</span>
-  <span class="pi">[</span>    
-    <span class="pi">{</span>  
-      <span class="c1"># some properties here               </span>
-    <span class="pi">},</span>     
-    <span class="nv">...</span><span class="pi">,</span> <span class="c1"># this array can contain more than 1 object</span>
-  <span class="pi">]</span>
+  <span class="nv">detail</span><span class="pi">:</span> <span class="pi">{</span>
+    <span class="nv">action</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># what action is taken on the target, mandatory</span>
+    <span class="nv">target</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># where this action is taken, mandatory</span>
+    <span class="nv">description</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># describing what is being logged</span>
+    <span class="nv">object</span><span class="pi">:</span> <span class="c1"># details about the tracked object, e.g. product name, product price, etc.</span>
+    <span class="pi">[</span>    
+      <span class="pi">{</span>  
+        <span class="c1"># some properties here               </span>
+      <span class="pi">},</span>     
+      <span class="nv">...</span><span class="pi">,</span> <span class="c1"># this array can contain more than 1 object</span>
+    <span class="pi">]</span>
+  <span class="pi">}</span> 
 <span class="pi">}</span>
 </code></pre>
-<p>Example of an event listener:</p>
-<pre class="highlight javascript tab-javascript"><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'tw-track'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">detial</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">;</span> 
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'tw-track'</span><span class="p">);</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'tw-track action'</span><span class="p">,</span><span class="nx">detial</span><span class="p">.</span><span class="nx">action</span><span class="p">);</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'tw-track description'</span><span class="p">,</span><span class="nx">detial</span><span class="p">.</span><span class="nx">description</span><span class="p">);</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'tw-track target'</span><span class="p">,</span><span class="nx">detial</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'tw-track object'</span><span class="p">,</span><span class="nx">detial</span><span class="p">.</span><span class="nx">object</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-<p>If you want to track <code>tw-track</code> events in your Google Analytics, you can use this code snippet:</p>
+<p>As you can see, all the useful data is contained in the top-level <code>detail</code> field of the event object.</p>
+<h2 id='typical-use-case-google-analytics'>Typical use case: Google Analytics</h2>
+<p>In case you want to tunnel Tipser Analytics events to your Google Analytics, you can use this code snippet:</p>
 <pre class="highlight javascript tab-javascript"><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'tw-track'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//ga() function coming from analytics.js library</span>
     <span class="nx">ga</span><span class="p">(</span><span class="s1">'send'</span><span class="p">,</span> <span class="p">{</span>
         <span class="na">hitType</span><span class="p">:</span> <span class="s1">'event'</span><span class="p">,</span>
         <span class="na">eventCategory</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">description</span><span class="p">,</span>
@@ -1213,7 +1206,9 @@ Congratulations! Now Tipser is part of your website
     <span class="p">});</span>
 <span class="p">});</span>
 </code></pre>
-<p>Please make sure you have Google Analytics enabled in your project.</p>
+<p>The code above assumes that you use <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs">analytics.js</a> GA client library on your page. For other libraries, like gtag.js, that code needs to be slightly adjusted.</p>
+
+<p>For the instructions how to setup analytics.js script on your site and connect it to your GA account, refer to the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs">official documentation</a>.</p>
 <h2 id='list-of-supported-interactions'>List of supported interactions</h2><h3 id='view-collection'>View collection</h3>
 <p>When a collection appears in the viewport.</p>
 
@@ -1412,163 +1407,7 @@ Congratulations! Now Tipser is part of your website
   <span class="nv">currency</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1">#ISO 4217</span>
   <span class="nv">formatted</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># human readable price string    </span>
 <span class="pi">}</span>
-</code></pre><h1 id='google-analytics'>Google Analytics</h1>
-<p>Tipser sends a number of analytics events to Google Analytics as a result of user actions.</p>
-<h3 id='ga-account-configuration'>GA account configuration</h3>
-<p>Most of analytics events emitted by Tipser Elements assume <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce">Enhanced Ecommerce</a> plugin to be enabled on
-a receiver&#39;s Google Analytics account. So if you want to get most of Tipser Analytics, it is strongly recommended to enable Enhanced Ecommerce in your GA settings, as shown in a screenshots below.</p>
-
-<p><a href="images/enhanced_analytics_settings.png"><img src="images/enhanced_analytics_settings.png" alt="Enhanced analytics settings" /></a> </p>
-
-<p><a href="images/enable_ecommerce.png"><img src="images/enable_ecommerce.png" alt="Enable ecommerce" /></a></p>
-
-<p>The settings for &quot;Enable Enhanced Ecommerce Reporting&quot; and &quot;Checkout Labeling&quot; sections are up to you and are not required for integration with Tipser Elements analytics.</p>
-<h3 id='custom-dimensions'>Custom dimensions</h3>
-<p>Additionally, all the events documented here contain the following <a href="https://support.google.com/analytics/answer/2709828?hl=en">Custom Dimensions</a>. If you would like to analyze those dimensions, please
-make sure to configure the same Custom Dimensions, as described <a href="google.com/analytics/answer/2709829?hl=en">here</a>.</p>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Index</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>posId</code></td>
-<td>1</td>
-<td>The user ID on Tipser associated with a page that uses Tipser Elements.</td>
-</tr>
-<tr>
-<td><code>from</code></td>
-<td>2</td>
-<td>Deprecated. From what type of widget the event comes from. Possible values: <code>product-view</code>, <code>shopping-cart</code> and <code>tipser-sdk</code>.</td>
-</tr>
-<tr>
-<td><code>article</code></td>
-<td>3</td>
-<td>The URL of the page where the event occured (mostly the same as event&#39;s <code>location</code> field).</td>
-</tr>
-</tbody></table>
-
-<p>Warning: if you use the same Custom Dimension indexes for your own
-purposes, you may be receiving unexpected values for those Custom Dimensions.</p>
-<h3 id='advanced-e-commerce-events'>Advanced E-commerce events</h3>
-<p>Some of the events emitted by Tipser Elements are standard Enhanced Ecommerce events which come with product data attached (as documented at &quot;GA event format&quot; section for each event).</p>
-
-<p>Please refer to <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#ecommerce-data">Enhanced Ecommerce Data Types and Actions</a> and 
- <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce#measuring-activities">Measuring Ecommerce Activities</a> sections in the official GA docs.</p>
-<h2 id='product-details-view'>Product details view</h2>
-<p>This event is emitted every time product tile is clicked and product dialog is displayed.</p>
-
-<p><a href="images/product_details_viewed.png"><img src="images/product_details_viewed.png" alt="Product details viewed" /></a></p>
-
-<p><em>In the screenshot above user has clicked on one of the product tiles and product dialog has been displayed as a result. &quot;Product details view&quot; event has been emitted.</em></p>
-<h3 id='prerequisites'>Prerequisites</h3>
-<p>Products need to be defined as <code>Product</code> components in Contentful space.</p>
-<h3 id='additonal-notes'>Additonal notes</h3>
-<p>Please note below that opening a product dialog fires a pair of GA events (one with action <code>click</code> and the other with action <code>detail</code>) to reflect the flow of user actions
-(first clicking on a product title and then seeing the details).</p>
-<h3 id='ga-event-format'>GA event format</h3>
-<table><thead>
-<tr>
-<th>Category</th>
-<th>Action</th>
-<th>Standard Enhanced Ecommerce event?</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>E-commerce</code></td>
-<td><code>click</code></td>
-<td>Yes (with one product attached)</td>
-</tr>
-<tr>
-<td><code>E-commerce</code></td>
-<td><code>detail</code></td>
-<td>Yes (with one product attached)</td>
-</tr>
-</tbody></table>
-<h2 id='add-to-cart'>Add to cart</h2>
-<p>This event is emitted when product is added to cart on a product dialog or checkout dialog.</p>
-
-<p><a href="images/add_to_cart_event.png"><img src="images/add_to_cart_event.png" alt="Add to cart event" /></a></p>
-
-<p><em>In the screenshot above the user has clicked &quot;add to cart&quot; button which resulted in emitting &quot;Add to cart&quot; event.</em></p>
-<h3 id='ga-event-format-2'>GA event format</h3>
-<table><thead>
-<tr>
-<th>Category</th>
-<th>Action</th>
-<th>Standard Enhanced Ecommerce event?</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>E-commerce</code></td>
-<td><code>add</code></td>
-<td>Yes (with one product attached)</td>
-</tr>
-</tbody></table>
-<h2 id='remove-from-cart'>Remove from cart</h2>
-<p>This event is emitted when product is removed from cart in checkout dialog.</p>
-<h3 id='ga-event-format-3'>GA event format</h3>
-<table><thead>
-<tr>
-<th>Category</th>
-<th>Action</th>
-<th>Standard Enhanced Ecommerce event?</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>E-commerce</code></td>
-<td><code>remove</code></td>
-<td>Yes (with one product attached)</td>
-</tr>
-</tbody></table>
-<h2 id='checkout'>Checkout</h2>
-<p>This event is emitted when checkout dialog is opened with a product (or several products).</p>
-
-<p><a href="images/product_checkout.png"><img src="images/product_checkout.png" alt="Product checkout" /></a></p>
-
-<p><em>In the screenshot above checkout dialog has been displayed and &quot;Checkout&quot; event has been emitted for a product &quot;Retexturising SERUM&quot;</em></p>
-<h3 id='additonal-notes-2'>Additonal notes</h3>
-<p>Please note that &quot;checkout&quot; is not the same thing as &quot;purchase&quot;. The event is emitted even if the product checkout is never finalized.
-The event is emitted every time checkout dialog is opened. This means that there may be several &quot;Checkout&quot; events emitted for product that was purchased just 
-once or that was never purchased.</p>
-<h3 id='ga-event-format-4'>GA event format</h3>
-<table><thead>
-<tr>
-<th>Category</th>
-<th>Action</th>
-<th>Standard Enhanced Ecommerce event?</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>E-commerce</code></td>
-<td><code>checkout</code></td>
-<td>Yes (with one or many products attached)</td>
-</tr>
-</tbody></table>
-<h2 id='purchase'>Purchase</h2>
-<p>This event is emitted when a product (or several products) is purchased.</p>
-
-<p><a href="images/purchase_event.png"><img src="images/purchase_event.png" alt="Purchase event" /></a></p>
-
-<p><em>In the screenshot above the user has finalized the payment and the order confirmation dialog has been displayed. &quot;Purchase&quot; event has been emitted.</em></p>
-<h3 id='ga-event-format-5'>GA event format</h3>
-<table><thead>
-<tr>
-<th>Category</th>
-<th>Action</th>
-<th>Standard Enhanced Ecommerce event?</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>E-commerce</code></td>
-<td><code>checkout</code></td>
-<td>Yes (with one or many products attached)</td>
-</tr>
-</tbody></table>
-<h1 id='rest-api'>Rest API</h1>
+</code></pre><h1 id='rest-api'>Rest API</h1>
 <p>Tipser provides a RESTful API you can use to fully integrate your platform with Tipser.</p>
 <h2 id='endpoints'>Endpoints</h2><h2 id='markets'>Markets</h2>
 <blockquote>
