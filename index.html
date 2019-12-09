@@ -283,7 +283,7 @@
                     <a href="#live-demo" class="toc-h2 toc-link" data-title="Live demo">Live demo</a>
                   </li>
                   <li>
-                    <a href="#quick-start" class="toc-h2 toc-link" data-title="Quick Start">Quick Start</a>
+                    <a href="#quick-react-start" class="toc-h2 toc-link" data-title="Quick React Start">Quick React Start</a>
                   </li>
                   <li>
                     <a href="#api-reference-of-tipser-react-elements" class="toc-h2 toc-link" data-title="API reference of Tipser React Elements">API reference of Tipser React Elements</a>
@@ -375,9 +375,6 @@
                   </li>
                   <li>
                     <a href="#category-names" class="toc-h2 toc-link" data-title="Category names">Category names</a>
-                  </li>
-                  <li>
-                    <a href="#add-to-cart" class="toc-h2 toc-link" data-title="Add to cart">Add to cart</a>
                   </li>
               </ul>
           </li>
@@ -534,9 +531,9 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 </thead><tbody>
 <tr>
 <td>lang</td>
-<td><code>&#39;en-US&#39;</code></td>
-<td>a locale to be used by the Tipser content. Possible values: <code>&#39;en-US&#39;</code>, <code>&#39;de-DE&#39;</code>, <code>&#39;fr-FR&#39;</code> and <code>&#39;sv-SE&#39;</code>. More info at <a href="#language-and-locale">Language and locale</a><a href="#environment">Environment</a></td>
-<td><code>&#39;de-DE&#39;</code></td>
+<td><code>&#39;en&#39;</code></td>
+<td>a locale to be used by the Tipser content. Possible values: <code>&#39;en&#39;</code>, <code>&#39;de&#39;</code>, <code>&#39;fr&#39;</code> and <code>&#39;sv&#39;</code>. More info at <a href="#language-and-locale">Language and locale</a><a href="#environment">Environment</a></td>
+<td><code>&#39;de&#39;</code></td>
 </tr>
 <tr>
 <td>env</td>
@@ -579,12 +576,6 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 <td><code>{}</code></td>
 <td>Customization of Tipser Dialog. More info at <a href="#parameters-for-dialog-customization">Parameters for dialog customization</a></td>
 <td><code>{ hideSearchIcon : true}</code></td>
-</tr>
-<tr>
-<td>primaryColor</td>
-<td>#333</td>
-<td>Hex color code, affecting eg. buy-button color and Cart indicator</td>
-<td>#5F9F9F</td>
 </tr>
 </tbody></table>
 
@@ -694,7 +685,7 @@ Not using React? Looking for an overview on Tipser Elements? Go check <a href="#
 <p>The code of that page is available as a GitHub <a href="https://github.com/Tipser/tipser-elements-react-bootstrap">Tipser Elements Bootstrap project</a>. Feel free to checkout it and play with it on your local environment! </p>
 
 <hr>
-<h2 id='quick-start'>Quick Start</h2>
+<h2 id='quick-react-start'>Quick React Start</h2>
 <p>This quick guide explains how to intialize and render Tipser React Elements on your React app. It requires you to have a publisher account created in order to get the <code>posId</code>, as well as have some collections created in your shop. For a guide how to manage your collections, check the <strong>Tipser Tools</strong> tutorial.</p>
 
 <p>If you&#39;re all set up, follow this three steps to rock on your app with Tipser React Elements!</p>
@@ -1661,25 +1652,7 @@ Congratulations! Now Tipser is part of your website
 To get the translated category names, used in the product model, you can use the API endpoint:</p>
 
 <p><code>GET https://t3-dev-api.tipser.com/v4/categories?market=se</code></p>
-<h2 id='add-to-cart'>Add to cart</h2><pre class="highlight shell tab-shell"><code>POST https://t3-prod-api.tipser.com/v4/shoppingcart/items
-headers
-Authorization: Bearer <span class="o">[</span>token]
-body
-<span class="o">{</span>
-  posId: <span class="s2">"YOUR_POS_ID"</span>,
-  productId: <span class="s2">"583d0d22101bf54d383a1f19"</span>.
-  quantity: 1
-<span class="o">}</span>
-</code></pre><h3 id='parameters'>Parameters:</h3>
-<p><strong>posId:</strong> string - required to get the commission</p>
 
-<p><strong>productId:</strong> string - defines which product is being added to cart</p>
-
-<p><strong>quantity:</strong> number - sets the number of product matching <strong>productId</strong> that is being added to cart</p>
-<h3 id='reading-shopping-cart'>Reading Shopping Cart</h3><pre class="highlight shell tab-shell"><code>GET https://t3-prod-api.tipser.com/v4/shoppingcart
-headers
-Authorization: Bearer <span class="o">[</span>token]
-</code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
