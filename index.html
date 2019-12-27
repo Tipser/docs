@@ -424,7 +424,7 @@
 
 <hr>
 <h2 id='quick-start'>Quick start</h2>
-<p>This quick guide explains how to intialize and render Tipser Elements on your page. It requires you to have a publisher account created in order to get the <code>posId</code>, as well as have some collections created in your shop. For a guide how to manage your collections, check the <strong>Tipser Tools</strong> tutorial.</p>
+<p>This quick guide explains how to intialize and render Tipser Elements on your page. It requires you to have a publisher account created in order to get the <code>posId</code>, as well as have some collections created in your shop. For a guide how to manage your collections, check the <a href="#tipser-tools">Tipser Tools tutorial</a>.</p>
 
 <p>If you&#39;re all set up, follow this three steps to install Tipser Elements on your site!</p>
 
@@ -703,7 +703,7 @@ Not using React? Looking for an overview on Tipser Elements? Go check <a href="#
 
 <hr>
 <h2 id='quick-react-start'>Quick React Start</h2>
-<p>This quick guide explains how to intialize and render Tipser React Elements on your React app. It requires you to have a publisher account created in order to get the <code>posId</code>, as well as have some collections created in your shop. For a guide how to manage your collections, check the <strong>Tipser Tools</strong> tutorial.</p>
+<p>This quick guide explains how to intialize and render Tipser React Elements on your React app. It requires you to have a publisher account created in order to get the <code>posId</code>, as well as have some collections created in your shop. For a guide how to manage your collections, check the <a href="#tipser-tools">Tipser Tools tutorial</a>.</p>
 
 <p>If you&#39;re all set up, follow this three steps to rock on your app with Tipser React Elements!</p>
 
@@ -1262,7 +1262,7 @@ Congratulations! Now Tipser is part of your website
 
 <p><code>detail</code> object structure</p>
 <pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
-  <span class="nv">description</span><span class="pi">:</span> <span class="nv">‘Viewport scrolled’</span><span class="pi">,</span>
+  <span class="nv">description</span><span class="pi">:</span> <span class="nv">‘Collection viewed’</span><span class="pi">,</span>
   <span class="nv">action</span><span class="pi">:</span> <span class="s1">'</span><span class="s">View'</span><span class="pi">,</span>
   <span class="nv">target</span><span class="pi">:</span> <span class="s1">'</span><span class="s">List'</span><span class="pi">,</span>
   <span class="nv">object</span><span class="pi">:</span>  <span class="pi">{</span>
@@ -1310,24 +1310,15 @@ Congratulations! Now Tipser is part of your website
   <span class="nv">target</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Shop'</span><span class="pi">,</span>
   <span class="nv">object</span><span class="pi">:</span> <span class="pi">[</span>
     <span class="pi">{</span> 
+      <span class="nv">id</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># collection id</span>
+      <span class="nv">items</span><span class="pi">:</span> <span class="nv">Product</span><span class="pi">[],</span> <span class="c1"># products</span>
       <span class="nv">url_slug</span><span class="pi">:</span> <span class="nv">string</span> <span class="c1"># store url slug </span>
     <span class="pi">}</span>
   <span class="pi">]</span>
 <span class="pi">}</span>
-</code></pre><h3 id='click-menu-item-in-shop'>Click menu item in shop</h3>
-<p>When a menu item is clicked in the shop.</p>
-
-<p><code>detail</code> object structure</p>
-<pre class="highlight yaml tab-yaml"><code><span class="pi">{</span> 
-  <span class="nv">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">List</span><span class="nv"> </span><span class="s">clicked'</span><span class="pi">,</span>
-  <span class="nv">action</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Click,</span>
-  <span class="s">target:</span><span class="nv"> </span><span class="s">'</span><span class="nv">List'</span><span class="pi">,</span>
-  <span class="nv">object</span><span class="pi">:[</span>
-    <span class="pi">{</span> 
-      <span class="nv">id</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span> <span class="c1"># collection id</span>
-    <span class="pi">}</span> 
-  <span class="pi">]</span>
-</code></pre><h3 id='click-cart-tab'>Click cart tab</h3>
+</code></pre>
+<p>When a category is changed in the store, this event will be sent again with a different set of products and collection id.</p>
+<h3 id='click-cart-tab'>Click cart tab</h3>
 <p>When the shopping cart tab is clicked.</p>
 
 <p><code>detail</code> object structure</p>
