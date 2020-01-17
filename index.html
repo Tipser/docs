@@ -481,6 +481,7 @@ Make sure, that Tipser Elements script is <strong>loaded only once on your page<
 <ul>
 <li><code>posId</code> - <strong>required</strong> - unique POS identifier. Must be specified in order to show your personalized store, handle campaigns and commissions. If you are not sure where to get it from, contact your account manager. </li>
 <li><code>config</code> - allows you to specify how Tipser Elements will look and behave on your site. See the <a href="#configuration-options">customization</a> section that describes most common configuration options you need to know, while the complete index of all the supported configuration options can be found further in the <a href="#api-reference">API reference</a> section.</li>
+<li><code>history</code> - history object on which we can rely for client side routing, when not provided routing is based on <code>window.history</code></li>
 </ul>
 
 <hr>
@@ -722,7 +723,7 @@ Not using React? Looking for an overview on Tipser Elements? Go check <a href="#
 
 <span class="c1">// simple configuration</span>
 <span class="kr">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
+    <span class="na">lang</span><span class="p">:</span> <span class="s1">'en-US'</span><span class="p">,</span>
     <span class="na">primaryColor</span><span class="p">:</span> <span class="s1">'#0000FF'</span><span class="p">,</span>    
 <span class="p">};</span>
 
@@ -775,6 +776,13 @@ Not using React? Looking for an overview on Tipser Elements? Go check <a href="#
 <td>false</td>
 <td>{}</td>
 </tr>
+<tr>
+<td>history</td>
+<td>history object</td>
+<td>{}</td>
+<td>false</td>
+<td><code>window.history</code></td>
+</tr>
 </tbody></table>
 <h4 id='tipserelement'><code>TipserElement</code></h4>
 <p>Generic Element that can render any Contentful content that&#39;s fed as a prop to the element.</p>
@@ -799,9 +807,9 @@ Not using React? Looking for an overview on Tipser Elements? Go check <a href="#
 </thead><tbody>
 <tr>
 <td>lang</td>
-<td><code>&#39;en&#39;</code></td>
-<td>a locale to be used by the Tipser content. Possible values: <code>&#39;en&#39;</code>, <code>&#39;de&#39;</code>, <code>&#39;fr&#39;</code> and <code>&#39;sv&#39;</code>. More info at <a href="#language-and-locale">Language and locale</a><a href="#environment">Environment</a></td>
-<td><code>&#39;de&#39;</code></td>
+<td><code>&#39;en-US&#39;</code></td>
+<td>a locale to be used by the Tipser content. Possible values: <code>&#39;en-US&#39;</code>, <code>&#39;de-DE&#39;</code>, <code>&#39;fr-FR&#39;</code> and <code>&#39;sv-SE&#39;</code>. More info at <a href="#language-and-locale">Language and locale</a><a href="#environment">Environment</a></td>
+<td><code>&#39;de-DE&#39;</code></td>
 </tr>
 <tr>
 <td>env</td>
@@ -929,7 +937,7 @@ Not using React? Looking for an overview on Tipser Elements? Go check <a href="#
 For the same reason, it&#39;s not recommended to include more than one <code>&lt;Store /&gt;</code> on a single page. </p>
 <h2 id='customizing-tipser-elements-styles'>Customizing Tipser Elements Styles</h2>
 <p>Tipser Elements are the &quot;building blocks&quot; designed to fit your page as much as possible. We created the styling in a way that delivers a nice look &amp; feel from the start, but also allows you to change them easily to fit your unique sense of style. </p>
-<h3 id='product-card-customization'>Product Card Customization</h3>
+<h3 id='product-card'>Product Card</h3>
 <p>The Product Card is an item used for displaying single <code>Collection</code> or <code>Store</code> component, among others. The font-family used in the description section of the Product Card is inherited from your website&#39;s styles, and the font-size is expressed in the relative <code>em</code> units controlled in <code>.te-product-card</code> class. The default value used there is <code>12px</code>, which you can easily change by adding to your CSS the following style:</p>
 <pre class="highlight css tab-css"><code><span class="nc">.te-product-card</span> <span class="p">{</span>
     <span class="nl">font-size</span><span class="p">:</span> <span class="m">14px</span><span class="p">;</span>
@@ -944,7 +952,7 @@ and:<br/>
 <code>.te-product-card-sales-price</code><br/>
 <code>.te-product-card-price-regular-price</code><br/>
 for products on sale.</p>
-<h3 id='cart-customization'>Cart Customization</h3>
+<h3 id='cart-2'>Cart</h3>
 <p>The Cart component with the cart icon can be placed anywhere on your website. (It is highly advisable to place it in your navigation element among other icons such as search, home etc.) However, if you want to keep it visible at all times, attached to the right side of the viewport, you can use these styles:</p>
 <pre class="highlight css tab-css"><code><span class="nc">.cart-icon</span> <span class="p">{</span>
     <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
@@ -1053,13 +1061,13 @@ Congratulations! Now Tipser is part of your website
 <p>Tipser SDK Example:</p>
 <pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">tipserSdk</span> <span class="o">=</span> <span class="nx">TipserSDK</span><span class="p">(</span><span class="s2">"59e86b79b8f3f60a94ecd26a"</span><span class="p">,</span> <span class="p">{</span><span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"#222"</span><span class="p">});</span>
 </code></pre>
-<p>The example connects Tipser SDK and sets primary color to yellow.</p>
+<p>The example connects Tipser SDK and sets primary color to <code>#0000FF</code>.</p>
 
 <p>All the available configuaration options are: </p>
 <pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">configurationOptions</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"#222"</span><span class="p">,</span>
+  <span class="na">primaryColor</span><span class="p">:</span> <span class="s2">"#0000FF"</span><span class="p">,</span>
   <span class="na">env</span><span class="p">:</span> <span class="s2">"stage"</span><span class="p">,</span>
-  <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span><span class="p">,</span>
+  <span class="na">lang</span><span class="p">:</span> <span class="s1">'en-US'</span><span class="p">,</span>
   <span class="na">modalUi</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">hideSearchIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="na">hideFavouritesIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -1092,17 +1100,17 @@ Congratulations! Now Tipser is part of your website
 </code></pre>
 <p>By default, Tipser Elements and SDK connect to production Tipser environment. Yet if testing environment is preferred (e.g. in order to do test purchase), then it can be customized with env parameter in Tipser options, which accept the following values:</p>
 
-<p><strong>prod</strong> or production</p>
-
-<p><strong>stage</strong> or staging</p>
-
-<p><strong>dev</strong> or development</p>
+<ul>
+<li><strong>prod</strong></li>
+<li><strong>stage</strong></li>
+<li><strong>dev</strong></li>
+</ul>
 
 <hr>
 <h2 id='language-and-locale'>Language and locale</h2>
-<p><code>lang</code> configuration option specifies the language to be used. Supported languages are currently: <code>en</code>, <code>de</code>, <code>fr</code> and <code>sv</code>.</p>
+<p><code>lang</code> configuration option specifies the language to be used. Supported languages are currently: <code>en-US</code>, <code>de-DE</code>, <code>fr-FR</code> and <code>sv-SE</code>.</p>
 <pre class="highlight javascript"><code>  <span class="nx">tipser</span><span class="p">.</span><span class="nx">elements</span><span class="p">(</span><span class="s1">'posId'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">lang</span><span class="p">:</span> <span class="s1">'en'</span>
+    <span class="na">lang</span><span class="p">:</span> <span class="s1">'en-US'</span>
   <span class="p">})</span>
 </code></pre>
 <p>It affects all the localizable texts in the UI - buy buttons, store, shopping cart and checkout. It does not affect the currency in which the customer will pay for the product.</p>
