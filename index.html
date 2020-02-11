@@ -353,6 +353,9 @@
                     <a href="#typical-use-case-google-analytics" class="toc-h2 toc-link" data-title="Typical use case: Google Analytics">Typical use case: Google Analytics</a>
                   </li>
                   <li>
+                    <a href="#typical-use-case-facebook-pixel" class="toc-h2 toc-link" data-title="Typical use case: Facebook Pixel">Typical use case: Facebook Pixel</a>
+                  </li>
+                  <li>
                     <a href="#list-of-supported-interactions" class="toc-h2 toc-link" data-title="List of supported interactions">List of supported interactions</a>
                   </li>
                   <li>
@@ -1236,9 +1239,9 @@ Congratulations! Now Tipser is part of your website
 </code></pre>
 <p>As you can see, all the useful data is contained in the top-level <code>detail</code> field of the event object.</p>
 <h2 id='typical-use-case-google-analytics'>Typical use case: Google Analytics</h2>
-<p>In case you want to tunnel Tipser Analytics events to your Google Analytics, you can use this code snippet:</p>
+<p>In case you want to forward Tipser Analytics events to your Google Analytics, you can use this code snippet:</p>
 <pre class="highlight javascript tab-javascript"><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'tw-track'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//ga() function coming from analytics.js library</span>
+    <span class="c1">// ga() function coming from analytics.js library</span>
     <span class="nx">ga</span><span class="p">(</span><span class="s1">'send'</span><span class="p">,</span> <span class="p">{</span>
         <span class="na">hitType</span><span class="p">:</span> <span class="s1">'event'</span><span class="p">,</span>
         <span class="na">eventCategory</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">description</span><span class="p">,</span>
@@ -1250,6 +1253,98 @@ Congratulations! Now Tipser is part of your website
 <p>The code above assumes that you use <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs" target="_blank">analytics.js</a> GA client library on your page. For other libraries, like gtag.js, that code needs to be slightly adjusted.</p>
 
 <p>For the instructions how to setup analytics.js script on your site and connect it to your GA account, refer to the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs" target="_blank">official documentation</a>.</p>
+<h2 id='typical-use-case-facebook-pixel'>Typical use case: Facebook Pixel</h2>
+<p>In case you want to forward Tipser Analytics events to your Facebook Pixel account, you can use the following code snippet:</p>
+<pre class="highlight javascript tab-javascript"><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'tw-track'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// fbq() function coming from Facebook Pixel analytics script</span>
+    <span class="nx">fbq</span><span class="p">(</span><span class="s1">'trackCustom'</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">action</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">content_name</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span> 
+        <span class="na">content_category</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">description</span><span class="p">,</span>
+        <span class="na">content_type</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">action</span><span class="p">,</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+<p>The example above doesn&#39;t translate Tipser events to standard Pixel events, you will have to make a correlation in the Pixel dashboard or you can write a custom mapping function. </p>
+
+<ol>
+<li>Expand and copy the snippet script.</li>
+<li>Paste it above <code>addEventListener</code> for tw-track event.</li>
+<li><p>Use it the same way as in the example below
+<details>
+<summary>Snippet</summary>
+<p></p>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">callPixelEvent</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">action</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">action</span><span class="p">;</span>
+  <span class="kr">const</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+  <span class="kr">const</span> <span class="nx">object</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">object</span><span class="p">;</span>
+
+  <span class="k">switch</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">action</span> <span class="o">===</span> <span class="s1">'Click'</span> <span class="o">&amp;&amp;</span> <span class="nx">target</span> <span class="o">===</span> <span class="s1">'Product tile'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">product</span> <span class="o">=</span> <span class="nx">object</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+      <span class="nx">fbq</span><span class="p">(</span><span class="s1">'track'</span><span class="p">,</span> <span class="s1">'ViewContent'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">currency</span><span class="p">:</span> <span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">salesPrice</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">listPrice</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">priceIncVat</span><span class="p">).</span><span class="nx">currency</span><span class="p">,</span>
+        <span class="na">value</span><span class="p">:</span> <span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">salesPrice</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">listPrice</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">priceIncVat</span><span class="p">).</span><span class="nx">value</span><span class="p">,</span>
+        <span class="na">content_name</span><span class="p">:</span> <span class="nx">product</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+        <span class="na">content_ids</span><span class="p">:</span> <span class="p">[</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">],</span>
+      <span class="p">});</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">case</span> <span class="nx">action</span> <span class="o">===</span> <span class="s1">'Cart'</span> <span class="o">&amp;&amp;</span> <span class="nx">target</span> <span class="o">===</span> <span class="s1">'Product'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">product</span> <span class="o">=</span> <span class="nx">object</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+      <span class="k">if</span> <span class="p">((</span><span class="nx">product</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">title</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">salesPrice</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">listPrice</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">priceIncVat</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">fbq</span><span class="p">(</span><span class="s1">'track'</span><span class="p">,</span> <span class="s1">'AddToCart'</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">currency</span><span class="p">:</span> <span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">salesPrice</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">listPrice</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">priceIncVat</span><span class="p">).</span><span class="nx">currency</span><span class="p">,</span>
+          <span class="na">value</span><span class="p">:</span> <span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">salesPrice</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">listPrice</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">priceIncVat</span><span class="p">).</span><span class="nx">value</span><span class="p">,</span>
+          <span class="na">content_name</span><span class="p">:</span> <span class="nx">product</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+          <span class="na">content_ids</span><span class="p">:</span> <span class="p">[</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">],</span>
+        <span class="p">});</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fbq</span><span class="p">(</span><span class="s1">'track'</span><span class="p">,</span> <span class="s1">'AddToCart'</span><span class="p">,</span> <span class="p">{</span>
+          <span class="na">content_ids</span><span class="p">:</span> <span class="p">[</span><span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">],</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">case</span> <span class="nx">action</span> <span class="o">===</span> <span class="s1">'Cart'</span> <span class="o">&amp;&amp;</span> <span class="nx">target</span> <span class="o">===</span> <span class="s1">'Payment'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">products</span> <span class="o">=</span> <span class="nx">object</span><span class="p">;</span>
+      <span class="nx">fbq</span><span class="p">(</span><span class="s1">'track'</span><span class="p">,</span> <span class="s1">'InitiateCheckout'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">content_ids</span><span class="p">:</span> <span class="nx">products</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">p</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span>
+        <span class="na">contents</span><span class="p">:</span> <span class="nx">products</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">p</span><span class="p">.</span><span class="nx">name</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">', '</span><span class="p">),</span>
+        <span class="na">currency</span><span class="p">:</span> <span class="p">(</span><span class="nx">products</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">salesPrice</span> <span class="o">||</span> <span class="nx">products</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">listPrice</span> <span class="o">||</span> <span class="nx">products</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">priceIncVat</span><span class="p">).</span><span class="nx">currency</span><span class="p">,</span>
+        <span class="na">num_items</span><span class="p">:</span> <span class="nx">products</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">totalQuantity</span><span class="p">,</span> <span class="nx">product</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">product</span><span class="p">.</span><span class="nx">quantity</span> <span class="o">+</span> <span class="nx">totalQuantity</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="na">value</span><span class="p">:</span> <span class="nx">products</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">totalPrice</span><span class="p">,</span> <span class="nx">product</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">product</span><span class="p">.</span><span class="nx">quantity</span> <span class="o">*</span> <span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">salesPrice</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">listPrice</span><span class="p">).</span><span class="nx">value</span> <span class="o">+</span> <span class="nx">totalPrice</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+      <span class="p">});</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">case</span> <span class="nx">action</span> <span class="o">===</span> <span class="s1">'Purchase'</span> <span class="o">&amp;&amp;</span> <span class="nx">target</span> <span class="o">===</span> <span class="s1">'Order'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">products</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">order</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">order</span><span class="p">.</span><span class="nx">Products</span><span class="p">).</span><span class="nx">flat</span><span class="p">();</span>
+      <span class="nx">fbq</span><span class="p">(</span><span class="s1">'track'</span><span class="p">,</span> <span class="s1">'Purchase'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">value</span><span class="p">:</span> <span class="nx">products</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span>
+          <span class="p">(</span><span class="nx">totalPrice</span><span class="p">,</span> <span class="nx">product</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">totalPrice</span> <span class="o">+</span> <span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">salesPrice</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">listPrice</span> <span class="o">||</span> <span class="nx">product</span><span class="p">.</span><span class="nx">priceIncVat</span><span class="p">).</span><span class="nx">value</span><span class="p">,</span>
+          <span class="mi">0</span>
+        <span class="p">),</span>
+        <span class="na">currency</span><span class="p">:</span> <span class="p">(</span><span class="nx">products</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">salesPrice</span> <span class="o">||</span> <span class="nx">products</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">listPrice</span> <span class="o">||</span> <span class="nx">products</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">priceIncVat</span><span class="p">).</span><span class="nx">currency</span><span class="p">,</span>
+        <span class="na">content_ids</span><span class="p">:</span> <span class="nx">products</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">product</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">product</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span>
+        <span class="na">contents</span><span class="p">:</span> <span class="nx">products</span><span class="p">,</span>
+        <span class="na">content_type</span><span class="p">:</span> <span class="s1">'product'</span><span class="p">,</span>
+      <span class="p">});</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></li>
+</ol>
+
+<p></p></p>
+
+<p></details></p>
+<pre class="highlight javascript tab-javascript"><code><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'tw-track'</span><span class="p">,</span> <span class="nx">callPixelEvent</span><span class="p">);</span>
+</code></pre>
+<p>The code above assumes that you use <a href="https://developers.facebook.com/docs/facebook-pixel/implementation" target="_blank">pixel.js</a> facebook client library on your page.</p>
+
+<p>For the instructions how to setup pixel.js script on your site and connect it to your Facebook for Developers account, refer to the <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs" target="_blank">official documentation</a>.</p>
 <h2 id='list-of-supported-interactions'>List of supported interactions</h2><h3 id='view-collection'>View collection</h3>
 <p>When a collection appears in the viewport.</p>
 
@@ -1403,7 +1498,7 @@ Congratulations! Now Tipser is part of your website
 </code></pre>
 <p><em>Quick links to object structures: <a href="#categorieslegacy-structure">CategoriesLegacy</a>, <a href="#price-structure">Price</a></em></p>
 <h3 id='categorieslegacy-structure'><code>CategoriesLegacy</code> structure</h3><pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
-  <span class="pi">[</span><span class="nv">key</span><span class="pi">]:</span> <span class="nv">string</span>
+
 <span class="pi">}[]</span>
 </code></pre><h3 id='product-structure'><code>Product</code> structure</h3><pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
   <span class="nv">id</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
@@ -1425,7 +1520,7 @@ Congratulations! Now Tipser is part of your website
 </code></pre>
 <p><em>Quick links to object structures: <a href="#categories-structure">Categories</a>, <a href="#price-structure">Price</a>, <a href="#image-structure">Image</a></em></p>
 <h3 id='image-structure'><code>Image</code> structure</h3><pre class="highlight yaml tab-yaml"><code><span class="pi">{</span>
-  <span class="pi">[</span><span class="nv">key</span><span class="pi">]:</span> <span class="nv">string</span> 
+
   <span class="nv">id</span><span class="pi">:</span> <span class="nv">string</span><span class="pi">,</span>
   <span class="nv">original</span><span class="pi">:</span> <span class="nv">string</span>
 <span class="pi">}</span>
